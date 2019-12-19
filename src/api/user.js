@@ -21,4 +21,4 @@ export function logout() {
     url: '/user/logout',
     method: 'post'
   })
-}
+ }

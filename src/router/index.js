@@ -96,6 +96,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path:"/exam",
+    component:Layout,
+    children:[
+      {
+        path:"/exam/index",
+        component:()=>import("@/views/exam/exam"),
+        name:"exam",
+        meta:{title:"试题管理",icon:"education"}
+      }
+    ]
+  },
+  
+  {
     path: '/guide',
     component: Layout,
     redirect: '/guide/index',

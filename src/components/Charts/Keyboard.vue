@@ -5,7 +5,6 @@
 <script>
 import echarts from 'echarts'
 import resize from './mixins/resize'
-
 export default {
   mixins: [resize],
   props: {
@@ -44,7 +43,6 @@ export default {
   methods: {
     initChart() {
       this.chart = echarts.init(document.getElementById(this.id))
-
       const xAxisData = []
       const data = []
       const data2 = []
@@ -151,5 +149,5 @@ export default {
       })
     }
   }
-}
-</script>
+ }
+ </script>
