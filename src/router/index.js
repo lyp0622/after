@@ -227,7 +227,7 @@ export const asyncRoutes = [
     redirect:'/exam/index',
     name:'exam',
     meta:{
-      title:'考试管理',
+      title:'试题管理',
       icon:'user'
     },
     children: [
@@ -235,13 +235,19 @@ export const asyncRoutes = [
         path:'one',
         component: () => import('@/views/exam/one/index'),
         name:'Page',
-        meta: { title: 'one' }
+        meta: { title: '添加试题' }
       },
       {
         path:'two',
         component: () => import('@/views/exam/two/index'),
         name:'tow',
-        meta: { title: 'two' }
+        meta: { title: '试题分类' }
+      },
+      {
+        path:'three',
+        component: () => import('@/views/exam/three/index'),
+        name:'three',
+        meta: { title: '查看试题' }
       }
     ]
   },
