@@ -11,6 +11,8 @@ import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
+import msgRouter from './modules/exammsg'
+import testRouter from './modules/testmsg'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -83,6 +85,7 @@ export const constantRoutes = [
       }
     ]
   },
+
   {
     path: '/documentation',
     component: Layout,
@@ -95,19 +98,9 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path:"/exam",
-    component:Layout,
-    children:[
-      {
-        path:"/exam/index",
-        component:()=>import("@/views/exam/exam"),
-        name:"exam",
-        meta:{title:"试题管理",icon:"education"}
-      }
-    ]
-  },
-  
+  msgRouter, // 试题管理
+  // 引入组件，但是组件中其实是 路由
+  testRouter,
   {
     path: '/guide',
     component: Layout,
@@ -135,6 +128,7 @@ export const constantRoutes = [
       }
     ]
   }
+
 ]
 
 /**
@@ -199,10 +193,10 @@ export const asyncRoutes = [
 
   /** when your routing map is too long, you can split it into small modules **/
   componentsRouter,
+
   chartsRouter,
   nestedRouter,
   tableRouter,
-
   {
     path: '/example',
     component: Layout,
@@ -234,7 +228,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: '/tab',
     component: Layout,

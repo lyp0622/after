@@ -1,6 +1,6 @@
 <template>
   <div>
-    考试
+    考试列表
   </div>
 </template>
 

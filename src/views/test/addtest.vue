@@ -1,6 +1,6 @@
 <template>
   <div>
-    考试
+    添加考试
   </div>
 </template>
 

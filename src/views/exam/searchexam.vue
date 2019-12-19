@@ -1,7 +1,6 @@
 <template>
-  <div>
-    考试
-  </div>
+
+  <div>查看实体</div>
 </template>
 
 <script>
