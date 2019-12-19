@@ -235,13 +235,13 @@ export const asyncRoutes = [
         path:'one',
         component: () => import('@/views/exam/one/index'),
         name:'Page',
-        meta: { title: 'one' }
+        meta: { title: '添加试题' }
       },
       {
         path:'two',
         component: () => import('@/views/exam/two/index'),
         name:'tow',
-        meta: { title: 'two' }
+        meta: { title: '查看试题' }
       }
     ]
   },
