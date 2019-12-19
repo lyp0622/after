@@ -107,18 +107,6 @@ export const constantRoutes = [
       }
     ]
   },
-  // {
-  //   path: '/edit',
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       component: () => import('@/views/edit/index'),
-  //       name: 'Edit',
-  //       meta: { title: 'edit', icon: 'edit' }
-  //     }
-  //   ]
-  // },
   {
     path: '/guide',
     component: Layout,
@@ -196,7 +184,8 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/edit',
+    //试题管理
+    path: '/edit', 
     component: Layout,
     redirect: '/edit/index',
     name: 'Edit',
@@ -225,6 +214,38 @@ export const asyncRoutes = [
       }
     ]
   },
+
+  // {
+  //   //面试题管理
+  //   path: '/interview', 
+  //   component: Layout,
+  //   redirect: '/interview/index',
+  //   name: 'Edit',
+  //   meta: {
+  //     title: '试题管理',
+  //     icon: 'edit'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'add',
+  //       component: () => import('@/views/edit/add'),
+  //       name: 'Edit',
+  //       meta: { title: '添加试题'}
+  //     },
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/edit/index'),
+  //       name: 'Edit',
+  //       meta: { title: '试题分类'}
+  //     },
+  //     {
+  //       path: 'look',
+  //       component: () => import('@/views/edit/look'),
+  //       name: 'Edit',
+  //       meta: { title: '查看试题'}
+  //     }
+  //   ]
+  // },  
 
   {
     path: '/icon',
