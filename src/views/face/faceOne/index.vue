@@ -2,7 +2,7 @@
   <div class="wrap-two">
     <div class="box-two">
       <div class="top-two">
-        <h2>试卷列表</h2>
+        <h2>查看面试题</h2>
       </div>
       <div class="center-two">
         <el-form
@@ -13,18 +13,12 @@
           class="demo-ruleForm"
           inline="true"
         >
-          <el-form-item label="考试类型" prop="region" >
+          <el-form-item label="试题类型" prop="region" >
             <el-select v-model="ruleForm.region">
               <el-option label="周考一" value="shanghai"></el-option>
               <el-option label="周考二" value="beijing"></el-option>
               <el-option label="周考三" value="xiamen"></el-option>
               <el-option label="月考" value="aozhou"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="选择课程" prop="region">
-            <el-select v-model="ruleForm.region">
-              <el-option label="区域一" value="shanghai"></el-option>
-              <el-option label="区域二" value="beijing"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item>
@@ -36,25 +30,12 @@
       <div class="footer-two">
         <div class="footer-first">
           <div class="left">试卷列表</div>
-          <div class="right">
-            <span>
-              <el-button>全部</el-button>
-            </span>
-            <span>
-              <el-button>进行中</el-button>
-            </span>
-            <span>
-              <el-button>已绑定</el-button>
-            </span>
-          </div>
         </div>
         <div class="footer second">
           <el-table :data="tableData" style="width: 100%" :row-class-name="tableRowClassName">
-            <el-table-column prop="message" label="试卷信息" width="370"></el-table-column>
-            <el-table-column prop="grade" label="班级" width="180"></el-table-column>
-            <el-table-column prop="create" label="创建人" width="180"></el-table-column>
-            <el-table-column prop="start" label="开始时间" width="180"></el-table-column>
-            <el-table-column prop="end" label="结束时间" width="180"></el-table-column>
+            <el-table-column prop="message" label="题目" width="750"></el-table-column>
+            <el-table-column prop="grade" label="类型" width="180"></el-table-column>
+            <el-table-column prop="create" label="出题人" width="180"></el-table-column>
             <el-table-column prop="address" label="操作"></el-table-column>
           </el-table>
         </div>
@@ -65,6 +46,7 @@
 
 <script>
 export default {
+  
   data() {
     return {
       num: 4,
@@ -81,6 +63,7 @@ export default {
       }
   },
   methods: {
+     
     tableRowClassName({ row, rowIndex }) {
       if (rowIndex === 1) {
         return "warning-row";
@@ -89,7 +72,8 @@ export default {
       }
       return "";
     }
-  }
+  },
+  
 };
 </script>
 

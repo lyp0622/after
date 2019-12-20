@@ -132,7 +132,7 @@ export default {
 }
 .box {
   width: 100%;
-  height: 500px;
+  height: auto;
   background: #eee;
 }
 .top {

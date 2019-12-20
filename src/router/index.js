@@ -189,7 +189,6 @@ export const asyncRoutes = [
   chartsRouter,
   nestedRouter,
   tableRouter,
-
   {
     path: '/example',
     component: Layout,
@@ -221,6 +220,7 @@ export const asyncRoutes = [
       }
     ]
   },
+  // 考试管理
   {
     path: '/exam',
     component: Layout,
@@ -240,12 +240,61 @@ export const asyncRoutes = [
       {
         path:'two',
         component: () => import('@/views/exam/two/index'),
-        name:'tow',
+        name:'Page',
         meta: { title: '查看试题' }
       }
     ]
   },
-
+  // 面试题管理
+  {
+    path: '/face',
+    component: Layout,
+    redirect:'/face/index',
+    name:'face',
+    meta:{
+      title:'面试题管理',
+      icon:'bug'
+    },
+    children: [
+      {
+        path:'faceOne',
+        component: () => import('@/views/face/faceOne/index'),
+        name:'Page',
+        meta: { title: '查看面试题' }
+      },
+      {
+        path:'faceTwo',
+        component: () => import('@/views/face/faceTwo/index'),
+        name:'Page',
+        meta: { title: '添加面试题' }
+      }
+    ]
+  },
+  // 阅卷管理
+  {
+    path: '/mark',
+    component: Layout,
+    redirect:'/mark/index',
+    name:'mark',
+    meta:{
+      title:'阅卷管理',
+      icon:'user'
+    },
+    children: [
+      {
+        path:'first',
+        component: () => import('@/views/mark/first/index'),
+        name:'Page',
+        meta: { title: '待批班级 ' }
+      },
+      {
+        path:'second',
+        component: () => import('@/views/mark/second/index'),
+        name:'Page',
+        meta: { title: '添加试题1122' }
+      },
+    ]
+  },
   {
     path: '/tab',
     component: Layout,
