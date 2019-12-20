@@ -5,7 +5,7 @@
       <div class="addTestbox">
         <div class="test-name">
           <label for="title" title="试卷名称" class="xrequired">
-            <span>试卷名称</span>
+            <span>试卷称</span>
           </label>
           <div>
             <el-input v-model="testNamevalue" placeholder="试卷名称" />
