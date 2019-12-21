@@ -70,7 +70,7 @@ export default {
         }
       ],
       // total: 1000, //默认数据总数
-      pagesize: 3, //每页的数据条数
+      pagesize: 5, //每页的数据条数
       currentPage: 1 //默认开始页面
     };
   },
