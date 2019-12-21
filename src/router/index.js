@@ -215,37 +215,37 @@ export const asyncRoutes = [
     ]
   },
 
-  // {
-  //   //面试题管理
-  //   path: '/interview', 
-  //   component: Layout,
-  //   redirect: '/interview/index',
-  //   name: 'Edit',
-  //   meta: {
-  //     title: '试题管理',
-  //     icon: 'edit'
-  //   },
-  //   children: [
-  //     {
-  //       path: 'add',
-  //       component: () => import('@/views/edit/add'),
-  //       name: 'Edit',
-  //       meta: { title: '添加试题'}
-  //     },
-  //     {
-  //       path: 'index',
-  //       component: () => import('@/views/edit/index'),
-  //       name: 'Edit',
-  //       meta: { title: '试题分类'}
-  //     },
-  //     {
-  //       path: 'look',
-  //       component: () => import('@/views/edit/look'),
-  //       name: 'Edit',
-  //       meta: { title: '查看试题'}
-  //     }
-  //   ]
-  // },  
+  {
+    //面试题管理
+    path: '/user', 
+    component: Layout,
+    redirect: '/user/index',
+    name: 'User',
+    meta: {
+      title: '用户管理',
+      icon: 'user'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        name: 'User',
+        meta: { title: '用户展示'}
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/user/add'),
+        name: 'User',
+        meta: { title: '添加用户'}
+      },
+      {
+        path: 'user',
+        component: () => import('@/views/user/user'),
+        name: 'User',
+        meta: { title: '角色管理'}
+      }
+    ]
+  },  
 
   {
     path: '/icon',
