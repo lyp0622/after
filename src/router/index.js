@@ -96,18 +96,6 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/exam',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/exam/index'),
-        name: 'Exam',
-        meta: { title: 'exam', icon: 'example' }
-      }
-    ]
-  },
-  {
     path: '/guide',
     component: Layout,
     redirect: '/guide/index',
@@ -179,38 +167,6 @@ export const asyncRoutes = [
           title: 'rolePermission',
           roles: ['admin']
         }
-      }
-    ]
-  },
-
-  {
-    //试题管理
-    path: '/edit', 
-    component: Layout,
-    redirect: '/edit/index',
-    name: 'Edit',
-    meta: {
-      title: '试题管理',
-      icon: 'edit'
-    },
-    children: [
-      {
-        path: 'add',
-        component: () => import('@/views/edit/add'),
-        name: 'Edit',
-        meta: { title: '添加试题'}
-      },
-      {
-        path: 'index',
-        component: () => import('@/views/edit/index'),
-        name: 'Edit',
-        meta: { title: '试题分类'}
-      },
-      {
-        path: 'look',
-        component: () => import('@/views/edit/look'),
-        name: 'Edit',
-        meta: { title: '查看试题'}
       }
     ]
   },

@@ -9,19 +9,22 @@
           <li>密码</li>
           <li>身份</li>
         </ul> -->
+
         <div>
           <el-table :data="examS.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
             <el-table-column prop="user_name" label="用户名" width="180"></el-table-column>
-            <el-table-column prop="user_pwd" label="密码" width="280"></el-table-column>
+            <el-table-column prop="user_pwd" label="密码" width="520"></el-table-column>
             <el-table-column prop="identity_text" label="身份"></el-table-column>
           </el-table>
 
           <!-- 分页 -->
-          <el-pagination layout="prev, pager, next" @current-change="current_change"
-            :total="examS.lenght"
+          <el-pagination layout="prev, pager, next" @current-change="current_change"  @size-change="handleSizeChange"
+            :total="+length"
+            :page-size="pagesize"
             background
           ></el-pagination>
         </div>
+
       </el-tab-pane>
 
       <el-tab-pane label="身份数据" name="second">
@@ -47,28 +50,6 @@ export default {
   data() {
     return {
       activeName: "first",
-      tableData: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
-      ],
       // total: 1000, //默认数据总数
       pagesize: 5, //每页的数据条数
       currentPage: 1 //默认开始页面
@@ -76,18 +57,26 @@ export default {
   },
   computed: {
     ...mapState({
-      examS: state => state.exam.examS,
-      userNPID: state => state.exam.userNPID
+      examS: state => state.author.examS,
+      userNPID: state => state.author.userNPID,
+      length: state => state.author.length 
     })
   },
   methods: {
     ...mapActions({
-      examStudent: "exam/examStudent",
-      examIDentity: "exam/examIDentity"
+      examStudent: "author/examStudent",
+      examIDentity: "author/examIDentity"
     }),
+    handleClick(){
+      console.log('1')
+    },
     current_change:function(currentPage){
         this.currentPage = currentPage;
-      }
+    },
+    handleSizeChange: function (size) {
+        this.pagesize = size;
+        // console.log(this.pagesize)  //每页下拉显示数据
+    },
   },
   mounted() {
     this.examStudent();
