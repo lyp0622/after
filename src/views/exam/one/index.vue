@@ -3,44 +3,48 @@
       <main>
           <h2>添加试题</h2>
           <div class="main">
-              <!-- <p><span>*</span> 题干</p>
-              <el-form>
-                 <el-input class="Ipt"></el-input>
-              </el-form>
-                  <p><span>*</span> 题干</p>
-              <el-form>
-                 <el-input class="Ipt"></el-input>
-              </el-form> -->
               <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                    <el-form-item label="题干" prop="name">
-                        <el-input v-model="ruleForm.name"></el-input>
+                    <el-form-item label="题干" prop="questions_stem">
+                        <el-input v-model="ruleForm.questions_stem"></el-input>
                     </el-form-item>
-                    <el-form-item label="题目主题" prop="region">
-                        <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+                    <el-form-item label="题目主题" prop="title">
+                        <el-input type="textarea" v-model="ruleForm.title"></el-input>
                     </el-form-item>
-                    <el-form-item label="考试类型" required prop="date1">
-                         <el-select v-model="ruleForm.date1">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
+                    <el-form-item label="考试类型" required prop="exam_id">
+                        <el-select v-model="ruleForm.exam_id">
+                            <el-option 
+                              v-for="(item,index) in list"
+                              :key="index"
+                              :label="item.exam_name" 
+                              :value="item.exam_id">
+                            </el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="课程类型" required prop="date2">
-                         <el-select v-model="ruleForm.date2">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
+                    <el-form-item label="课程类型" required prop="subject_id">
+                         <el-select v-model="ruleForm.subject_id">
+                            <el-option 
+                              v-for="(item,index) in keList"
+                              :key="index"
+                              :label="item.subject_text" 
+                              :value="item.subject_id">
+                            </el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="题目类型" required prop="date3">
-                         <el-select v-model="ruleForm.date3">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
+                    <el-form-item label="题目类型" required prop="questions_type_id">
+                         <el-select v-model="ruleForm.questions_type_id">
+                            <el-option 
+                              v-for="(item,index) in tiList"
+                              :key="index"
+                              :label="item.questions_type_text" 
+                              :value="item.questions_type_id">
+                            </el-option>
                         </el-select>
                     </el-form-item>
-                      <el-form-item label="答案信息" prop="regio">
-                        <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+                      <el-form-item label="答案信息" prop="questions_answer">
+                        <el-input type="textarea" v-model="ruleForm.questions_answer"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                        <el-button type="primary" @click="submitForm(ruleForm)">提交</el-button>
                     </el-form-item>
                 </el-form>
           </div>
@@ -48,46 +52,58 @@
   </div>
 </template>
 <script>
+import {mapActions, mapState} from 'vuex'
  export default {
-    data() {
+       data() {
       return {
         ruleForm: {
-          name: '',
-          region: '',
-          regio: '',
-          date1: '',
-          date2: '',
-          date3:'',
+          questions_stem:'',
+          title:'',
+          questions_answer:'',
+          exam_id:'',
+          subject_id:'',
+          user_id:'',
+          questions_type_id:'',
           delivery: false,
           type: [],
-          resource: '',
-          desc: ''
+          resource:'',
+          desc:''
         },
         rules: {
-          name: [
+          questions_stem: [
             { required: true, message: '请输入题干信息', trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
-          region: [
-            { required: true, message: '请输入题目主题', trigger: 'change' }
+          title: [
+            { required: true, message: '请输入题目主题', trigger: 'blur' }
           ],
-          date1: [
+          exam_id: [
              { required: true, message: '请选择考试类型', trigger: 'blur' }
           ],
-           date2: [
+           subject_id: [
              { required: true, message: '请选择课程类型', trigger: 'blur' }
           ],
-           date3: [
+           questions_type_id: [
              { required: true, message: '请选择题目类型', trigger: 'blur' }
           ],
-           regio: [
-            { required: true, message: '请输入答案信息', trigger: 'change' }
+           questions_answer: [
+            { required: true, message: '请输入答案信息', trigger: 'blur' }
           ]
         }
       };
     },
+   computed: {
+       ...mapState({
+           list: state => state.exam.list,
+           keList: state => state.exam.keList,
+           tiList: state => state.exam.tiList
+       })
+   },
     methods: {
       submitForm(formName) {
+        console.log(formName)
+        let {questions_type_id}=this.ruleForm
+        console.log(questions_type_id)
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
@@ -99,8 +115,18 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
-      }
-    }
+      },
+       ...mapActions({
+        examType:'exam/examType',
+        keType:'exam/keType',
+        tiType:'exam/tiType'
+      })
+    },
+     created(){
+       this.examType(),
+       this.keType(),
+       this.tiType()
+   },
   }
 </script>
 

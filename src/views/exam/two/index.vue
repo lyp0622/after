@@ -41,7 +41,12 @@
   
 </template>
 <script>
+import {mapActions, mapState} from 'vuex'
+
   export default {
+    computed: {
+        //  list:state=>state.exam.addList
+    },
     methods: {
       open3() {
         this.$prompt('创建新类型' ,{
@@ -49,10 +54,18 @@
           cancelButtonText: '取消',
         });
       },
-         deleteRow(index, rows) {
+      deleteRow(index, rows) {
         rows.splice(index, 1);
-      }
+      },
+      ...mapActions({
+        //  addType:'exam/addType'
+      })
     },
+  
+    created(){
+        //  this.addType()
+    },
+
      data() {
       return {
         tableData4: []
