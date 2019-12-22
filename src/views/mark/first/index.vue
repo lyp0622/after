@@ -5,31 +5,38 @@
         <h3>待批班级</h3>
       </div>
       <div class="center-first">
-        <el-table style="width: 100%" :data="studentList">
-          <el-table-column type="index"></el-table-column>
-          <el-table-column prop="date" label="班级名称">
-        
-            <!-- <ul>
-              <li >
-                {{item.student_name}}</li>
-            </ul> -->
+        <el-table :data="studentList" style="width: 100%">
+          <el-table-column prop="name" label="班级名" width="180">
+     <!-- :row-class-name="tableRowClassName" -->
           </el-table-column>
-          <el-table-column prop="name" label="课程名称"></el-table-column>
-          <el-table-column prop="address" label="班级号"></el-table-column>
-          <el-table-column prop="data" label="操作"></el-table-column>
+          <el-table-column prop="courseTitle" label="课程名称"></el-table-column>
+          <el-table-column prop="state" label="阅卷状态"></el-table-column>
+          <el-table-column prop="classroom" label="教室号"></el-table-column>
+          <el-table-column label="操作">
+            <template slot-scope="scope">
+              <span
+                size="mini"
+                type="danger"
+                class="read"
+                @click="handleLook(scope.$index, scope.row)"
+              >
+                <a href="#">批卷</a>
+              </span>
+            </template>
+          </el-table-column>
         </el-table>
+       
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import { mapState, mapActions } from "vuex";
 
 export default {
   data() {
     return {
-      list: ["班级名称", "课程名称", "班级号", "操作"]
+     
     };
   },
   computed: {
@@ -40,6 +47,11 @@ export default {
   },
   mounted() {
     this.getStudent();
+  },
+  methods:{
+    handleLook(){
+
+    }
   }
 };
 </script>

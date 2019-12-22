@@ -22,6 +22,7 @@ import request from '@/utils/request'
     })
   }
   
+  
 //   //添加类型
 //   export function addType() {
 //     return request({
@@ -29,3 +30,4 @@ import request from '@/utils/request'
 //       method: 'get',
 //     })
 //   }
+
