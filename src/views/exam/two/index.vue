@@ -4,7 +4,7 @@
           <h2>试题分类</h2>
           <div class="main">
                <el-button type="text" @click="open3">
-                 <Button class="But">+添加类型</Button>
+                 <Button class="But" @click="add()">+添加类型</Button>
                </el-button>
           </div>
         <el-table
@@ -42,8 +42,16 @@
 </template>
 <script>
 import {mapActions, mapState} from 'vuex'
-
+import {stType} from '@/api/exam'
   export default {
+    data() {
+      return {
+        tableData4: {
+          text:'',
+          sort:''
+        }
+      }
+    },
     computed: {
         //  list:state=>state.exam.addList
     },
@@ -53,6 +61,9 @@ import {mapActions, mapState} from 'vuex'
           confirmButtonText: '确定',
           cancelButtonText: '取消',
         });
+      },
+      add(tableData4){
+        stType(this.tableData4)
       },
       deleteRow(index, rows) {
         rows.splice(index, 1);
@@ -66,11 +77,7 @@ import {mapActions, mapState} from 'vuex'
         //  this.addType()
     },
 
-     data() {
-      return {
-        tableData4: []
-      }
-    }
+     
   }
 </script>
 

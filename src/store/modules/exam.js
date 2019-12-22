@@ -1,8 +1,9 @@
-import { examType,keType,tiType} from '@/api/exam'
+import { examType,keType,tiType,gaiType} from '@/api/exam'
 const state = {
     list:[],
     keList:[],
-    tiList:[]
+    tiList:[],
+    gaiList:[]
   }
   const mutations = {
      typeList(state,payload){
@@ -13,7 +14,10 @@ const state = {
       },
       tiType(state,payload){
           state.tiList=payload
-      }
+      },
+      gaiType(state,payload){
+        state.gaiList=payload
+    }
   }
   const actions = {
      async examType({commit},payload){
@@ -30,6 +34,11 @@ const state = {
         let res=await tiType()
         console.log('lyp........',res)
         await commit('tiType',res.data)
+    },
+    async gaiType({commit},payload){
+        let res=await gaiType()
+        console.log('ly........',res)
+        await commit('gaiType',res.data)
     }
   }
   

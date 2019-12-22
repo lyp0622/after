@@ -22,10 +22,28 @@ import request from '@/utils/request'
     })
   }
   
-//   //添加类型
-//   export function addType() {
-//     return request({
-//       url: '/exam/insertQuestionsType',
-//       method: 'get',
-//     })
-//   }
+  export function gaiType() {
+    return request({
+      url: '/exam/questions/condition',
+      method: 'get',
+    })
+  }
+ 
+  //添加类型
+  export function addType(data) {
+    console.log(data)
+    return request({
+      url: '/exam/questions',
+      method: 'post',
+      data
+    })
+  }
+
+    //添加试题类型
+    export function stType(data) {
+      return request({
+        url: '/exam/insertQuestionsType',
+        method: 'get',
+        data
+      })
+    }
