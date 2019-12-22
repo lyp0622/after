@@ -9,3 +9,13 @@ export default {
   name: 'App'
 }
 </script>
+
+<style lang="scss" >
+*{
+  list-style: none;
+}
+html,body,#app{
+  width: 100%;
+  height: 100%;
+}
+</style>
