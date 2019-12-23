@@ -15,7 +15,7 @@
                             <el-option 
                               v-for="(item,index) in list"
                               :key="index"
-                              :label="item.exam_name" 
+                              :label="item.exam_name" r
                               :value="item.exam_id">
                             </el-option>
                         </el-select>
@@ -149,6 +149,7 @@ import {addType} from '@/api/exam'
             }
         }
     }
+  
     // .Ipt{
       
     // }

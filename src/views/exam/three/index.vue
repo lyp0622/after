@@ -6,7 +6,7 @@
                   <div class="bo">
                     <div class="type"> 
                     <span>课程类型:</span>
-                      <span v-for="(item,index) in keList" :key="index" class="lei">
+                      <span v-for="(item,index) in keList" :key="index" :class="{'lei':index==curindex}" @click="addList(index)">
                           {{item.subject_text}}
                       </span>
                       </div>
@@ -43,16 +43,16 @@
                 </div>
            </div>
            <div class="content">
-                    <div v-for="(item,index) in gaiList" :key="index" class="bx">
-                          <span>{{item.title}}</span>
-                          <p>
-                            <span class="one">{{item.questions_type_text}}</span>
-                            <span class="two">{{item.subject_text}}</span>
-                            <span class="three">{{item.exam_name}}</span>
-                          </p>
-                          <span class="pull">{{item.user_name}}发布</span>
-                          <a href="" class="edite">编辑</a>
-                    </div>
+              <div v-for="(item,index) in gaiList" :key="index" class="bx" @click="tiao(item)">
+                    <span>{{item.title}}</span>
+                    <p>
+                      <span class="one">{{item.questions_type_text}}</span>
+                      <span class="two">{{item.subject_text}}</span>
+                      <span class="three">{{item.exam_name}}</span>
+                    </p>
+                    <span class="pull">{{item.user_name}}发布</span>
+                    <a href="" class="edite">编辑</a>
+              </div>
            </div>
       </main>
   </div>
@@ -66,6 +66,7 @@ import {mapActions, mapState} from 'vuex'
           exam_id:'',
           questions_type_id:'',
         },
+        curindex:0,
         rules: {
           exam_id: [
              { required: true, message: '请选择考试类型', trigger: 'blur' }
@@ -85,10 +86,15 @@ import {mapActions, mapState} from 'vuex'
        })
    },
     methods: {
+      addList(index){
+        if(index==this.curindex){
+            this.curindex=''
+        }else{
+            index=this.curindex
+        }
+      },
       submitForm(formName) {
         console.log(formName)
-        let {questions_type_id}=this.ruleForm
-        console.log(questions_type_id)
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
@@ -100,6 +106,12 @@ import {mapActions, mapState} from 'vuex'
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
+      },
+      tiao(item){
+        console.log(item)
+        this.$router.push({
+          url:'/detail'
+        })
       },
        ...mapActions({
         examType:'exam/examType',
@@ -168,6 +180,7 @@ import {mapActions, mapState} from 'vuex'
     }
    .lei{
      font-size: 12px;
+     background: skyblue;
      color: #222;
    }
    .content{

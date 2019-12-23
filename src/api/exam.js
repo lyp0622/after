@@ -41,9 +41,29 @@ import request from '@/utils/request'
 
     //添加试题类型
     export function stType(data) {
+      console.log(data)
       return request({
         url: '/exam/insertQuestionsType',
         method: 'get',
-        data
+        params:data
+      }).then(res=>{
+        console.log(res)
       })
     }
+    //获取所有的试题类型
+    export function getType() {
+      return request({
+        url: '/exam/getQuestionsType',
+        method: 'get',
+      })
+    }
+
+    //删除指定的试题类型
+    export function remType(id) {
+      return request({
+        url: `/exam/delQuestionsType/${id}`,
+        method: 'post',
+        
+      })
+    }
+    
