@@ -1,24 +1,24 @@
-import { getGrand } from '@/api/grand'
+
+import { getRoom } from '@/api/room'
 
 const state = {
-    getGrandList: [],//页面
+    getRoomList: [],//页面
    
   }
   const mutations = {
     ADD_ERROR_LOG: (state, payload) => {
-        state.getGrandList=payload 
+        state.getRoomList=payload 
     }
   }
   
   const actions = {
-    async getGrand ({commit}){
-        let res=await getGrand()
-        // console.log(res,"-----------------------------")
+    async getRoom ({commit}){
+        let res=await getRoom()
+        console.log(res,"-----------------------------教室号")
         commit ("ADD_ERROR_LOG",res.data)
     },
   
-}
-  
+} 
   export default {
     namespaced: true,
     state,

@@ -1,18 +1,19 @@
-import { getGrand } from '@/api/grand'
+
+import { getSubject } from '@/api/subject'
 
 const state = {
-    getGrandList: [],//页面
+    subjectList: [],//页面
    
   }
   const mutations = {
     ADD_ERROR_LOG: (state, payload) => {
-        state.getGrandList=payload 
+        state.subjectList=payload 
     }
   }
   
   const actions = {
-    async getGrand ({commit}){
-        let res=await getGrand()
+    async getSubject ({commit}){
+        let res=await getSubject()
         // console.log(res,"-----------------------------")
         commit ("ADD_ERROR_LOG",res.data)
     },
