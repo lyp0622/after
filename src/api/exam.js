@@ -1,5 +1,4 @@
 import request from '@/utils/request'
-<<<<<<< HEAD
   //考试类型
   export function examType() {
     return request({
@@ -30,7 +29,6 @@ import request from '@/utils/request'
 //       method: 'get',
 //     })
 //   }
-=======
 
 //获取所有用户信息
 export function examStudent() {
@@ -47,4 +45,3 @@ export function examIDentity() {
         method: 'get'
     })
 }
->>>>>>> szw
