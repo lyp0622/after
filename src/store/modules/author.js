@@ -1,4 +1,4 @@
-import { authorAll , authorIDentity , authorityApi , authorGuanXi , authorViews , viesQuanXI} from '@/api/author'
+import { authorAll , authorIDentity , authorityApi , authorGuanXi , authorViews , viesQuanXI } from '@/api/author'
 
 const state = {
     examS:[], //所有用户信息数据
@@ -16,14 +16,26 @@ const state = {
     allAuthorViewslength:'', //所有身份和视图权限关系数据的长度
 
     allViewsQX:[], //获取视图权限数据的所有数据
-    allViewsQXlength:'' //获取视图权限数据的所有数据的长度
+    allViewsQXlength:'', //获取视图权限数据的所有数据的长度
+
+    allShenFen:[], //更新用户的所有身份名字
+    shenfen:[], //更新用户的所有身份
 }
 
 const mutations = {
     //所有用户信息数据
     SET_EXAMS(state,payload){
-        state.examS=payload
+        state.examS=payload       
         state.userlength=state.examS.length
+
+        //名字
+        let names=state.examS.map(item=>item.user_name) 
+        state.allShenFen=Array.from(new Set(names))
+
+         //身份
+        let shenfen=state.examS.map(item=>item.identity_text)
+        state.shenfen=Array.from(new Set(shenfen))
+
     },
 
     //展示身份数据
@@ -47,7 +59,6 @@ const mutations = {
     //展示身份和视图权限关系
     SET_AUTHORV(state,payload){
       state.allAuthorViews=payload
-      console.log(payload)
       state.allAuthorViewslength=state.allAuthorViews.length
     },
 

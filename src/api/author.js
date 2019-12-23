@@ -6,7 +6,7 @@ export function authorAll() {
       url: '/user/user',
       method: 'get'
     })
-  }
+}
   
 //获取身份信息
 export function authorIDentity() {
@@ -47,4 +47,3 @@ export function authorViews(){
     method: 'get'
   })
 }
-

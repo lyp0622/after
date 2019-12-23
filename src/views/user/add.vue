@@ -4,44 +4,232 @@
         <div class="con">
 
             <div class="one">
-                  <el-radio-group v-model="tabPosition">
-                    <el-radio-button label="top">添加用户</el-radio-button>
-                    <el-radio-button label="right" @change="author">更新用户</el-radio-button>
-                  </el-radio-group>
-                  <el-tabs :tab-position="tabPosition">
-                    <el-input v-model="input" placeholder="请输入内容"></el-input>
-                    <el-input placeholder="请输入密码" v-model="input" show-password></el-input>
-                    <el-select v-model="value" placeholder="请选择">
-                        <el-option v-for="item in options" :key="item" :value="item"></el-option>
-                    </el-select>
-                  </el-tabs>
-                  <button>确定</button>
-                  <button>重置</button>
+              <button @click="addAuthor" class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加用户</button>
+              <button @click="gNew" class="newAuthor">更新用户</button>
+              <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
+                <el-tabs :tab-position="tabPosition" style="display:none" ref="select">
+                  <el-select v-model="value" placeholder="请选择身份id">
+                      <el-option v-for="item in allShenFen" :key="item" :value="item"></el-option>
+                  </el-select>
+                </el-tabs>
+                <el-form-item prop="pass">
+                  <el-input type="text" v-model="ruleForm.pass" autocomplete="off" placeholder="请输入用户名"></el-input>
+                </el-form-item>
+                <el-form-item prop="checkPass">
+                  <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" placeholder="请输入密码"></el-input>
+                </el-form-item>
+                <el-tabs :tab-position="tabPosition">
+                  <el-select v-model="values" placeholder="请选择">
+                      <el-option v-for="item in shenfen" :key="item" :value="item"></el-option>
+                  </el-select>
+                </el-tabs>
+                <el-form-item>
+                  <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                  <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </el-form-item>
+              </el-form>
             </div>
 
-            <div class="two"></div>
-            <div class="three"></div>
-            <div class="four"></div>
-            <div class="five"></div>
-            <div class="six"></div>
+            <div class="two">
+              <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加身份</button>
+              <el-form :model="numberValidateForm" ref="numberValidateForm" class="demo-ruleForm demo-two">
+                <el-form-item prop="author" :rules="[{ required: true, message: '请输入身份名称'}]">
+                  <el-input type="author" v-model.number="numberValidateForm.author" autocomplete="off" placeholder="请输入身份名称"></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" @click="submitFormTWO('numberValidateForm')">提交</el-button>
+                  <el-button @click="resetFormTWO('numberValidateForm')">重置</el-button>
+                </el-form-item>
+              </el-form>
+
+            </div>
+            <div class="three">
+              <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加api接口权限</button>
+              <AddApiQuanXi/>
+            </div>
+            <div class="four">
+               <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加视图接口权限</button>
+               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
+                  <el-tabs :tab-position="tabPosition">
+                    <el-select v-model="valuesF" placeholder="请选择身份id">
+                        <el-option v-for="item in allViewsQX" :key="item.view_authority_text" :value="item.view_authority_text"></el-option>
+                    </el-select>
+                  </el-tabs>
+                  <el-form-item>
+                    <el-button type="primary" @click="submitFormF('ruleForm')">提交</el-button>
+                    <el-button @click="resetFormF('ruleForm')">重置</el-button>
+                  </el-form-item>
+                </el-form>
+            </div>
+            <div class="five">
+              <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">给身份设置api接口权限</button>
+              <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
+                  <el-tabs :tab-position="tabPosition">
+                    <el-select v-model="valuesFive" placeholder="请选择身份id">
+                        <el-option v-for="item in shenfen" :key="item.view_authority_text" :value="item"></el-option>
+                    </el-select>
+                  </el-tabs>
+                  <el-tabs :tab-position="tabPosition">
+                    <el-select v-model="valuesFiveTwo" placeholder="请选择api接口权限">
+                        <el-option v-for="item in allGuanXi" :key="item.identity_api_authority_relation_id" :value="item.api_authority_text"></el-option>
+                    </el-select>
+                  </el-tabs>
+                  <el-form-item>
+                    <el-button type="primary" @click="submitFormFive('ruleForm')">提交</el-button>
+                    <el-button @click="resetFormFive('ruleForm')">重置</el-button>
+                  </el-form-item>
+                </el-form>
+            </div>
+            <div class="six">
+              <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">给身份设置视图权限</button>
+              <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
+                  <el-tabs :tab-position="tabPosition">
+                    <el-select v-model="valuesSix" placeholder="请选择身份id">
+                        <el-option v-for="item in shenfen" :key="item.view_authority_text" :value="item"></el-option>
+                    </el-select>
+                  </el-tabs>
+                  <el-tabs :tab-position="tabPosition">
+                    <el-select v-model="valuesSixTwo" placeholder="请选择视图权限id">
+                        <el-option v-for="item in allViewsQX" :key="item.view_authority_text" :value="item.view_authority_text"></el-option>
+                    </el-select>
+                  </el-tabs>
+                  <el-form-item>
+                    <el-button type="primary" @click="submitFormFive('ruleForm')">提交</el-button>
+                    <el-button @click="resetFormFive('ruleForm')">重置</el-button>
+                  </el-form-item>
+                </el-form>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import {mapState,mapActions} from 'vuex'
+import AddApiQuanXi from '@/components/addApiQuanXi/index'
 export default {
   data() {
-    return {
-      input: '',
-      tabPosition: 'top',
-      options:['黄金糕','双皮奶','蚵仔煎'],
-      value: ''
-    }
+      return {
+        buttons:['添加用户','更新用户'],
+        input: '',
+        tabPosition: 'top',
+        value: '',
+        values: '',
+        valuesF: '',
+        valuesFive: '',
+        valuesFiveTwo: '',
+        valuesSix: '',
+        valuesSixTwo: '',
+        ruleForm: {
+          pass: '',
+          checkPass: '',
+          age: ''
+        },
+        numberValidateForm: {
+          author: ''
+        }
+      };
+  },
+  components:{AddApiQuanXi},
+  computed:{
+    ...mapState({
+      allShenFen: state => state.author.allShenFen,
+      shenfen: state => state.author.shenfen,
+      allViewsQX: state => state.author.allViewsQX,
+      allGuanXi: state => state.author.allGuanXi,
+    })
   },
   methods:{
-      author(){
-          console.log('1')
+      ...mapActions({
+        authorAll: 'author/authorAll',
+        viesQuanXI: "author/viesQuanXI",
+        authorGuanXi: "author/authorGuanXi",
+      }),
+      addAuthor(){ // one的事件
+        this.$refs.select.$el.style="display:none"
+        document.querySelector('.newAuthor').style="none"
+      },
+      gNew(){ // one的事件
+        this.$refs.select.$el.style="display:block"
+        document.querySelector('.newAuthor').style="color:skyblue"
+        document.querySelector('.addAuthor').style="none"        
+      },
+       submitForm(formName) {// one的事件
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('信息不完整');
+          } else {
+            console.log('error 信息不完整!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {// one的事件
+        this.$refs[formName].resetFields();
+        this.value=''
+        this.values=''
+      },
+      submitFormTWO(formName) { //two的事件
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('身份不存在!');
+        } else {
+          console.log('error 身份不存在!!');
+          return false;
+        }
+      });
+      },
+      resetFormTWO(formName) {//two的事件
+        this.$refs[formName].resetFields();
+      },
+      submitFormF(formName) { //four的事件
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!');
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+      },
+      resetFormF(formName) {//four的事件
+        this.$refs[formName].resetFields();
+        this.valuesF=''
+      },
+      submitFormFive(formName) { //five的事件
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!');
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+      },
+      resetFormFive(formName) {//five的事件
+        this.$refs[formName].resetFields();
+        this.valuesFive=''
+        this.valuesFiveTwo=''
+      },
+      submitFormFive(formName) { //six的事件
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!');
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+      },
+      resetFormFive(formName) {//six的事件
+        this.$refs[formName].resetFields();
+        this.valuesSix=''
+        this.valuesSixTwo=''
       }
+    },
+  created(){
+    this.authorAll()
+    this.viesQuanXI()
+    this.authorGuanXi()
   }
 }
 </script>
@@ -57,7 +245,18 @@ export default {
 }
 .one,.two,.three,.four,.five,.six{
     width: 33%;
-    height: 200px;
-    border: 1px solid #3A71A8
+    border: 1px solid #3A71A8;
+}
+.addAuthor,.newAuthor{
+  background: #ffff;
+  border: 1px solid #eeeeee;
+  line-height: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.demo-ruleForm{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top:10px
 }
 </style>

@@ -5,7 +5,7 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: 'http://192.168.43.194:7002', // url = base url + request url   http://169.254.0.62:7002 与vue.config.js 中 proxy 的 target 的 端口号一致
+  baseURL: 'http://127.0.0.1:7002', // url = base url + request url   http://169.254.0.62:7002 与vue.config.js 中 proxy 的 target 的 端口号一致
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
