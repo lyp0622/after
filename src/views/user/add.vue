@@ -33,7 +33,7 @@
             <div class="two">
               <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加身份</button>
               <el-form :model="numberValidateForm" ref="numberValidateForm" class="demo-ruleForm demo-two">
-                <el-form-item prop="author" :rules="[{ required: true, message: '请输入身份名称'}]">
+                <el-form-item prop="author">
                   <el-input type="author" v-model.number="numberValidateForm.author" autocomplete="off" placeholder="请输入身份名称"></el-input>
                 </el-form-item>
                 <el-form-item>
@@ -94,8 +94,8 @@
                     </el-select>
                   </el-tabs>
                   <el-form-item>
-                    <el-button type="primary" @click="submitFormFive('ruleForm')">提交</el-button>
-                    <el-button @click="resetFormFive('ruleForm')">重置</el-button>
+                    <el-button type="primary" @click="submitFormSix('ruleForm')">提交</el-button>
+                    <el-button @click="resetFormSix('ruleForm')">重置</el-button>
                   </el-form-item>
                 </el-form>
             </div>
@@ -104,7 +104,8 @@
 </template>
 
 <script>
-import {mapState,mapActions} from 'vuex'
+import { addAuthor , addYongHu } from '@/api/addAuthor.js'
+import {mapState,mapActions,mapMutations} from 'vuex'
 import AddApiQuanXi from '@/components/addApiQuanXi/index'
 export default {
   data() {
@@ -144,6 +145,7 @@ export default {
         viesQuanXI: "author/viesQuanXI",
         authorGuanXi: "author/authorGuanXi",
       }),
+      // ...mapMutations(['addAuthors']),
       addAuthor(){ // one的事件
         this.$refs.select.$el.style="display:none"
         document.querySelector('.newAuthor').style="none"
@@ -153,74 +155,67 @@ export default {
         document.querySelector('.newAuthor').style="color:skyblue"
         document.querySelector('.addAuthor').style="none"        
       },
-       submitForm(formName) {// one的事件
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('信息不完整');
-          } else {
-            console.log('error 信息不完整!!');
-            return false;
-          }
-        });
+      submitForm(formName) {// one的事件  添加用户未完成
+        addYongHu({
+          user_name: this.ruleForm.pass,
+          user_pwd: this.ruleForm.checkPass,
+          identity_id: tihs.values
+        })
       },
       resetForm(formName) {// one的事件
         this.$refs[formName].resetFields();
         this.value=''
         this.values=''
       },
-      submitFormTWO(formName) { //two的事件
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('身份不存在!');
-        } else {
-          console.log('error 身份不存在!!');
-          return false;
-        }
-      });
+      submitFormTWO() { //two的事件  添加身份
+        addAuthor({ identity_text:this.numberValidateForm })
+        // this.addAuthors(this.numberValidateForm.author)// = >>保存状态有问题？？
+        this.shenfen.push(this.numberValidateForm.author)
+        console.log(this.shenfen)
       },
       resetFormTWO(formName) {//two的事件
         this.$refs[formName].resetFields();
       },
       submitFormF(formName) { //four的事件
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       },
       resetFormF(formName) {//four的事件
         this.$refs[formName].resetFields();
         this.valuesF=''
       },
       submitFormFive(formName) { //five的事件
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       },
       resetFormFive(formName) {//five的事件
         this.$refs[formName].resetFields();
         this.valuesFive=''
         this.valuesFiveTwo=''
       },
-      submitFormFive(formName) { //six的事件
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
+      submitFormSix(formName) { //six的事件
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       },
-      resetFormFive(formName) {//six的事件
+      resetFormSix(formName) {//six的事件
         this.$refs[formName].resetFields();
         this.valuesSix=''
         this.valuesSixTwo=''

@@ -66,7 +66,12 @@ const mutations = {
     SET_VIEWAQX(state,payload){
       state.allViewsQX=payload
       state.allViewsQXlength=state.allViewsQX.length
-    }
+    },
+
+    //添加身份
+    // addAuthors(state,payload){
+    //   state.shenfen.push(payload)
+    // }
 }
 
 const actions = {
