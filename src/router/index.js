@@ -96,7 +96,7 @@ export const constantRoutes = [
     ]
   },
   // 引入组件，但是组件中其实是 路由
-  testRouter,//考试管理
+  // testRouter,//考试管理
   {
     path: '/guide',
     component: Layout,
@@ -172,6 +172,7 @@ export const asyncRoutes = [
       }
     ]
   },
+  testRouter,
 
   {
     path: '/icon',

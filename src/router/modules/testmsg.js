@@ -23,7 +23,7 @@ const testRouter = {
       component: () => import('@/views/test/testlist'),
       name: 'Testlist',
       meta: {
-        title: '考试列表',
+        title: '试卷列表',
         noCache: true
       }
     }
