@@ -93,7 +93,8 @@ const actions = {
   },
   //获取身份和api权限关系数据
   async authorGuanXi({commit}){
-    const res = await authorGuanXi()
+    const res = await authorGuanXi();
+    console.log(res,'athers')
     commit('SET_GuanXi',res.data)
   },
   //展示身份和视图权限关系

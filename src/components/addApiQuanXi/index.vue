@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { authorityApi } from '@/api/addAuthor.js'
   export default {
     data() {
       return {
@@ -31,14 +32,11 @@
     },
     methods: {
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+        authorityApi({
+          api_authority_text: this.ruleForm.pass,
+          api_authority_url: this.ruleForm.checkPass,
+          api_authority_method: this.ruleForm.age
+        })
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
