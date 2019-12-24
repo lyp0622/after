@@ -61,10 +61,6 @@ import {mapActions, mapState} from 'vuex'
         //  addType:'exam/addType'
       })
     },
-  
-    created(){
-        //  this.addType()
-    },
 
      data() {
       return {
@@ -101,5 +97,4 @@ import {mapActions, mapState} from 'vuex'
       height: 30px;
       margin-left: 20px
     }
-
 </style>

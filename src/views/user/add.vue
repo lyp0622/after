@@ -201,7 +201,7 @@ export default {
       },
       resetFormF(formName) {//four的事件
         this.$refs[formName].resetFields();
-        this.valuesF=''
+        this.ruleForm.valuesF=''
       },
       submitFormFive(formName) { //five的事件
         setIdentityApi({
