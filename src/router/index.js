@@ -272,7 +272,6 @@ export const asyncRoutes = [
       {
         path:'two',
         component: () => import('@/views/exam/two/index'),
-<<<<<<< HEAD
         name:'tow',
         meta: { title: '试题分类' }
       },
@@ -280,9 +279,6 @@ export const asyncRoutes = [
         path:'three',
         component: () => import('@/views/exam/three/index'),
         name:'three',
-=======
-        name:'Page',
->>>>>>> lmy
         meta: { title: '查看试题' }
       }
     ]
