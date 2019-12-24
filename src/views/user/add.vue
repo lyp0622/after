@@ -7,7 +7,7 @@
               <button @click="gNew" class="newAuthor">更新用户</button>
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                 <el-tabs :tab-position="tabPosition" style="display:none" ref="select">
-                  <el-select v-model="value" placeholder="请选择身份id">
+                  <el-select v-model="ruleForm.value" placeholder="请选择身份id">
                       <el-option v-for="item in allShenFen" :key="item" :value="item"></el-option>
                   </el-select>
                 </el-tabs>
@@ -105,7 +105,7 @@
 </template>
 
 <script>
-import { addAuthor , addYongHu , authorityView , setIdentityApi , setIdentityView} from '@/api/addAuthor.js'
+import { addAuthor , addYongHu , authorityView , setIdentityApi , setIdentityView , userNew} from '@/api/addAuthor.js'
 import {mapState,mapActions,mapMutations} from 'vuex'
 import AddApiQuanXi from '@/components/addApiQuanXi/index'
 export default {
@@ -114,7 +114,6 @@ export default {
         buttons:['添加用户','更新用户'],
         input: '',
         tabPosition: 'top',
-        value: '',
         valuesFour: '',
         valuesFive: '',
         valuesFiveTwo: '',
@@ -125,7 +124,7 @@ export default {
           checkPass: '',
           age: '',
           valuesF: '',
-          values: '',
+          value: '',
         },
         numberValidateForm: {
           author: ''
@@ -160,16 +159,25 @@ export default {
         console.log(this.shenfen,'322333333')
         let user_name = this.ruleForm.pass;
         let user_pwd = this.ruleForm.checkPass;
+        let identity_id = this.ruleForm.values
         //密码必须为 一个大写字母+一个小写字母+一个数字+一个特殊字符 == 长度必须大于6
-        addYongHu({ user_name: user_name, user_pwd: user_pwd }).then(res => {
-          console.log(res,"==========----------??");
+        addYongHu({ user_name: user_name, user_pwd: user_pwd ,identity_id: identity_id }).then(res => {
+          // console.log(res,"==========----------??");
+          // console.log(identity_id,'dfghjkl;')
         })
+
+        // let user_id = this.ruleForm.value //更新用户
+        // userNew({ user_name: user_name, user_pwd: user_pwd ,identity_id: identity_id, user_id: user_id }).then(res=>{
+        //   console.log(res,'newadd')
+        // })
+        
       },
       resetForm(formName) {// one的事件
         this.$refs[formName].resetFields();
         this.ruleForm.pass=''
         this.ruleForm.checkPass=''
         this.ruleForm.values=''
+        this.ruleForm.value=''
       },
       submitFormTWO() { //two的事件  添加身份
         addAuthor({ identity_text:this.numberValidateForm.author })
