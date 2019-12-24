@@ -6,3 +6,19 @@ export function getRoom() {
     method: 'get'
   })
 }
+
+
+export function getDetail(data) {
+  return request({
+    url:"/manger/room/delete", // 删除教室接口
+    method: 'DELETE',
+    data 
+  })
+}
+export function createRoom(data) {
+  return request({
+    url:"/manger/room", // 删除教室接口
+    method: 'POST',
+    data 
+  })
+}

@@ -172,6 +172,38 @@ export const asyncRoutes = [
   },
 
   {
+    //面试题管理
+    path: '/user', 
+    component: Layout,
+    redirect: '/user/index',
+    name: 'User',
+    meta: {
+      title: '用户管理',
+      icon: 'user'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        name: 'User',
+        meta: { title: '用户展示'}
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/user/add'),
+        name: 'User',
+        meta: { title: '添加用户'}
+      },
+      {
+        path: 'user',
+        component: () => import('@/views/user/user'),
+        name: 'User',
+        meta: { title: '角色管理'}
+      }
+    ]
+  },  
+
+  {
     path: '/icon',
     component: Layout,
     children: [
@@ -293,7 +325,7 @@ export const asyncRoutes = [
       },
       {
         path:'grand2',
-        component: () => import('@/views/grand/grand1/index'),
+        component: () => import('@/views/grand/grand2/index'),
         name:'tow',
         meta: { title: '教室管理' }
       },

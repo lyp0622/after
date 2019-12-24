@@ -2,7 +2,7 @@
 import { getRoom } from '@/api/room'
 
 const state = {
-    getRoomList: [],//页面
+    getRoomList: [],//页面,
    
   }
   const mutations = {

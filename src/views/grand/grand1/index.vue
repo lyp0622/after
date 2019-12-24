@@ -79,7 +79,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { getGrand, updateGrade, deleteGrade } from '@/api/grand'
+import { createGrand, updateGrade, deleteGrade } from '@/api/grand'
 export default {
   data() {
     return {
@@ -123,8 +123,13 @@ export default {
     },
     // 删除
     handleDelete(index, row) {
-      deleteGrade(row.grade_id);
-      this.getGrand();
+      let grade_id=row.grade_id
+      let params={}
+      params.grade_id=grade_id
+      deleteGrade(params).then(res=>{
+          this.getGrand();
+      })
+   
     },
     handleConfirm(formName) {
       this.$refs[formName].validate(valid => {
@@ -135,7 +140,7 @@ export default {
             params.grade_name = this.ruleForm.name;
             params.room_id = this.ruleForm.region;
             params.subject_id = this.ruleForm.desc;
-            getGrand(params).then(res => {
+             createGrand(params).then(res => {
               this.getGrand();
             });
           } else {
@@ -161,7 +166,7 @@ export default {
     })
   },
   mounted() {
-    // this.getGrand()
+    this.getGrand()
     this.getRoom()
     this.getSubject()
 
