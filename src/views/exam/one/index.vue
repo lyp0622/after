@@ -15,7 +15,7 @@
                             <el-option 
                               v-for="(item,index) in list"
                               :key="index"
-                              :label="item.exam_name" 
+                              :label="item.exam_name" r
                               :value="item.exam_id">
                             </el-option>
                         </el-select>
@@ -44,7 +44,7 @@
                         <el-input type="textarea" v-model="ruleForm.questions_answer"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm(ruleForm)">提交</el-button>
+                        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
                     </el-form-item>
                 </el-form>
           </div>
@@ -53,6 +53,7 @@
 </template>
 <script>
 import {mapActions, mapState} from 'vuex'
+import {addType} from '@/api/exam'
  export default {
        data() {
       return {
@@ -62,12 +63,8 @@ import {mapActions, mapState} from 'vuex'
           questions_answer:'',
           exam_id:'',
           subject_id:'',
-          user_id:'',
-          questions_type_id:'',
-          delivery: false,
-          type: [],
-          resource:'',
-          desc:''
+          user_id: "w6l6n-cbvl6s",
+          questions_type_id:''
         },
         rules: {
           questions_stem: [
@@ -102,20 +99,19 @@ import {mapActions, mapState} from 'vuex'
     methods: {
       submitForm(formName) {
         console.log(formName)
-        let {questions_type_id}=this.ruleForm
-        console.log(questions_type_id)
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
+             addType(this.ruleForm)
           } else {
             console.log('error submit!!');
             return false;
           }
         });
       },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
+      // resetForm(formName) {
+      //   this.$refs[formName].resetFields();
+      // },
        ...mapActions({
         examType:'exam/examType',
         keType:'exam/keType',
@@ -153,6 +149,7 @@ import {mapActions, mapState} from 'vuex'
             }
         }
     }
+  
     // .Ipt{
       
     // }

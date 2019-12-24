@@ -11,7 +11,7 @@ import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
-
+import testRouter from './modules/testmsg'
 /**
  * Note: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -95,6 +95,8 @@ export const constantRoutes = [
       }
     ]
   },
+  // 引入组件，但是组件中其实是 路由
+  // testRouter,//考试管理
   {
     path: '/guide',
     component: Layout,
@@ -170,6 +172,7 @@ export const asyncRoutes = [
       }
     ]
   },
+  testRouter,
 
   {
     //面试题管理
@@ -500,7 +503,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: 'external-link',
     component: Layout,
