@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-<<<<<<< HEAD
+
   //考试类型
   export function examType() {
     return request({
@@ -23,6 +23,7 @@ import request from '@/utils/request'
     })
   }
   
+  
 //   //添加类型
 //   export function addType() {
 //     return request({
@@ -30,21 +31,3 @@ import request from '@/utils/request'
 //       method: 'get',
 //     })
 //   }
-=======
-
-//获取所有用户信息
-export function examStudent() {
-  return request({
-    url: '/user/user',
-    method: 'get'
-  })
-}
-
-//获取身份信息
-export function examIDentity() {
-    return request({
-        url: '/user/identity',
-        method: 'get'
-    })
-}
->>>>>>> szw
