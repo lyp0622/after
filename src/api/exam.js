@@ -1,5 +1,6 @@
 import request from '@/utils/request'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -7,6 +8,8 @@ import request from '@/utils/request'
 =======
 >>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
 >>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
+=======
+>>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
   //考试类型
   export function examType() {
     return request({
@@ -31,9 +34,12 @@ import request from '@/utils/request'
   }
   
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
@@ -44,6 +50,7 @@ import request from '@/utils/request'
   //添加类型
   export function addType(data) {
     console.log(data)
+<<<<<<< HEAD
 =======
 >>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
 //   //添加类型
@@ -67,12 +74,13 @@ export function examStudent() {
 //获取身份信息
 export function examIDentity() {
 >>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
+=======
+>>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
     return request({
       url: '/exam/questions',
       method: 'post',
       data
     })
-<<<<<<< HEAD
   }
 
     //添加试题类型
@@ -111,7 +119,10 @@ export function examIDentity() {
       })
     }
     
+<<<<<<< HEAD
 =======
 }
 >>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
 >>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
+=======
+>>>>>>> 7c65065fa6e4b89615c4667227d847709407a973

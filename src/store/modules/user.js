@@ -36,10 +36,13 @@ const actions = {
     const res = await login({ user_name: username, user_pwd: password })
     // console.log('res...', res);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
 >>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
+=======
+>>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
     setToken(res.token)
   },
 

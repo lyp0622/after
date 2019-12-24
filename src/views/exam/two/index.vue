@@ -50,6 +50,7 @@
   </main>
   </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
 <<<<<<< HEAD
@@ -57,6 +58,9 @@
   
 >>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
 >>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
+=======
+  
+>>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
 </template>
 <script>
 import {mapActions, mapState} from 'vuex'
@@ -132,13 +136,10 @@ import {stType,remType} from '@/api/exam'
       height: 30px;
       margin-left: 20px
     }
-<<<<<<< HEAD
   .el-table__body-el-table__body-wrapper is-scrolling-none{
     height: 1000px;
     }
-=======
 
->>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
 </style>
 
 
