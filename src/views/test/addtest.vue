@@ -83,7 +83,6 @@
 </template>
 
 <script>
-import { addtest } from "@/api/addtestpaper";
 import { mapState, mapActions } from "vuex";
 export default {
   data() {
@@ -106,7 +105,7 @@ export default {
     ...mapActions({
       getTestType: "testcont/getTestType",
       getClassList: "testcont/getClassList",
-      addtest: "testpaper/addtest"
+      addtest: "testcont/addtest"
     }),
     createPaper() {
       if (
@@ -121,8 +120,15 @@ export default {
       } else {
         console.log(parseInt(this.start_time.getTime()/1000), parseInt(this.end_time.getTime()/1000),this.subject_id,this.exam_id);
         const title = this.testNamevalue;
-        this.addtest(
-        );
+        let data={
+          subject_id:this.subject_id,
+          exam_id:this.exam_id,
+          title:this.title,
+          number:this.number,
+          start_time:parseInt(this.start_time.getTime()/1000),
+          end_time: parseInt(this.end_time.getTime()/1000)
+        }
+         this.addtest(data)
       }
     }
   },
