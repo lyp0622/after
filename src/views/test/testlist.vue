@@ -40,16 +40,16 @@
       </div>
       <div class="test_list_twice">
         <el-table :data="testlist" stripe style="width: 100%">
-          <el-table-column label="试题信息"  prop="date"></el-table-column>
-          <el-table-column label="班级"  prop="name"></el-table-column>
-          <el-table-column label="创建人"  prop="men"></el-table-column>
-          <el-table-column label="开始时间"  prop="start_time"></el-table-column>
-          <el-table-column label="结束时间"  prop="end_time"></el-table-column>
-          <el-table-column label="操作"  prop="cz"> 
-              <template slot-scope="scope">
-            <el-button @click="detail(scope.row)" type="text" size="small">操作</el-button>
-          </template> </el-table-column>
-
+          <el-table-column label="试题信息" prop="title"></el-table-column>
+          <el-table-column label="班级" prop="grade_name"></el-table-column>
+          <el-table-column label="创建人" prop="user_name"></el-table-column>
+          <el-table-column label="开始时间" prop="start_time"></el-table-column>
+          <el-table-column label="结束时间" prop="end_time"></el-table-column>
+          <el-table-column label="操作" prop="cz">
+            <template slot-scope="scope">
+              <el-button @click="detail(scope.now)" type="text" size="small">操作</el-button>
+            </template>
+          </el-table-column>
         </el-table>
       </div>
     </div>
@@ -65,16 +65,16 @@ export default {
         class_type: "",
         test_type: ""
       },
-      start_time:"",
+      start_time: "",
       radio1: "全部",
       radio2: "进行中",
       radio3: "已结束",
-      testTitle: [ ]
+      testTitle: []
     };
   },
   methods: {
     onSubmit() {
-      console.log(1);
+      // console.log(1);
     },
     ...mapActions({
       getTestType: "testcont/getTestType",
@@ -89,18 +89,20 @@ export default {
       testlist: state => state.getAllTest.testList
     })
   },
-    watch: {
-    testlist(now){
-      this.testTitle=now.exam.map(item=>{
+  watch: {
+    testlist(now) {
+      this.testTitle = now.map(item => {
+        console.log(item.grade_name, "2222");
         return {
-             date: `${item.title}`,
-             name : item.grade_name,
-             men : item.user_name,
-             start_time : item.start_time,
-             end_time : item.end_time,
-             cz : '操作',
-        }
-      })
+          title: item.title,
+          grade_name: item.grade_name,
+          user_name: item.user_name,
+          start_time: item.start_time,
+          end_time: item.end_time,
+          cz: "操作"
+        };
+      });
+      
     }
   },
   created() {
@@ -110,7 +112,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      console.log(this.testlist, "11000");
+      // console.log(this.testlist, "11000");
     }, 1000);
   }
 };

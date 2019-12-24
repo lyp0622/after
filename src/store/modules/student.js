@@ -13,7 +13,7 @@ const state = {
   const actions = {
     async getStudent ({commit}){
         let res=await getStudent()
-        console.log(res.exam,"-----------------------------")
+        // console.log(res.exam,"-----------------------------")
         commit ("ADD_ERROR_LOG",res.exam)
     }
   }

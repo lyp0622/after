@@ -3,22 +3,35 @@
       <main>
           <h2>试题分类</h2>
           <div class="main">
-               <el-button type="text" @click="open3">
-                 <Button class="But">+添加类型</Button>
-               </el-button>
-          </div>
-        <el-table
-        :data="tableData4"
+               <el-button type="text" @click="dialogFormVisible = true">+添加类型</el-button>
+              <el-dialog title="创建新类型" :visible.sync="dialogFormVisible">
+                <el-form  :model="ruleForm" ref="ruleForm">
+                  <el-form-item label="类型ID" :label-width="formLabelWidth" >
+                    <el-input v-model="ruleForm.sort" auto-complete="off"></el-input>
+                  </el-form-item>
+                  <el-form-item label="类型名称" :label-width="formLabelWidth">
+                    <el-input v-model="ruleForm.text" auto-complete="off"></el-input>
+                  </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                  <el-button @click="dialogFormVisible = false">取 消</el-button>
+                  <el-button type="primary"  @click="submitForm('ruleForm')">确 定</el-button>
+                </div>
+              </el-dialog>
+          </div> 
+    <el-table
         style="width: 100%"
-        max-height="250">
+        max-height="auto"
+        :data="getList"
+        >
         <el-table-column
         fixed
-        prop="date"
+        prop="questions_type_id"
         label="类型ID"
       >
       </el-table-column>
       <el-table-column
-        prop="name"
+        prop="questions_type_text"
         label="类型名称"
       >
       </el-table-column>
@@ -26,11 +39,9 @@
         fixed="right"
         label="操作"
         width="120">
-        <template slot-scope="scope">
+        <template >
           <el-button
-            @click.native.prevent="deleteRow(scope.$index, tableData4)"
-            type="text"
-            size="small">
+            @click="deleteRow()">
             移除
           </el-button>
       </template>
@@ -38,34 +49,71 @@
   </el-table>
   </main>
   </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
   
+=======
+<<<<<<< HEAD
+=======
+  
+>>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
+>>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
+=======
+  
+>>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
 </template>
 <script>
 import {mapActions, mapState} from 'vuex'
-
+import {stType,remType} from '@/api/exam'
   export default {
-    computed: {
-        //  list:state=>state.exam.addList
-    },
-    methods: {
-      open3() {
-        this.$prompt('创建新类型' ,{
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-        });
-      },
-      deleteRow(index, rows) {
-        rows.splice(index, 1);
-      },
+    data() {
+      return {
+        ruleForm: {
+            text:'',
+            sort:'',
+            id:''  
+        },
+        dialogTableVisible: false,
+        dialogFormVisible: false,
+       formLabelWidth: '120px'
+      }
+   },
+       computed:{
+         ...mapState({
+            getList:state=>state.exam.getList
+         })
+       },
+   methods: {
+        deleteRow() {
+          console.log('lyp')
+        },
+          submitForm(formName) {
+          console.log(formName)
+          this.$refs[formName].validate((valid) => {
+            if (valid) {
+              alert('submit!');
+               stType(this.ruleForm)
+            } else {
+              console.log('error submit!!');
+              return false;
+            }
+          })
+        },
       ...mapActions({
-        //  addType:'exam/addType'
+             getType:'exam/getType'
       })
+<<<<<<< HEAD
     },
 
      data() {
       return {
         tableData4: []
       }
+=======
+     },
+    created(){
+       this.getType()
+>>>>>>> 30c58b974940dbb3d043a4e18140194fd0e60d0e
     }
   }
 </script>
@@ -97,4 +145,14 @@ import {mapActions, mapState} from 'vuex'
       height: 30px;
       margin-left: 20px
     }
+<<<<<<< HEAD
 </style>
+=======
+  .el-table__body-el-table__body-wrapper is-scrolling-none{
+    height: 1000px;
+    }
+
+</style>
+
+
+>>>>>>> 30c58b974940dbb3d043a4e18140194fd0e60d0e

@@ -224,6 +224,7 @@ export const asyncRoutes = [
   chartsRouter,
   nestedRouter,
   tableRouter,
+
   {
     path: '/example',
     component: Layout,
@@ -255,7 +256,6 @@ export const asyncRoutes = [
       }
     ]
   },
-  // 考试管理
   {
     path: '/exam',
     component: Layout,
@@ -286,39 +286,13 @@ export const asyncRoutes = [
       }
     ]
   },
-  // 面试题管理
-  {
-    path: '/face',
-    component: Layout,
-    redirect:'/face/index',
-    name:'face',
-    meta:{
-      title:'面试题管理',
-      icon:'bug'
-    },
-    children: [
-      {
-        path:'faceOne',
-        component: () => import('@/views/face/faceOne/index'),
-        name:'Page',
-        meta: { title: '查看面试题' }
-      },
-      {
-        path:'faceTwo',
-        component: () => import('@/views/face/faceTwo/index'),
-        name:'Page',
-        meta: { title: '添加面试题' }
-      }
-    ]
-  },
-  // 阅卷管理
   {
     path: '/mark',
     component: Layout,
     redirect:'/mark/index',
     name:'mark',
     meta:{
-      title:'阅卷管理',
+      title:'批卷',
       icon:'user'
     },
     children: [
@@ -326,14 +300,44 @@ export const asyncRoutes = [
         path:'first',
         component: () => import('@/views/mark/first/index'),
         name:'Page',
-        meta: { title: '待批班级 ' }
+        meta: { title: '待批班级' }
       },
       {
         path:'second',
         component: () => import('@/views/mark/second/index'),
-        name:'Page',
-        meta: { title: '添加试题1122' }
+        name:'second',
+        meta: { title: '试题分类' }
+      }
+    ]
+  },
+  {
+    path: '/grand',
+    component: Layout,
+    redirect:'/grand/index',
+    name:'grand',
+    meta:{
+      title:'试题管理',
+      icon:'example'
+    },
+    children: [
+      {
+        path:'grand1',
+        component: () => import('@/views/grand/grand1/index'),
+        name:'grand1',
+        meta: { title: '班级管理' }
       },
+      {
+        path:'grand2',
+        component: () => import('@/views/grand/grand2/index'),
+        name:'tow',
+        meta: { title: '教室管理' }
+      },
+      {
+        path:'grand3',
+        component: () => import('@/views/grand/grand3/index'),
+        name:'three',
+        meta: { title: '学生管理' }
+      }
     ]
   },
   {
@@ -348,6 +352,7 @@ export const asyncRoutes = [
       }
     ]
   },
+ 
 
   {
     path: '/error',
@@ -498,7 +503,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: 'external-link',
     component: Layout,

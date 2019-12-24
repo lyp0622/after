@@ -40,9 +40,28 @@ module.exports = {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-
+<<<<<<< HEAD
         // target: `http://127.0.0.1:${port}/mock`,
+        target: `http://169.254.126.222:7002`,
+
+        // target: `http://127.0.0.1:${port}/mock`,  框架默认的地址
+        // target: `http://127.0.0.1:${port}/mock`,
+=======
+
+        target: `http://169.254.0.62:7002`,
+<<<<<<< HEAD
+=======
+        // target: `http://127.0.0.1:${port}/mock`,
+<<<<<<< HEAD
         target: `http://127.0.0.1:7002`,
+=======
+        target: `http://169.254.126.222:7002`,
+>>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
+>>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
+=======
+
+>>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
+>>>>>>> 30c58b974940dbb3d043a4e18140194fd0e60d0e
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''

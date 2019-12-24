@@ -1,9 +1,9 @@
 import request from '@/utils/request'
 
-export function addtest(data) {
+export function addtest(payload) {
   return request({
     url: '/exam/exam',
     method: 'post',
-    data
+    data:payload
   })
 }
