@@ -1,5 +1,8 @@
 import request from '@/utils/request'
+<<<<<<< HEAD
 
+=======
+>>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
   //考试类型
   export function examType() {
     return request({
@@ -23,6 +26,7 @@ import request from '@/utils/request'
     })
   }
   
+<<<<<<< HEAD
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
@@ -33,11 +37,32 @@ import request from '@/utils/request'
   //添加类型
   export function addType(data) {
     console.log(data)
+=======
+//   //添加类型
+//   export function addType() {
+//     return request({
+//       url: '/exam/insertQuestionsType',
+//       method: 'get',
+//     })
+//   }
+
+//获取所有用户信息
+export function examStudent() {
+  return request({
+    url: '/user/user',
+    method: 'get'
+  })
+}
+
+//获取身份信息
+export function examIDentity() {
+>>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
     return request({
       url: '/exam/questions',
       method: 'post',
       data
     })
+<<<<<<< HEAD
   }
 
     //添加试题类型
@@ -76,3 +101,6 @@ import request from '@/utils/request'
       })
     }
     
+=======
+}
+>>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f

@@ -49,6 +49,10 @@
   </el-table>
   </main>
   </div>
+<<<<<<< HEAD
+=======
+  
+>>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
 </template>
 <script>
 import {mapActions, mapState} from 'vuex'
@@ -124,9 +128,13 @@ import {stType,remType} from '@/api/exam'
       height: 30px;
       margin-left: 20px
     }
+<<<<<<< HEAD
   .el-table__body-el-table__body-wrapper is-scrolling-none{
     height: 1000px;
     }
+=======
+
+>>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
 </style>
 
 
