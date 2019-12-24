@@ -24,6 +24,7 @@
       <el-tab-pane label="身份数据" name="second"> <!--身份数据-->
         <h6 class="second-title">身份数据</h6>
         <div class="second-box">
+          <!-- {{userNPID}} -->
           <el-table :data="userNPID.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
             <el-table-column prop="identity_text" label="身份名称" width="180" ></el-table-column>
           </el-table>
