@@ -19,7 +19,6 @@ const state = {
     allViewsQXlength:'', //获取视图权限数据的所有数据的长度
 
     allShenFen:[], //更新用户的所有身份名字
-    shenfen:[], //更新用户的所有身份
 }
 
 const mutations = {
@@ -31,16 +30,12 @@ const mutations = {
         //名字
         let names=state.examS.map(item=>item.user_name) 
         state.allShenFen=Array.from(new Set(names))
-
-         //身份
-        let shenfen=state.examS.map(item=>item.identity_text)
-        state.shenfen=Array.from(new Set(shenfen))
-
     },
 
     //展示身份数据
     SET_EXAMF(state,payload){
         state.userNPID=payload
+        console.log(state.userNPID)
         state.authorlenght=state.userNPID.length
     },
 
@@ -67,11 +62,6 @@ const mutations = {
       state.allViewsQX=payload
       state.allViewsQXlength=state.allViewsQX.length
     },
-
-    //添加身份
-    // addAuthors(state,payload){
-    //   state.shenfen.push(payload)
-    // }
 }
 
 const actions = {

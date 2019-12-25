@@ -7,7 +7,16 @@ export function authorAll() {
       method: 'get'
     })
 }
-  
+
+export function addType(data) {
+  console.log(data)
+  return request({
+    url: '/exam/questions',
+    method: 'post',
+    data
+  })
+}
+
 //获取身份信息
 export function authorIDentity() {
     return request({

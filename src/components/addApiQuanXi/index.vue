@@ -51,4 +51,16 @@ div{
     margin-right: 10px;
     margin-top:10px
 }
+.el-form-item{
+  margin: 0
+}
+// .el-form-item__content{
+//   margin-left: 5px;
+//   margin-top: 10px
+// }
+.el-form-item--medium{
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px
+}
 </style>

@@ -28,33 +28,6 @@ import request from '@/utils/request'
       method: 'get',
     })
   }
- 
-  //添加类型
-  export function addType(data) {
-    console.log(data)
-//   //添加类型
-//   export function addType() {
-//     return request({
-//       url: '/exam/insertQuestionsType',
-//       method: 'get',
-//     })  }
-  }
-//获取所有用户信息
-export function examStudent() {
-  return request({
-    url: '/user/user',
-    method: 'get'
-  })
-}
-
-//获取身份信息
-export function examIDentity() {
-    return request({
-      url: '/exam/questions',
-      method: 'post',
-      data
-    })
-  }
 
     //添加试题类型
     export function stType(data) {
