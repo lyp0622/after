@@ -56,8 +56,7 @@ export default {
       dialogFormVisible: false,
       labelPosition: "top",
       ruleForm: {
-        region: "",
-        
+        region: "",   
       },
       formLabelWidth: "70%",
       rules: {
@@ -68,9 +67,8 @@ export default {
   methods: {
     handleAddGrade() {
      this.dialogFormVisible = true;
-      this.title = "添加教室";
-      this.ruleForm.region = "";
-     
+     this.title = "添加教室";
+     this.ruleForm.region = "";   
     },
     // 删除
      handleDelete(index, row) {
@@ -83,16 +81,12 @@ export default {
      handleConfirm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
-         
+          alert("submit!"); 
             let params = {};
-         
             params.room_text = this.ruleForm.region;
              createRoom(params).then(res => {
               this.getRoom()
-            });
-       
-       
+            }); 
           this.dialogFormVisible = false;
         } else {
           return false;

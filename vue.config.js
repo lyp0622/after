@@ -45,6 +45,9 @@ module.exports = {
 
         // target: `http://127.0.0.1:${port}/mock`,  框架默认的地址
         // target: `http://127.0.0.1:${port}/mock`,
+
+        target: `http://169.254.126.222:7002`,
+
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''

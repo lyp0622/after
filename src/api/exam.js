@@ -24,6 +24,8 @@ import request from '@/utils/request'
   }
   
 
+
+
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
