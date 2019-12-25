@@ -13,6 +13,10 @@ export default {
 <style lang="scss" >
 *{
   list-style: none;
+   margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
 }
 html,body,#app{
   width: 100%;

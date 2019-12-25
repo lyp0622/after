@@ -1,5 +1,4 @@
 import request from '@/utils/request'
-
   //考试类型
   export function examType() {
     return request({
@@ -38,9 +37,8 @@ import request from '@/utils/request'
 //     return request({
 //       url: '/exam/insertQuestionsType',
 //       method: 'get',
-//     })
+//     })  }
   }
-
 //获取所有用户信息
 export function examStudent() {
   return request({
@@ -93,4 +91,3 @@ export function examIDentity() {
         params:data
       })
     }
-    
