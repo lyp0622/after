@@ -11,7 +11,7 @@ import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
-
+import testRouter from './modules/testmsg'
 /**
  * Note: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -95,6 +95,8 @@ export const constantRoutes = [
       }
     ]
   },
+  // 引入组件，但是组件中其实是 路由
+  // testRouter,//考试管理
   {
     path: '/guide',
     component: Layout,
@@ -170,6 +172,39 @@ export const asyncRoutes = [
       }
     ]
   },
+  testRouter,
+
+  {
+    //面试题管理
+    path: '/user', 
+    component: Layout,
+    redirect: '/user/index',
+    name: 'User',
+    meta: {
+      title: '用户管理',
+      icon: 'user'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        name: 'User',
+        meta: { title: '用户展示'}
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/user/add'),
+        name: 'User',
+        meta: { title: '添加用户'}
+      },
+      {
+        path: 'user',
+        component: () => import('@/views/user/user'),
+        name: 'User',
+        meta: { title: '角色管理'}
+      }
+    ]
+  },  
 
   {
     //面试题管理
@@ -313,7 +348,7 @@ export const asyncRoutes = [
     redirect:'/grand/index',
     name:'grand',
     meta:{
-      title:'试题管理',
+      title:'班级管理',
       icon:'example'
     },
     children: [
@@ -500,7 +535,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: 'external-link',
     component: Layout,
