@@ -1,9 +1,10 @@
-import { getTestType, getClassList } from '@/api/testCont'
+import { getTestType, getClassList,updataTest } from '@/api/testCont'
 import {addtest} from "@/api/addtestpaper"
 const state = {
   testType: [],
   classList: [],
-  data:[]
+  data:[],
+  updataTest:""
 }
 
 const mutations = {
@@ -19,7 +20,12 @@ const mutations = {
     state.classList = payload
   },
   setdata(state,payload){
-    state.data=payload
+    state.data=payload;
+    sessionStorage.setItem("mine",JSON.stringify(state.data))
+  },
+  setUpdata(state,payload){
+       state.data=payload
+       
   }
 }
 const actions = {
@@ -32,10 +38,14 @@ const actions = {
     commit('setClassList', res.data)
   },
   async addtest({commit},payload){
-    console.log(payload,"payloadddd")
+    // console.log(payload,"payloadddd")
         const res=await addtest(payload)
-        console.log(res)
+        console.log(res,"payloadddd")
         commit('setdata',res)
+  },
+  async updataTest({commit},payload){
+    const res=await updataTest()
+    commit("setUpdata",res)
   }
 }
 export default {

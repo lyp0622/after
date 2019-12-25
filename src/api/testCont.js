@@ -11,3 +11,10 @@ export function getClassList() {
     method: 'get'
   })
 }
+export function updataTest(params){
+  return request({
+    url:"/exam/exam/w5tcy-g2dts",
+    method:"put",
+    question_ids:params
+  })
+}
