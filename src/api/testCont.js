@@ -11,3 +11,11 @@ export function getClassList() {
     method: 'get'
   })
 }
+export function updataTest(params){
+  // console.log(JSON.stringify(params),'payload')
+  return request({                                                                               
+    url:"/exam/exam/fsadq-q80vlu",
+    method:"put",
+    data:{question_ids:JSON.stringify(params)}
+  })
+}
