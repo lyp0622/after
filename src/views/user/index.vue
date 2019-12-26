@@ -95,8 +95,8 @@
          <div class="sixth-box">
           <el-table :data="allAuthorViews.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
               <el-table-column prop="identity_text" label="身份" width="220"></el-table-column>
-              <el-table-column prop="api_authority_text" label="视图名称" width="520"></el-table-column>
-              <el-table-column prop="api_authority_method" label="视图id" width="300"></el-table-column>
+              <el-table-column prop="view_authority_text" label="视图名称" width="420"></el-table-column>
+              <el-table-column prop="view_id" label="视图id" width="300"></el-table-column>
           </el-table>
          </div>
         <!-- 分页 -->

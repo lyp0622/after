@@ -11,7 +11,7 @@ const state = {
 
     allGuanXi:[], //获取身份和api权限关系数据
     allGuanXilength:'', //身份和api权限关系数据长度
-
+    
     allAuthorViews:[], //所有身份和视图权限关系数据
     allAuthorViewslength:'', //所有身份和视图权限关系数据的长度
 
@@ -55,6 +55,7 @@ const mutations = {
     SET_AUTHORV(state,payload){
       state.allAuthorViews=payload
       state.allAuthorViewslength=state.allAuthorViews.length
+
     },
 
     //获取视图权限数据

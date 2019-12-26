@@ -49,10 +49,10 @@ export function viesQuanXI(){
   })
 }
 
-//展示身份和视图权限关系
+//展示身份和视图权限关系 6
 export function authorViews(){
   return request({
-    url: '/user/identity_api_authority_relation',
+    url: '/user/identity_view_authority_relation',
     method: 'get'
   })
 }
