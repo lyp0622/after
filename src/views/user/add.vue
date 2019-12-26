@@ -50,7 +50,7 @@
                <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="ruleForm.valuesF" placeholder="请选择身份id">
-                        <el-option v-for="(item,index) in allViewsQX" :key="index" 
+                        <el-option v-for="(item,ind) in allViewsQX" :key="ind" 
                         :label="item.view_authority_text"
                         :value="item.view_authority_id" 
                         ></el-option>
@@ -67,7 +67,7 @@
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="valuesFive" placeholder="请选择身份id">
-                        <el-option v-for="(item,index) in shenfen" :key="index" :value="item"></el-option>
+                        <el-option v-for="(item,inde) in shenfen" :key="inde" :value="item"></el-option>
                     </el-select>
                   </el-tabs>
                   <el-tabs :tab-position="tabPosition">
@@ -86,12 +86,12 @@
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="valuesSix" placeholder="请选择身份id">
-                        <el-option v-for="(item,index) in shenfen" :key="index" :value="item"></el-option>
+                        <el-option v-for="(item,int) in shenfen" :key="int" :value="item"></el-option>
                     </el-select>
                   </el-tabs>
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="valuesSixTwo" placeholder="请选择视图权限id">
-                        <el-option v-for="(item,index) in allViewsQX" :key="index" :value="item.view_authority_text"></el-option>
+                        <el-option v-for="(item,indx) in allViewsQX" :key="indx" :value="item.view_authority_text"></el-option>
                     </el-select>
                   </el-tabs>
                   <el-form-item>

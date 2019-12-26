@@ -18,8 +18,7 @@
           </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
-
-              <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              <el-button  type="success" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -105,7 +104,6 @@ export default {
   computed: {
     ...mapState({ 
       getRoomList: state=>state.room.getRoomList,
-      // getDetailList:state=>state.room.getDetailList,
 
     }),
     
