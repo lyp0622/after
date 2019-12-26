@@ -67,7 +67,7 @@
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="ruleForm.valuesFive" placeholder="请选择身份id">
-                        <el-option v-for="item in userNPID" :key="item.identity_id" :value="item.identity_id"
+                        <el-option v-for="item in userNPID" :key="item.identity_id" :value="item.identity_text"
                         :label="item.identity_text"></el-option>
                     </el-select>
                   </el-tabs>
@@ -201,30 +201,36 @@ export default {
         this.$refs[formName].resetFields();
         this.ruleForm.valuesF=''
       },
-      submitFormFive() { //five的事件 未完成
-        let identity_text=this.ruleForm.valuesFive
-        let api_authority_text=this.ruleForm.valuesFiveTwo
+      submitFormFive() { //five的事件 未完成(第二个参数传递有误)
+        let identity_id = this.ruleForm.valuesFive
+        let data = this.userNPID.filter(item => item.identity_text ==  identity_id)
+        console.log(data)
+        console.log(data[0].identity_id)
+
+        let api_authority_id = this.ruleForm.valuesFiveTwo
+        let datanew = this.allGuanXi.filter(item=>item.api_authority_text == api_authority_id)
+        console.log(datanew)
+        console.log(datanew[0].identity_api_authority_relation_id)
         setIdentityApi({
-          identity_id: this.ruleForm.valuesFive,
-          api_authority_id: this.ruleForm.valuesFiveTwo
+          identity_id: data[0].identity_id,
+          api_authority_id: datanew[0].identity_api_authority_relation_id
         }).then(res=>{ console.log(res,'给身份设定api接口权限设置成功') })
       },
       resetFormFive(formName) {//five的事件
         this.$refs[formName].resetFields();
-        this.valuesFive=''
-        this.valuesFiveTwo=''
+        this.ruleForm.valuesFive=''
+        this.ruleForm.valuesFiveTwo=''
       },
-      submitFormSix() { //six的事件  //添加成功 但展示页不显示
+      submitFormSix() { //six的事件  //添加成功 
         let identity_id = this.ruleForm.valuesSix
         let data = this.userNPID.filter(item => item.identity_text ==  identity_id)
-        // console.log(data[0].identity_text)
+
         let view_authority_id = this.ruleForm.valuesSixTwo
         let datanew = this.allViewsQX.filter(item => item.view_authority_text ==  view_authority_id)
-        // console.log(datanew[0].view_authority_text)
-        
+
         setIdentityView({ 
-          identity_id: data[0].identity_text, 
-          view_authority_id: datanew[0].view_authority_text
+          identity_id: data[0].identity_id, 
+          view_authority_id: datanew[0].view_authority_id
         }).then(res => console.log(res,'添加成功'))
       },
       resetFormSix(formName) {//six的事件
