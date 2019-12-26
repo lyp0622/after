@@ -71,10 +71,10 @@ import {stType,remType} from '@/api/exam'
             getList:state=>state.exam.getList
          })
        },
-   methods: {
+      methods: {
         deleteRow() {
           console.log('lyp')
-        },
+      },
           submitForm(formName) {
           console.log(formName)
           this.$refs[formName].validate((valid) => {
@@ -90,12 +90,18 @@ import {stType,remType} from '@/api/exam'
       ...mapActions({
              getType:'exam/getType'
       })
+<<<<<<< HEAD
     },
 
      data() {
       return {
         tableData4: []
       }
+=======
+     },
+    created(){
+       this.getType()
+>>>>>>> lyp
     }
   }
 </script>
@@ -114,17 +120,25 @@ import {stType,remType} from '@/api/exam'
         font-weight: 400;
     }
     main{
-       margin: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
     }
     .main{
-      width: 95%;
-      height: 95%;
-      background: white;
-      margin-left: 20px
+        width: 100%;
+        height: 95%;
+        background: white;
     }
     .But{
-      width: 100px;
-      height: 30px;
-      margin-left: 20px
+        width: 100px;
+        height: 30px;
+        margin-left: 20px
+    }
+<<<<<<< HEAD
+</style>
+=======
+    .el-table__body-el-table__body-wrapper is-scrolling-none{
+        height: 1000px;
     }
 </style>
+
+
+>>>>>>> lyp

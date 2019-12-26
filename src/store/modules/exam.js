@@ -8,7 +8,7 @@ const state = {
     includesList:[]
   }
   const mutations = {
-     typeList(state,payload){
+      typeList(state,payload){
           state.list=payload
       },
       keType(state,payload){
@@ -18,14 +18,14 @@ const state = {
           state.tiList=payload
       },
       gaiType(state,payload){
-        state.gaiList=payload
-    },
-    getType(state,payload){
-        state.getList=payload
-    },
-    includesType(state,payload){
-        state.gaiList=payload
-    }
+          state.gaiList=payload
+      },
+      getType(state,payload){
+          state.getList=payload
+      },
+      includesType(state,payload){
+          state.gaiList=payload
+      }
   }
   const actions = {
      async examType({commit},payload){
@@ -70,11 +70,9 @@ const state = {
         await commit('includesType',res.data)
     },
   }
-
   export default {
     namespaced: true,
     state,
     mutations,
     actions
   }
-  

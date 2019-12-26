@@ -35,7 +35,10 @@ const actions = {
     const { username, password } = userInfo
     const res = await login({ user_name: username, user_pwd: password })
     // console.log('res...', res);
+<<<<<<< HEAD
 
+=======
+>>>>>>> lyp
     setToken(res.token)
   },
 

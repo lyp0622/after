@@ -301,7 +301,7 @@ export const asyncRoutes = [
       {
         path:'one',
         component: () => import('@/views/exam/one/index'),
-        name:'Page',
+        name:'one',
         meta: { title: '添加试题' }
       },
       {
@@ -315,6 +315,16 @@ export const asyncRoutes = [
         component: () => import('@/views/exam/three/index'),
         name:'three',
         meta: { title: '查看试题' }
+      },
+      {
+        path:'detail',
+        component:()=> import('@/views/examDetail/index.vue'),
+        hidden: true
+      },
+      {
+        path:'edit',
+        component:()=> import('@/views/examedit/index.vue'),
+        hidden: true
       }
     ]
   },

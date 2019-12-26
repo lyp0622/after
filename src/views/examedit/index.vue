@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
       <main>
-          <h2>添加试题</h2>
+          <h2>编辑试题</h2>
           <div class="main">
               <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
                     <el-form-item label="题干" prop="questions_stem">
@@ -49,6 +49,7 @@
                 </el-form>
           </div>
       </main>
+      {{item}}
   </div>
 </template>
 <script>
