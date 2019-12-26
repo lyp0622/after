@@ -12,9 +12,10 @@ export function getClassList() {
   })
 }
 export function updataTest(params){
-  return request({
-    url:"/exam/exam/w5tcy-g2dts",
+  // console.log(JSON.stringify(params),'payload')
+  return request({                                                                               
+    url:"/exam/exam/fsadq-q80vlu",
     method:"put",
-    question_ids:params
+    data:{question_ids:JSON.stringify(params)}
   })
 }

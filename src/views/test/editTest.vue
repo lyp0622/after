@@ -38,27 +38,25 @@ import { setTimeout } from "timers";
 export default {
   data() {
     return {
-         editcont:JSON.parse( sessionStorage.getItem('mine'))
+      editcont: JSON.parse(sessionStorage.getItem("mine"))
     };
   },
-  computed: {
-     
-  },
+  computed: {},
   methods: {
-        ...mapActions({
-     updataTest:'testcont/updataTest'
-        }),
-      createtest(){
-          let question_ids= JSON.stringify(this.editcont.data.exam_exam_id)
-        //   console.log(question_ids,"000000000")
-          this.updataTest(question_ids)
-      }
-  },
-  created() {
-    
-  },
-  mounted() {
-    //   console.log(editcont.data.questions) 
+    ...mapActions({
+      updataTest: "testcont/updataTest"
+    }),
+    createtest() {
+      let question_ids = this.editcont.data.questions;
+      let testArr = [];
+      question_ids.forEach((item, index) => {
+        testArr.push(item.questions_id);
+      });
+      this.updataTest(testArr);
+      this.$router.push({
+        path:"/testlist"
+      })
+    }
   }
 };
 </script>
@@ -94,11 +92,11 @@ export default {
   }
 }
 .ant-btn-primary {
-  padding: 0 40px ;
-  border-radius: 4px ;
-  border: 0 ;
-  font-size: 14px ;
-  color: #fff ;
+  padding: 0 40px;
+  border-radius: 4px;
+  border: 0;
+  font-size: 14px;
+  color: #fff;
   background: linear-gradient(-90deg, #4e75ff, #0139fd);
   cursor: pointer;
   height: 32px;
@@ -132,7 +130,7 @@ export default {
 .edit-cont-box-cont {
   padding: 40px;
   margin: auto;
-  text-align: center
+  text-align: center;
 }
 .edit-cont-everyquestion {
   text-align: left;

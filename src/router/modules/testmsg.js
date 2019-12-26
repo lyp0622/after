@@ -29,6 +29,9 @@ const testRouter = {
     },{
       path:"/edit",
       component:()=>import("@/views/test/editTest")
+    },{
+      path:"/detail",
+      component:()=>import("@/views/test/testDetail")
     }
   ]
 }
