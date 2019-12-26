@@ -90,18 +90,9 @@ import {stType,remType} from '@/api/exam'
       ...mapActions({
              getType:'exam/getType'
       })
-<<<<<<< HEAD
-    },
-
-     data() {
-      return {
-        tableData4: []
-      }
-=======
      },
     created(){
        this.getType()
->>>>>>> lyp
     }
   }
 </script>
@@ -132,13 +123,9 @@ import {stType,remType} from '@/api/exam'
         height: 30px;
         margin-left: 20px
     }
-<<<<<<< HEAD
-</style>
-=======
     .el-table__body-el-table__body-wrapper is-scrolling-none{
         height: 1000px;
     }
 </style>
 
 
->>>>>>> lyp

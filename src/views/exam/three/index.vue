@@ -3,15 +3,6 @@
       <main>
           <h2>查看试题</h2>
            <div class="box">
-<<<<<<< HEAD
-                    <span>课程类型</span>
-                      <span v-for="(item,index) in keList" :key="index" class="lei">
-                          {{item.subject_text}}
-                      </span>
-           </div>
-           <div class="content">
-
-=======
                   <div class="bo">
                     <div class="type"> 
                     <span>课程类型:</span>
@@ -61,7 +52,6 @@
                     <span class="pull">{{item.user_name}}发布</span>
                     <span class="edite" @click.stop="compile()">编辑</span>
               </div>
->>>>>>> lyp
            </div>
       </main>
   </div>
@@ -69,21 +59,6 @@
 <script>
 import {mapActions, mapState} from 'vuex'
  export default {
-<<<<<<< HEAD
-     computed: {
-       ...mapState({
-           keList: state => state.exam.keList,
-       })
-   },
-    methods:{
-      ...mapActions({
-        keType:'exam/keType',
-      })
-    },
-     created(){
-       this.keType()
-   }
-=======
     data() {
       return {
         ruleForm: {
@@ -156,7 +131,6 @@ import {mapActions, mapState} from 'vuex'
         this.gaiType(),
         this.includesType()
    },
->>>>>>> lyp
 }
 </script>
 
@@ -180,10 +154,6 @@ import {mapActions, mapState} from 'vuex'
         font-weight: 400;
     }
     main{
-<<<<<<< HEAD
-        // margin: 0px 0px 0px 20px;
-=======
->>>>>>> lyp
         p{
             width: 100%;
             font-size: 14px;
@@ -196,16 +166,6 @@ import {mapActions, mapState} from 'vuex'
       width: 90%;
       background: white;
       margin: 0 auto;
-<<<<<<< HEAD
-      span{
-        margin-left: 30px;
-        // font-size: 16px
-      }
-    }
-   .lei{
-     font-size: 12px;
-     color: #222;
-=======
         border-radius: 2%;
     }
     .bo{
@@ -268,6 +228,5 @@ import {mapActions, mapState} from 'vuex'
      position: absolute;
      right: 9%;
      margin-top: -20px
->>>>>>> lyp
    }
 </style>

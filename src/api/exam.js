@@ -22,13 +22,6 @@ import request from '@/utils/request'
       method: 'get',
     })
   }
-  
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> lyp
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
@@ -39,7 +32,6 @@ import request from '@/utils/request'
   //添加类型
   export function addType(data) {
     console.log(data)
-<<<<<<< HEAD
 
 //   //添加类型
 //   export function addType() {
@@ -61,8 +53,6 @@ export function examStudent() {
 //获取身份信息
 export function examIDentity() {
 
-=======
->>>>>>> lyp
     return request({
       url: '/exam/questions',
       method: 'post',
@@ -115,8 +105,3 @@ export function examIDentity() {
     }
 
     
-<<<<<<< HEAD
-
-
-=======
->>>>>>> lyp
