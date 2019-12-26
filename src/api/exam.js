@@ -1,15 +1,5 @@
 import request from '@/utils/request'
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
->>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
-=======
->>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
   //考试类型
   export function examType() {
     return request({
@@ -33,16 +23,6 @@ import request from '@/utils/request'
     })
   }
   
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
@@ -53,33 +33,6 @@ import request from '@/utils/request'
   //添加类型
   export function addType(data) {
     console.log(data)
-<<<<<<< HEAD
-=======
->>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
->>>>>>> 30c58b974940dbb3d043a4e18140194fd0e60d0e
-//   //添加类型
-//   export function addType() {
-//     return request({
-//       url: '/exam/insertQuestionsType',
-//       method: 'get',
-//     })
-//   }
-<<<<<<< HEAD
-=======
-
-//获取所有用户信息
-export function examStudent() {
-  return request({
-    url: '/user/user',
-    method: 'get'
-  })
-}
-
-//获取身份信息
-export function examIDentity() {
->>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
-=======
->>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
     return request({
       url: '/exam/questions',
       method: 'post',
@@ -122,11 +75,13 @@ export function examIDentity() {
         params:data
       })
     }
+    //更新试题
+    export function updateType(params) {
+      return request({
+        url: '/exam/questions/update',
+        method: 'put',
+        params
+      })
+    }
+
     
-<<<<<<< HEAD
-=======
-}
->>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
->>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
-=======
->>>>>>> 7c65065fa6e4b89615c4667227d847709407a973

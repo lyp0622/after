@@ -5,27 +5,9 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-<<<<<<< HEAD
-  baseURL: 'http://127.0.0.1:7002', // url = base url + request url
-=======
 
-<<<<<<< HEAD
-  baseURL: 'http://169.254.126.222:7002', // url = base url + request url
-
-
-=======
-
-  baseURL: 'http://169.254.0.62:7002', // url = base url + request url
-<<<<<<< HEAD
-=======
-  baseURL: 'http://169.254.126.222:7002', // url = base url + request url
->>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
->>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
-=======
-
->>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
->>>>>>> 30c58b974940dbb3d043a4e18140194fd0e60d0e
   // withCredentials: true, // send cookies when cross-domain requests
+  baseURL: 'http://169.254.0.62:7002', // url = base url + request url
   timeout: 5000 // request timeout
 })
 
@@ -71,18 +53,6 @@ service.interceptors.response.use(
 
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
 
-<<<<<<< HEAD
-    
-
-
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
->>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
-=======
->>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
       // if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
       //   // to re-login
       //   MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
@@ -95,35 +65,7 @@ service.interceptors.response.use(
       //     })
       //   })
       // }
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
->>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
-=======
->>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
-      // return Promise.reject(new Error(res.message || 'Error'))
->>>>>>> 30c58b974940dbb3d043a4e18140194fd0e60d0e
-
-      // return Promise.reject(new Error(res.message || 'Error'))
-
-
-      //容错处理
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-      // return Promise.reject(new Error(res.message || 'Error'))
-
-=======
->>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
->>>>>>> 30c58b974940dbb3d043a4e18140194fd0e60d0e
       try{
         if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
           // to re-login
@@ -140,10 +82,7 @@ service.interceptors.response.use(
       }catch{
         return Promise.reject(new Error(res.message || 'Error'))
       }
-<<<<<<< HEAD
 
-=======
->>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
     } else {
       return res
     }

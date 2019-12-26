@@ -49,18 +49,6 @@
   </el-table>
   </main>
   </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-=======
-<<<<<<< HEAD
-=======
-  
->>>>>>> cd6470e68cca8fdc7592922dff8732b385d2901f
->>>>>>> 4e9585fc1aee57c9ac8dbd8714efc94e7f8cbba0
-=======
-  
->>>>>>> 7c65065fa6e4b89615c4667227d847709407a973
 </template>
 <script>
 import {mapActions, mapState} from 'vuex'
@@ -83,10 +71,10 @@ import {stType,remType} from '@/api/exam'
             getList:state=>state.exam.getList
          })
        },
-   methods: {
+      methods: {
         deleteRow() {
           console.log('lyp')
-        },
+      },
           submitForm(formName) {
           console.log(formName)
           this.$refs[formName].validate((valid) => {
@@ -102,18 +90,9 @@ import {stType,remType} from '@/api/exam'
       ...mapActions({
              getType:'exam/getType'
       })
-<<<<<<< HEAD
-    },
-
-     data() {
-      return {
-        tableData4: []
-      }
-=======
      },
     created(){
        this.getType()
->>>>>>> 30c58b974940dbb3d043a4e18140194fd0e60d0e
     }
   }
 </script>
@@ -132,27 +111,21 @@ import {stType,remType} from '@/api/exam'
         font-weight: 400;
     }
     main{
-       margin: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
     }
     .main{
-      width: 95%;
-      height: 95%;
-      background: white;
-      margin-left: 20px
+        width: 100%;
+        height: 95%;
+        background: white;
     }
     .But{
-      width: 100px;
-      height: 30px;
-      margin-left: 20px
+        width: 100px;
+        height: 30px;
+        margin-left: 20px
     }
-<<<<<<< HEAD
-</style>
-=======
-  .el-table__body-el-table__body-wrapper is-scrolling-none{
-    height: 1000px;
+    .el-table__body-el-table__body-wrapper is-scrolling-none{
+        height: 1000px;
     }
-
 </style>
 
 
->>>>>>> 30c58b974940dbb3d043a4e18140194fd0e60d0e
