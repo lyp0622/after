@@ -2,8 +2,8 @@ import { getGrand } from '@/api/grand'
 
 const state = {
     getGrandList: [],//页面
-    getRoomList:[],
-    studentList:[]
+    getRoomList:[], //房间
+    studentList:[]  //学生
   }
   function formatroomList(data){
     let str=[]

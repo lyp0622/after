@@ -93,6 +93,12 @@ import {stType,remType} from '@/api/exam'
      },
     created(){
        this.getType()
+    },
+
+     data() {
+      return {
+        tableData4: []
+      }
     }
   }
 </script>
