@@ -8,9 +8,6 @@ const service = axios.create({
 
 
   baseURL: 'http://169.254.126.222:7002', // url = base url + request url
-
-  // withCredentials: true, // send cookies when cross-domain requests
-  baseURL: 'http://169.254.0.62:7002', // url = base url + request url
   timeout: 5000 // request timeout
 })
 
