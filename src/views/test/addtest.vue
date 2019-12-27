@@ -130,8 +130,7 @@ export default {
           start_time:parseInt(this.start_time.getTime()/1000),
           end_time: parseInt(this.end_time.getTime()/1000)
         } 
-         this.addtest(data)
-         console.log(this.editcont,"567890-")      
+         this.addtest(data)  
          this.$router.push({
            path:"/edit"
          })

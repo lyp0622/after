@@ -39,9 +39,10 @@ const actions = {
   },
   async addtest({ commit }, payload) {
     const res = await addtest(payload)
-    console.log(res, "payloadddd")
+    // console.log(res, "payloadddd")
     commit('setdata', res)
   },
+  // 更新试卷的试题和确认状态
   async updataTest({ commit }, payload) {
     const res = await updataTest(payload)//因为只是传参，所以直接把参数给api里边的function即可
   }

@@ -47,12 +47,19 @@ export default {
       updataTest: "testcont/updataTest"
     }),
     createtest() {
+      let exam_exam_id=this.editcont.data.exam_exam_id
       let question_ids = this.editcont.data.questions;
       let testArr = [];
       question_ids.forEach((item, index) => {
         testArr.push(item.questions_id);
       });
-      this.updataTest(testArr);
+      let question_ids_arr={
+        testArr:testArr,
+        exam_exam_id:exam_exam_id
+      }
+      // console.log(question_ids_arr,"打印的所有数据")
+      this.updataTest(question_ids_arr);//传了两个参数，试题的id以及每一道题目的id
+
       this.$router.push({
         path:"/testlist"
       })
