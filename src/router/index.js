@@ -95,6 +95,14 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path:"/edit",
+    component:()=>import("@/views/test/editTest"),
+  },
+  {
+    path:"/detail",
+    component:()=>import("@/views/test/testDetail"),
+  },
   // 引入组件，但是组件中其实是 路由
   // testRouter,//考试管理
   {
@@ -172,7 +180,7 @@ export const asyncRoutes = [
       }
     ]
   },
-  testRouter,
+
 
   {
     path: '/icon',
@@ -224,37 +232,6 @@ export const asyncRoutes = [
       }
     ]
   },
-  {
-    path: '/exam',
-    component: Layout,
-    redirect:'/exam/index',
-    name:'exam',
-    meta:{
-      title:'试题管理',
-      icon:'user'
-    },
-    children: [
-      {
-        path:'one',
-        component: () => import('@/views/exam/one/index'),
-        name:'Page',
-        meta: { title: '添加试题' }
-      },
-      {
-        path:'two',
-        component: () => import('@/views/exam/two/index'),
-        name:'tow',
-        meta: { title: '试题分类' }
-      },
-      {
-        path:'three',
-        component: () => import('@/views/exam/three/index'),
-        name:'three',
-        meta: { title: '查看试题' }
-      }
-    ]
-  },
-
   {
     path: '/tab',
     component: Layout,
@@ -431,6 +408,54 @@ export const asyncRoutes = [
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
+
+export const authorityRoutes = [
+  {
+    path: '/testmsg',
+    component: Layout,
+    meta: {
+      title: '考试管理',
+      icon: 'form'
+    },
+    children: [
+      {
+        path: '/addtest',
+        component: () => import('@/views/test/addtest'),
+        name: 'Addtest',
+        meta: {
+          title: '添加考试',
+          view_id:'main-addExam',
+          noCache: true
+        }
+      },
+      {
+        path: '/testlist',
+        component: () => import('@/views/test/testlist'),
+        name: 'Testlist',
+        meta: {
+          title: '试卷列表',
+          noCache: true,
+          view_id:'main-examList',
+        }
+      },
+      {
+        path:"/edit",
+        hidden:true,
+        component:()=>import("@/views/test/editTest"),
+        meta:{view_id: "main-examEdit"}
+      },
+      {
+        path:"/detail",
+        hidden:true,
+        component:()=>import("@/views/test/testDetail"),
+        meta:{view_id: "main-examList"}
+      },
+  
+    ]
+  },
+  // testRouter,
+]
+
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support

@@ -16,7 +16,7 @@ export function updataTest(params){
   // console.log(params,'payload')
   let {testArr}=params
   let {exam_exam_id}=params
-  // console.log(JSON.stringify(testArr),'payload',exam_exam_id)
+  console.log(JSON.stringify(testArr),'9999999999999',exam_exam_id)
   return request({                                                                               
     url:`/exam/exam/${exam_exam_id}`,
     method:"put",

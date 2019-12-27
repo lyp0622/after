@@ -19,8 +19,8 @@
               <div class="edit-every-title">
                 <div>{{index+1}}:{{item.title}}</div>
                 <div>
-                  <a href>删除</a>
-                </div>
+                  <a>删除</a>
+                </div>  
               </div>
               <div class="edit-every-cont">{{item.questions_stem}}</div>
             </div>
@@ -41,6 +41,9 @@ export default {
       editcont: JSON.parse(sessionStorage.getItem("mine"))
     };
   },
+  created(){
+   console.log(this.editcont,"created")
+  },
   computed: {},
   methods: {
     ...mapActions({
@@ -58,11 +61,14 @@ export default {
         exam_exam_id:exam_exam_id
       }
       // console.log(question_ids_arr,"打印的所有数据")
-      this.updataTest(question_ids_arr);//传了两个参数，试题的id以及每一道题目的id
-
-      this.$router.push({
+      // this.updataTest(question_ids_arr);//传了两个参数，试题的id以及每一道题目的id
+      console.log(question_ids_arr)
+      this.updataTest(question_ids_arr).then(()=>{
+         this.$router.push({
         path:"/testlist"
       })
+      })
+     
     }
   }
 };
