@@ -5,8 +5,12 @@
       <div class="testdetail_cont_box">
         <div class="detail_cont">
             机器人归为
-            <!-- <div v-for="(item,index) in detailList" :key="index" >{{item.title}}</div> -->
-            {{detailList}}
+            <div v-for="(item,index) in detailList" :key="index" >
+                <h5>{{item.title}}</h5>
+                  <div>
+                      {{item.questions_stem}}
+                  </div>
+                </div>
         </div>
       </div>
     </div>
@@ -17,7 +21,7 @@
 export default {
     data() {
         return {
-            detailList:JSON.parse(sessionStorage.getItem("mine"))
+            detailList:JSON.parse(sessionStorage.getItem("mine")).data.questions
         }
     },
 
