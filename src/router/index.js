@@ -174,69 +174,37 @@ export const asyncRoutes = [
   },
   testRouter,
 
-  {
-    //用户管理
-    path: '/user', 
-    component: Layout,
-    redirect: '/user/index',
-    name: 'User',
-    meta: {
-      title: '用户管理',
-      icon: 'user'
-    },
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/user/index'),
-        name: 'User',
-        meta: { title: '用户展示'}
-      },
-      {
-        path: 'add',
-        component: () => import('@/views/user/add'),
-        name: 'User',
-        meta: { title: '添加用户'}
-      },
-      // {
-      //   path: 'user',
-      //   component: () => import('@/views/user/user'),
-      //   name: 'User',
-      //   meta: { title: '角色管理'}
-      // }
-    ]
-  },  
-
-  {
-    //面试题管理
-    path: '/user', 
-    component: Layout,
-    redirect: '/user/index',
-    name: 'User',
-    meta: {
-      title: '用户管理',
-      icon: 'user'
-    },
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/user/index'),
-        name: 'User',
-        meta: { title: '用户展示'}
-      },
-      {
-        path: 'add',
-        component: () => import('@/views/user/add'),
-        name: 'User',
-        meta: { title: '添加用户'}
-      },
-      {
-        path: 'user',
-        component: () => import('@/views/user/user'),
-        name: 'User',
-        meta: { title: '角色管理'}
-      }
-    ]
-  },  
+  // {
+  //   //用户管理
+  //   path: '/user', 
+  //   component: Layout,
+  //   redirect: '/user/index',
+  //   name: 'User',
+  //   meta: {
+  //     title: '用户管理',
+  //     icon: 'user'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/user/index'),
+  //       name: 'User',
+  //       meta: { title: '用户展示'}
+  //     },
+  //     {
+  //       path: 'add',
+  //       component: () => import('@/views/user/add'),
+  //       name: 'User',
+  //       meta: { title: '添加用户'}
+  //     },
+  //     // {
+  //     //   path: 'user',
+  //     //   component: () => import('@/views/user/user'),
+  //     //   name: 'User',
+  //     //   meta: { title: '角色管理'}
+  //     // }
+  //   ]
+  // },   
 
   {
     path: '/icon',
@@ -288,46 +256,46 @@ export const asyncRoutes = [
       }
     ]
   },
-  {
-    path: '/exam',
-    component: Layout,
-    redirect:'/exam/index',
-    name:'exam',
-    meta:{
-      title:'试题管理',
-      icon:'user'
-    },
-    children: [
-      {
-        path:'one',
-        component: () => import('@/views/exam/one/index'),
-        name:'one',
-        meta: { title: '添加试题' }
-      },
-      {
-        path:'two',
-        component: () => import('@/views/exam/two/index'),
-        name:'tow',
-        meta: { title: '试题分类' }
-      },
-      {
-        path:'three',
-        component: () => import('@/views/exam/three/index'),
-        name:'three',
-        meta: { title: '查看试题' }
-      },
-      {
-        path:'detail',
-        component:()=> import('@/views/examDetail/index.vue'),
-        hidden: true
-      },
-      {
-        path:'edit',
-        component:()=> import('@/views/examedit/index.vue'),
-        hidden: true
-      }
-    ]
-  },
+  // {
+  //   path: '/exam',
+  //   component: Layout,
+  //   redirect:'/exam/index',
+  //   name:'exam',
+  //   meta:{
+  //     title:'试题管理',
+  //     icon:'user'
+  //   },
+  //   children: [
+  //     {
+  //       path:'one',
+  //       component: () => import('@/views/exam/one/index'),
+  //       name:'one',
+  //       meta: { title: '添加试题' }
+  //     },
+  //     {
+  //       path:'two',
+  //       component: () => import('@/views/exam/two/index'),
+  //       name:'tow',
+  //       meta: { title: '试题分类' }
+  //     },
+  //     {
+  //       path:'three',
+  //       component: () => import('@/views/exam/three/index'),
+  //       name:'three',
+  //       meta: { title: '查看试题' }
+  //     },
+  //     {
+  //       path:'detail',
+  //       component:()=> import('@/views/examDetail/index.vue'),
+  //       hidden: true
+  //     },
+  //     {
+  //       path:'edit',
+  //       component:()=> import('@/views/examedit/index.vue'),
+  //       hidden: true
+  //     }
+  //   ]
+  // },
   {
     path: '/mark',
     component: Layout,
@@ -558,6 +526,54 @@ export const asyncRoutes = [
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
+]
+
+export const authorityRoutes = [
+  {
+    //试题管理
+    path: '/exam',
+    component: Layout,
+    meta: { title: '试题管理', icon: 'example'},
+    children: [{
+      path: 'add',
+      component: ()=>import('@/views/exam/one/index'),
+      name: 'Exam',
+      meta: {title: '添加试题', icon: 'dashboard', view_id: 'main-addQuestions'}
+    },{
+      path: 'classify',
+      component: ()=>import('@/views/exam/two/index'),
+      // component: ()=>import('@/views/exam/two/index'),
+      name: 'Exam',
+      meta: {title: '试题分类', icon: 'dashboard', view_id: 'main-questionsType'}
+    },{
+      path: 'view',
+      component: ()=>import('@/views/exam/three/index'),
+      name: 'Exam',
+      meta: {title: '查看试题', icon: 'dashboard', view_id: 'main-watchQuestions'}
+    }]
+  },
+  {
+    //用户管理
+    path: '/user', 
+    component: Layout,
+    redirect: '/user/index',
+    name: 'User',
+    meta: { title: '用户管理', icon: 'user'},
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        name: 'User',
+        meta: { title: '用户展示', view_id: "main-showUser"}
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/user/add'),
+        name: 'User',
+        meta: { title: '添加用户', view_id: "main-addUser"}
+      }
+    ]
+  },   
 ]
 
 const createRouter = () => new Router({

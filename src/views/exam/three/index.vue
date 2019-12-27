@@ -3,16 +3,12 @@
       <main>
           <h2>查看试题</h2>
            <div class="box">
-<<<<<<< HEAD
                     <span>课程类型</span>
                       <span v-for="(item,index) in keList" :key="index" class="lei">
                           {{item.subject_text}}
                       </span>
            </div>
            <div class="content">
-
-=======
->>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
                   <div class="bo">
                     <div class="type"> 
                     <span>课程类型:</span>
@@ -69,7 +65,6 @@
 <script>
 import {mapActions, mapState} from 'vuex'
  export default {
-<<<<<<< HEAD
      computed: {
        ...mapState({
            keList: state => state.exam.keList,
@@ -83,10 +78,8 @@ import {mapActions, mapState} from 'vuex'
      created(){
        this.keType()
    },
-      data() {
-=======
+
     data() {
->>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
       return {
         ruleForm: {
           exam_id:'',
@@ -181,10 +174,7 @@ import {mapActions, mapState} from 'vuex'
         font-weight: 400;
     }
     main{
-<<<<<<< HEAD
         // margin: 0px 0px 0px 20px;
-=======
->>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
         p{
             width: 100%;
             font-size: 14px;
@@ -197,7 +187,6 @@ import {mapActions, mapState} from 'vuex'
       width: 90%;
       background: white;
       margin: 0 auto;
-<<<<<<< HEAD
       span{
         margin-left: 30px;
         // font-size: 16px
@@ -206,8 +195,6 @@ import {mapActions, mapState} from 'vuex'
    .lei{
      font-size: 12px;
      color: #222;
-=======
->>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
         border-radius: 2%;
     }
     .bo{

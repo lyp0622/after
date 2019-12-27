@@ -1,8 +1,4 @@
 import request from '@/utils/request'
-<<<<<<< HEAD
-=======
-
->>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
   //考试类型
   export function examType() {
     return request({
@@ -24,33 +20,14 @@ import request from '@/utils/request'
       url: '/exam/getQuestionsType',
       method: 'get',
     })
-  }
-<<<<<<< HEAD
-  
-=======
->>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
+  }  
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
       method: 'get',
     })
   }
-<<<<<<< HEAD
-=======
  
-  //添加类型
-  export function addType(data) {
-    console.log(data)
-
-//   //添加类型
-//   export function addType() {
-//     return request({
-//       url: '/exam/insertQuestionsType',
-//       method: 'get',
-//     })
-  }
-
-
 //获取所有用户信息
 export function examStudent() {
   return request({
@@ -68,7 +45,6 @@ export function examIDentity() {
       data
     })
   }
->>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
 
     //添加试题类型
     export function stType(data) {
@@ -105,8 +81,6 @@ export function examIDentity() {
         params:data
       })
     }
-<<<<<<< HEAD
-=======
     //更新试题
     export function updateType(params) {
       return request({
@@ -115,6 +89,3 @@ export function examIDentity() {
         params
       })
     }
-
-    
->>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792

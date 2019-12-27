@@ -23,8 +23,4 @@ html,body,#app{
   height: 100%;
   background: #f0f2f5
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
