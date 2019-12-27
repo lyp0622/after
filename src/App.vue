@@ -9,6 +9,7 @@ export default {
   name: 'App'
 }
 </script>
+<<<<<<< HEAD
 
 <style lang="scss" >
 *{
@@ -17,6 +18,15 @@ export default {
 html,body,#app{
   width: 100%;
   height: 100%;
-  background: #f0f2f5
 }
 </style>
+=======
+<style lang="scss">
+   *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
+</style>
+>>>>>>> lmy

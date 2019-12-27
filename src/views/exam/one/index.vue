@@ -15,7 +15,7 @@
                             <el-option 
                               v-for="(item,index) in list"
                               :key="index"
-                              :label="item.exam_name" 
+                              :label="item.exam_name" r
                               :value="item.exam_id">
                             </el-option>
                         </el-select>
@@ -51,11 +51,12 @@
       </main>
   </div>
 </template>
+
 <script>
 import {mapActions, mapState} from 'vuex'
 import {addType} from '@/api/exam'
  export default {
-   data() {
+       data() {
       return {
         ruleForm: {
           questions_stem:'',
@@ -63,7 +64,7 @@ import {addType} from '@/api/exam'
           questions_answer:'',
           exam_id:'',
           subject_id:'',
-          user_id: "ypay2t-7uxsd",
+          user_id: "w6l6n-cbvl6s",
           questions_type_id:''
         },
         rules: {
@@ -149,4 +150,8 @@ import {addType} from '@/api/exam'
             }
         }
     }
+  
+    // .Ipt{
+      
+    // }
 </style>

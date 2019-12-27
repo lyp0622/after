@@ -33,6 +33,8 @@ const state = {
   const mutations = {
     ADD_ERROR_LOG: (state, payload) => {
         state.getGrandList=payload 
+        console.log(state.getGrandList,"777777777777")
+
         state.getRoomList=formatroomList(payload)
         state.getGrandList=formatgradeList(payload)  
     },
@@ -45,7 +47,6 @@ const state = {
   const actions = {
     async getGrand ({commit}){
         let res=await getGrand()
-        // console.log(res,"-----------------------------")
         commit ("ADD_ERROR_LOG",res.data)
     },
   

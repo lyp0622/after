@@ -14,7 +14,7 @@ const state = {
   const actions = {
     async getRoom ({commit}){
         let res=await getRoom()
-        console.log(res,"-----------------------------教室号")
+        // console.log(res,"-----------------------------教室号")
         commit ("ADD_ERROR_LOG",res.data)
     },
   

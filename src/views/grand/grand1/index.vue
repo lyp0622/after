@@ -74,6 +74,7 @@
         <el-button type="primary" @click="handleConfirm('ruleForm')">确 定</el-button>
       </div>
     </el-dialog>
+    
   </div>
 </template>
 
@@ -166,8 +167,12 @@ export default {
     })
   },
   mounted() {
-    this.getGrand()
-    this.getRoom()
+    this.getGrand().then(res=>{
+      console.log(res)
+    })
+    this.getRoom().then(res=>{
+      console.log(res)
+    })
     this.getSubject()
 
   },
