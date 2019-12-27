@@ -49,28 +49,27 @@
                 </el-form>
           </div>
       </main>
-      {{item}}
   </div>
 </template>
 <script>
 import {mapActions, mapState} from 'vuex'
-import {addType} from '@/api/exam'
+import {updateType} from '@/api/exam'
  export default {
    data() {
       return {
         ruleForm: {
-          questions_stem:'',
-          title:'',
-          questions_answer:'',
-          exam_id:'',
-          subject_id:'',
-          user_id: "ypay2t-7uxsd",
-          questions_type_id:''
+          questions_stem:''||this.$route.query.item.title,
+          title:''||this.$route.query.item.questions_stem,
+          questions_answer:''||this.$route.query.item.questions_answer,
+          exam_id:''||this.$route.query.item.exam_id,
+          subject_id:''||this.$route.query.item.subject_id,
+          questions_id:''||this.$route.query.item.questions_id,
+          questions_type_id:''||this.$route.query.item.questions_type_id
         },
         rules: {
           questions_stem: [
             { required: true, message: '请输入题干信息', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+            { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
           ],
           title: [
             { required: true, message: '请输入题目主题', trigger: 'blur' }
@@ -103,7 +102,9 @@ import {addType} from '@/api/exam'
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
-             addType(this.ruleForm)
+            console.log(this.ruleForm,'1111')
+            
+             this.updateType(this.ruleForm)
           } else {
             console.log('error submit!!');
             return false;
@@ -114,15 +115,20 @@ import {addType} from '@/api/exam'
       //   this.$refs[formName].resetFields();
       // },
        ...mapActions({
-        examType:'exam/examType',
-        keType:'exam/keType',
-        tiType:'exam/tiType'
+          examType:'exam/examType',
+          keType:'exam/keType',
+          tiType:'exam/tiType',
+          updateType:'exam/updateType'
       })
+    },
+    mounted(){
+        console.log(this.$route) 
     },
      created(){
        this.examType(),
        this.keType(),
-       this.tiType()
+       this.tiType(),
+       this.updateType()
    },
   }
 </script>

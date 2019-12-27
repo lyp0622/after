@@ -73,57 +73,57 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
-        name: 'Dashboard',
-        meta: { title: 'dashboard', icon: 'dashboard', affix: true }
-      }
-    ]
+    redirect: '/exam',
+    // children: [
+    //   {
+    //     path: 'dashboard',
+    //     component: () => import('@/views/dashboard/index'),
+    //     name: 'Dashboard',
+    //     meta: { title: 'dashboard', icon: 'dashboard', affix: true }
+    //   }
+    // ]
   },
-  {
-    path: '/documentation',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'documentation', icon: 'documentation', affix: true }
-      }
-    ]
-  },
-  // 引入组件，但是组件中其实是 路由
-  // testRouter,//考试管理
-  {
-    path: '/guide',
-    component: Layout,
-    redirect: '/guide/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/guide/index'),
-        name: 'Guide',
-        meta: { title: 'guide', icon: 'guide', noCache: true }
-      }
-    ]
-  },
-  {
-    path: '/profile',
-    component: Layout,
-    redirect: '/profile/index',
-    hidden: true,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/profile/index'),
-        name: 'Profile',
-        meta: { title: 'profile', icon: 'user', noCache: true }
-      }
-    ]
-  }
+  // {
+  //   path: '/documentation',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/documentation/index'),
+  //       name: 'Documentation',
+  //       meta: { title: 'documentation', icon: 'documentation', affix: true }
+  //     }
+  //   ]
+  // },
+  // // 引入组件，但是组件中其实是 路由
+  // // testRouter,//考试管理
+  // {
+  //   path: '/guide',
+  //   component: Layout,
+  //   redirect: '/guide/index',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/guide/index'),
+  //       name: 'Guide',
+  //       meta: { title: 'guide', icon: 'guide', noCache: true }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/profile',
+  //   component: Layout,
+  //   redirect: '/profile/index',
+  //   hidden: true,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/profile/index'),
+  //       name: 'Profile',
+  //       meta: { title: 'profile', icon: 'user', noCache: true }
+  //     }
+  //   ]
+  // }
 ]
 
 /**
@@ -302,19 +302,21 @@ export const asyncRoutes = [
         path:'one',
         component: () => import('@/views/exam/one/index'),
         name:'one',
-        meta: { title: '添加试题' }
+        meta: { title: '添加试题',view_id: 'main-addQuestions' }
       },
       {
         path:'two',
         component: () => import('@/views/exam/two/index'),
         name:'tow',
         meta: { title: '试题分类' }
+      
       },
       {
         path:'three',
-        component: () => import('@/views/exam/three/index'),
+        component: () => import('@/views/exam/three/index' ),
         name:'three',
-        meta: { title: '查看试题' }
+        meta: { title: '查看试题'}
+       
       },
       {
         path:'detail',
@@ -559,6 +561,45 @@ export const asyncRoutes = [
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
+
+
+export const authorityRoutes = [
+  {
+    path: '/exam',
+    redirect: '/exam/add',
+    component: Layout,
+    meta: { title: '试题管理', icon: 'example'},
+    children: [{
+      path: 'add',
+      component: ()=>import('@/views/exam/one/index'),
+      name: 'Exam',
+      meta: {title: '添加试题', icon: 'dashboard', view_id: 'main-addQuestions'}
+    },{
+      path: 'classify',
+      component: ()=>import('@/views/exam/two/index'),
+      name: 'Exam',
+      meta: {title: '试题分类', icon: 'dashboard', view_id: 'main-questionsType'}
+    },{
+      path: 'view',
+      component: ()=>import('@/views/exam/three/index'),
+      name: 'Exam',
+      meta: {title: '查看试题', icon: 'dashboard', view_id: 'main-watchQuestions'}
+    },{
+        path:'detail',
+        component:()=> import('@/views/examDetail/index.vue'),
+        hidden: true,
+        meta:{view_id: 'main-watchQuestions'} 
+      },{
+        path:'edit',
+        component:()=> import('@/views/examedit/index.vue'),
+        hidden: true,
+        meta:{view_id: 'main-watchQuestions'}  
+      }
+  ]
+  }
+]
+
+
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support

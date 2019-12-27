@@ -23,52 +23,27 @@ import request from '@/utils/request'
     })
   }
   
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> lyp
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
       method: 'get',
     })
   }
- 
-  //添加类型
+
+
   export function addType(data) {
     console.log(data)
-<<<<<<< HEAD
-
-//   //添加类型
-//   export function addType() {
-//     return request({
-//       url: '/exam/insertQuestionsType',
-//       method: 'get',
-//     })
-  }
-
-
-//获取所有用户信息
-export function examStudent() {
-  return request({
-    url: '/user/user',
-    method: 'get'
-  })
-}
-
-//获取身份信息
-export function examIDentity() {
-
-=======
->>>>>>> lyp
     return request({
       url: '/exam/questions',
       method: 'post',
       data
     })
   }
+
+
 
     //添加试题类型
     export function stType(data) {
@@ -81,13 +56,7 @@ export function examIDentity() {
         console.log(res)
       })
     }
-    //获取所有的试题类型
-    export function getType() {
-      return request({
-        url: '/exam/getQuestionsType',
-        method: 'get',
-      })
-    }
+
 
     //删除指定的试题类型
     export function remType(id) {
@@ -96,7 +65,18 @@ export function examIDentity() {
         method: 'post',
       })
     }
-    
+
+        //获取所有的试题类型
+        export function getType() {
+          return request({
+            url: '/exam/getQuestionsType',
+            method: 'get',
+          })
+        }
+
+
+
+        
     //按条件获取试题
     export function includesType(data) {
       return request({
@@ -105,18 +85,17 @@ export function examIDentity() {
         params:data
       })
     }
+
+
     //更新试题
-    export function updateType(params) {
+    export function updateType(data) {
       return request({
         url: '/exam/questions/update',
-        method: 'put',
-        params
+        method: 'PUT',
+        data
       })
     }
 
     
-<<<<<<< HEAD
 
 
-=======
->>>>>>> lyp

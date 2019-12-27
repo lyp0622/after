@@ -15,7 +15,7 @@
                             <el-option 
                               v-for="(item,index) in list"
                               :key="index"
-                              :label="item.exam_name" 
+                              :label="item.exam_name" r
                               :value="item.exam_id">
                             </el-option>
                         </el-select>
@@ -44,7 +44,7 @@
                         <el-input type="textarea" v-model="ruleForm.questions_answer"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                        <el-button type="primary" @click="submit('ruleForm')">提交</el-button>
                     </el-form-item>
                 </el-form>
           </div>
@@ -55,7 +55,7 @@
 import {mapActions, mapState} from 'vuex'
 import {addType} from '@/api/exam'
  export default {
-   data() {
+       data() {
       return {
         ruleForm: {
           questions_stem:'',
@@ -63,13 +63,13 @@ import {addType} from '@/api/exam'
           questions_answer:'',
           exam_id:'',
           subject_id:'',
-          user_id: "ypay2t-7uxsd",
+          user_id: "w6l6n-cbvl6s",
           questions_type_id:''
         },
         rules: {
           questions_stem: [
             { required: true, message: '请输入题干信息', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+            { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
           ],
           title: [
             { required: true, message: '请输入题目主题', trigger: 'blur' }
@@ -97,7 +97,7 @@ import {addType} from '@/api/exam'
        })
    },
     methods: {
-      submitForm(formName) {
+      submit(formName) {
         console.log(formName)
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -149,4 +149,10 @@ import {addType} from '@/api/exam'
             }
         }
     }
+  
+    // .Ipt{
+      
+    // }
 </style>
+
+

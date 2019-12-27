@@ -1,11 +1,12 @@
-import { examType,keType,tiType,gaiType,getType,includesType} from '@/api/exam'
+import { examType,keType,tiType,gaiType,getType,includesType,updateType} from '@/api/exam'
 const state = {
     list:[],
     keList:[],
     tiList:[],
     gaiList:[],
     getList:[],
-    includesList:[]
+    includesList:[],
+    
   }
   const mutations = {
       typeList(state,payload){
@@ -26,6 +27,7 @@ const state = {
       includesType(state,payload){
           state.gaiList=payload
       }
+  
   }
   const actions = {
      async examType({commit},payload){
@@ -55,7 +57,9 @@ const state = {
     },
     async includesType({commit},payload){
         console.log('payload----------',payload)
-        const params = {}
+        const params = {
+            
+        }
         if (payload.ruleForm.subject) {
           params.subject_id = payload.ruleForm.subject
         }
@@ -69,6 +73,11 @@ const state = {
         console.log('lypppppp........',res)
         await commit('includesType',res.data)
     },
+    async updateType({commit},payload){
+        console.log(payload,'123')
+        let res =  await updateType(payload)
+        console.log('res-------------------',res)
+    }
   }
   export default {
     namespaced: true,
