@@ -50,7 +50,11 @@
                <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="ruleForm.valuesF" placeholder="请选择身份id">
+<<<<<<< HEAD
                         <el-option v-for="item in allViewsQX" :key="item.view_authority_id" 
+=======
+                        <el-option v-for="(item,ind) in allViewsQX" :key="ind" 
+>>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
                         :label="item.view_authority_text"
                         :value="item.view_authority_id" 
                         ></el-option>
@@ -66,9 +70,14 @@
               <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">给身份设置api接口权限</button>
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
+<<<<<<< HEAD
                     <el-select v-model="ruleForm.valuesFive" placeholder="请选择身份id">
                         <el-option v-for="item in userNPID" :key="item.identity_id" :value="item.identity_text"
                         :label="item.identity_text"></el-option>
+=======
+                    <el-select v-model="valuesFive" placeholder="请选择身份id">
+                        <el-option v-for="(item,inde) in shenfen" :key="inde" :value="item"></el-option>
+>>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
                     </el-select>
                   </el-tabs>
                   <el-tabs :tab-position="tabPosition">
@@ -87,6 +96,7 @@
               <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">给身份设置视图权限</button>
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
+<<<<<<< HEAD
                     <el-select v-model="ruleForm.valuesSix" placeholder="请选择身份id">
                         <el-option v-for="item in userNPID" :key="item.identity_text" :label="item.identity_text" :value="item.identity_text"></el-option>
                     </el-select>
@@ -94,6 +104,15 @@
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="ruleForm.valuesSixTwo" placeholder="请选择视图权限id">
                         <el-option v-for="(item,ix) in allViewsQX" :key="ix" :label="item.view_authority_text" :value="item.view_authority_text"></el-option>
+=======
+                    <el-select v-model="valuesSix" placeholder="请选择身份id">
+                        <el-option v-for="(item,int) in shenfen" :key="int" :value="item"></el-option>
+                    </el-select>
+                  </el-tabs>
+                  <el-tabs :tab-position="tabPosition">
+                    <el-select v-model="valuesSixTwo" placeholder="请选择视图权限id">
+                        <el-option v-for="(item,indx) in allViewsQX" :key="indx" :value="item.view_authority_text"></el-option>
+>>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
                     </el-select>
                   </el-tabs>
                   <el-form-item>

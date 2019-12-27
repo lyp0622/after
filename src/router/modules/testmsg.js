@@ -26,6 +26,12 @@ const testRouter = {
         title: '试卷列表',
         noCache: true
       }
+    },{
+      path:"/edit",
+      component:()=>import("@/views/test/editTest")
+    },{
+      path:"/detail",
+      component:()=>import("@/views/test/testDetail")
     }
   ]
 }

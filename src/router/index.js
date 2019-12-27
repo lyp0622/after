@@ -207,6 +207,38 @@ export const asyncRoutes = [
   },  
 
   {
+    //面试题管理
+    path: '/user', 
+    component: Layout,
+    redirect: '/user/index',
+    name: 'User',
+    meta: {
+      title: '用户管理',
+      icon: 'user'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        name: 'User',
+        meta: { title: '用户展示'}
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/user/add'),
+        name: 'User',
+        meta: { title: '添加用户'}
+      },
+      {
+        path: 'user',
+        component: () => import('@/views/user/user'),
+        name: 'User',
+        meta: { title: '角色管理'}
+      }
+    ]
+  },  
+
+  {
     path: '/icon',
     component: Layout,
     children: [
@@ -269,7 +301,7 @@ export const asyncRoutes = [
       {
         path:'one',
         component: () => import('@/views/exam/one/index'),
-        name:'Page',
+        name:'one',
         meta: { title: '添加试题' }
       },
       {
@@ -283,6 +315,16 @@ export const asyncRoutes = [
         component: () => import('@/views/exam/three/index'),
         name:'three',
         meta: { title: '查看试题' }
+      },
+      {
+        path:'detail',
+        component:()=> import('@/views/examDetail/index.vue'),
+        hidden: true
+      },
+      {
+        path:'edit',
+        component:()=> import('@/views/examedit/index.vue'),
+        hidden: true
       }
     ]
   },
@@ -316,7 +358,7 @@ export const asyncRoutes = [
     redirect:'/grand/index',
     name:'grand',
     meta:{
-      title:'试题管理',
+      title:'班级管理',
       icon:'example'
     },
     children: [

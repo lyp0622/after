@@ -34,6 +34,10 @@ const actions = {
   async login({ commit }, userInfo) {
     const { username, password } = userInfo
     const res = await login({ user_name: username, user_pwd: password })
+<<<<<<< HEAD
+=======
+    // console.log('res...', res);
+>>>>>>> 3377b2631854bffbd8e0c51b2c5ffef2a720c792
     setToken(res.token)
   },
 
