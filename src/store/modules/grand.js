@@ -33,8 +33,7 @@ const state = {
   const mutations = {
     ADD_ERROR_LOG: (state, payload) => {
         state.getGrandList=payload 
-        console.log(state.getGrandList,"777777777777")
-
+        // console.log(state.getGrandList,"777777777777")
         state.getRoomList=formatroomList(payload)
         state.getGrandList=formatgradeList(payload)  
     },
