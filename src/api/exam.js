@@ -7,6 +7,7 @@ import request from '@/utils/request'
       method: 'get',
     })
   }
+  
   //课程类型
   export function keType() {
     return request({
@@ -57,6 +58,16 @@ import request from '@/utils/request'
       })
     }
 
+<<<<<<< HEAD
+=======
+    //获取所有的试题类型
+    export function getType() {
+      return request({
+        url: '/exam/getQuestionsType',
+        method: 'get',
+      })
+    }
+>>>>>>> lyp
 
     //删除指定的试题类型
     export function remType(id) {
@@ -86,7 +97,10 @@ import request from '@/utils/request'
       })
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> lyp
     //更新试题
     export function updateType(data) {
       return request({
