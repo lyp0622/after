@@ -139,6 +139,7 @@ export default {
       allShenFen: state => state.author.allShenFen,
       allViewsQX: state => state.author.allViewsQX,
       allGuanXi: state => state.author.allGuanXi,
+      apiALL: state => state.author.apiALL, //所有api接口权限数据
       userNPID: state => state.author.userNPID, //展示身份数据
       allAuthorViews: state => state.author.allAuthorViews, //展示身份和视图权限关系的数据
     })
@@ -149,6 +150,7 @@ export default {
         authorGuanXi: "author/authorGuanXi",
         authorIDentity: "author/authorIDentity",
         authorViews: "author/authorViews",
+        authorityApi: "author/authorityApi",
       }),
       addAuthor(){ // one的事件
         this.$refs.select.$el.style="display:none"
@@ -202,18 +204,20 @@ export default {
         this.ruleForm.valuesF=''
       },
       submitFormFive() { //five的事件 未完成(第二个参数传递有误)
-        let identity_id = this.ruleForm.valuesFive
-        let data = this.userNPID.filter(item => item.identity_text ==  identity_id)
+        let identity_id = this.ruleForm.valuesFive 
+        let data = this.userNPID.filter(item => item.identity_text ==  identity_id)  //正确
         console.log(data)
-        console.log(data[0].identity_id)
+        console.log(data[0].identity_id) 
 
         let api_authority_id = this.ruleForm.valuesFiveTwo
-        let datanew = this.allGuanXi.filter(item=>item.api_authority_text == api_authority_id)
+        console.log(api_authority_id)
+        console.log(this.apiALL)
+        let datanew = this.apiALL.filter(item=>item.api_authority_text == api_authority_id)
         console.log(datanew)
-        console.log(datanew[0].identity_api_authority_relation_id)
+        // console.log(datanew[0].identity_api_authority_relation_id)
         setIdentityApi({
           identity_id: data[0].identity_id,
-          api_authority_id: datanew[0].identity_api_authority_relation_id
+          api_authority_id: datanew[0].api_authority_id
         }).then(res=>{ console.log(res,'给身份设定api接口权限设置成功') })
       },
       resetFormFive(formName) {//five的事件
@@ -244,6 +248,7 @@ export default {
     this.authorGuanXi()
     this.authorIDentity()
     this.authorViews();
+    this.authorityApi()
   }
 }
 </script>

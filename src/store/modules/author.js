@@ -35,19 +35,20 @@ const mutations = {
     //展示身份数据
     SET_EXAMF(state,payload){
         state.userNPID=payload
-        console.log(state.userNPID)
         state.authorlenght=state.userNPID.length
     },
 
     //所有api接口权限数据
     SET_API(state,payload){
       state.apiALL=payload
+      console.log(state.apiALL)
       state.apilength=state.apiALL.length
     },
 
     //获取身份和api权限关系数据
     SET_GuanXi(state,payload){
       state.allGuanXi=payload
+      // console.log(state.allGuanXi)
       state.allGuanXilength=state.allGuanXi.length
     },
 
