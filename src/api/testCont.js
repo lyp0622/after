@@ -11,11 +11,15 @@ export function getClassList() {
     method: 'get'
   })
 }
+// 更新试卷的试题和确认状态
 export function updataTest(params){
-  // console.log(JSON.stringify(params),'payload')
+  // console.log(params,'payload')
+  let {testArr}=params
+  let {exam_exam_id}=params
+  console.log(JSON.stringify(testArr),'9999999999999',exam_exam_id)
   return request({                                                                               
-    url:"/exam/exam/fsadq-q80vlu",
+    url:`/exam/exam/${exam_exam_id}`,
     method:"put",
-    data:{question_ids:JSON.stringify(params)}
+    data:{question_ids:JSON.stringify(testArr)}
   })
 }
