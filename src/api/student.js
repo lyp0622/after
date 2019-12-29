@@ -6,10 +6,3 @@ export function getStudent() {
     method: 'get'
   })
 }
-
-export function deleteStudent(student_id) {
-  return request({
-    url: `/manger/student/${student_id}`,//更新学生信息接口
-    method: 'delete'
-  })
-}

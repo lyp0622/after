@@ -39,6 +39,7 @@
                   <el-button @click="resetFormTWO('numberValidateForm')">重置</el-button>
                 </el-form-item>
               </el-form>
+
             </div> 
             <div class="three"> <!--添加api接口权限-->
               <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加api接口权限</button>
@@ -49,7 +50,10 @@
                <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="ruleForm.valuesF" placeholder="请选择身份id">
-                        <el-option v-for="item in allViewsQX" :key="item.view_authority_id" :label="item.view_authority_text" :value="item.view_authority_id"  ></el-option>
+                        <el-option v-for="item in allViewsQX" :key="item.view_authority_id" 
+                        :label="item.view_authority_text"
+                        :value="item.view_authority_id" 
+                        ></el-option>
                     </el-select>
                   </el-tabs>
                   <el-form-item>
@@ -63,13 +67,14 @@
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="ruleForm.valuesFive" placeholder="请选择身份id">
-                        <el-option v-for="item in userNPID" :key="item.identity_id" :value="item.identity_text" :label="item.identity_text"></el-option>
+                        <el-option v-for="item in userNPID" :key="item.identity_id" :value="item.identity_text"
+                        :label="item.identity_text"></el-option>
                     </el-select>
                   </el-tabs>
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="ruleForm.valuesFiveTwo" placeholder="请选择api接口权限">
-                        <el-option v-for="item in allGuanXi" :key="item.identity_api_authority_relation_id" 
-                        :value="item.api_authority_text" :label="item.api_authority_text"></el-option>
+                        <el-option v-for="item in allGuanXi" :key="item.identity_api_authority_relation_id" :value="item.api_authority_text"
+                        :label="item.api_authority_text"></el-option>
                     </el-select>
                   </el-tabs>
                   <el-form-item>
@@ -151,25 +156,19 @@ export default {
         this.$refs.select.$el.style="display:none"
         document.querySelector('.newAuthor').style="none"
       },
-      gNew(){ // one的事件 更新用户未完成
+      gNew(){ // one的事件
         this.$refs.select.$el.style="display:block"
         document.querySelector('.newAuthor').style="color:skyblue"
-        document.querySelector('.addAuthor').style="none" 
+        document.querySelector('.addAuthor').style="none"        
       },
-      submitForm() {// one的事件 已完成(添加用户) 
+     submitForm() {// one的事件 已完成(添加用户,更新用户) 
         let user_name = this.ruleForm.pass;
         let user_pwd = this.ruleForm.checkPass;
         let identity_id = this.ruleForm.values;
 
         //利用filter进行筛选，把相对应的数据返回去  =》 添加用户的参数(identity_text) 用户展示的参数(identity_id/下拉框选中的每一项进行从新的赋值)
         let data = this.userNPID.filter(item => item.identity_text == identity_id)
-        console.log(data,"-=-=-");
-        
-        //密码必须为 一个大写字母+一个小写字母+一个数字+一个特殊字符 == 长度必须大于6
-        addYongHu({ user_name: user_name, user_pwd: user_pwd ,identity_id: data[0].identity_id })
-        
-       
-        console.log(user_name)
+
         if(this.$refs.select.$el.style="display:block"){
             console.log(data[0].identity_id)
             // allShenFen
@@ -178,12 +177,14 @@ export default {
             // user_id: "48jpzn-dxat5g" 用户id user_name的id(手动输入的名字的id值)
             // user_name: "dddd"   用户名 正确
             // user_pwd: "ASasa232!!" 手动输入的密码
-
-          userNew({ user_name: user_name, user_pwd: user_pwd ,identity_id: data[0].identity_id ,user_id:'axg8t2-oroeja'}).then(res=>{
-            console.log(res,'newadd')
-          })
+            let datas = this.examS.filter(item => item.user_name ==  this.ruleForm.value)
+            userNew({ user_name: user_name, user_pwd: user_pwd ,identity_id: data[0].identity_id ,user_id: datas[0].user_id}).then(res=>{
+              console.log(res,'newadd')
+            })
+        }else{
+          //密码必须为 一个大写字母+一个小写字母+一个数字+一个特殊字符 == 长度必须大于6
+           addYongHu({ user_name: user_name, user_pwd: user_pwd ,identity_id: data[0].identity_id })
         }
-       
       },
       resetForm(formName) {// one的事件
         this.$refs[formName].resetFields();
@@ -210,7 +211,7 @@ export default {
         this.$refs[formName].resetFields();
         this.ruleForm.valuesF=''
       },
-      submitFormFive() { //five的事件 
+      submitFormFive() { //five的事件 未完成(第二个参数传递有误)
         let identity_id = this.ruleForm.valuesFive 
         let data = this.userNPID.filter(item => item.identity_text ==  identity_id)  //正确
         console.log(data)

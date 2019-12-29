@@ -1,10 +1,9 @@
-import { getTestType, getClassList, updataTest } from '@/api/testCont'
-import { addtest } from "@/api/addtestpaper"
+import { getTestType, getClassList } from '@/api/testCont'
+import {addtest} from "@/api/addtestpaper"
 const state = {
   testType: [],
   classList: [],
-  data: [],
-  updataTest: ""
+  data:[]
 }
 
 const mutations = {
@@ -19,13 +18,8 @@ const mutations = {
   setClassList(state, payload) {
     state.classList = payload
   },
-  setdata(state, payload) {
-    state.data = payload;
-    sessionStorage.setItem("mine", JSON.stringify(state.data))
-  },
-  setUpdata(state, payload) {
-    state.data = payload
-
+  setdata(state,payload){
+    state.data=payload
   }
 }
 const actions = {
@@ -37,13 +31,11 @@ const actions = {
     const res = await getClassList()
     commit('setClassList', res.data)
   },
-  async addtest({ commit }, payload) {
-    const res = await addtest(payload)
-    console.log(res, "payloadddd")
-    commit('setdata', res)
-  },
-  async updataTest({ commit }, payload) {
-    const res = await updataTest(payload)//因为只是传参，所以直接把参数给api里边的function即可
+  async addtest({commit},payload){
+    console.log(payload,"payloadddd")
+        const res=await addtest(payload)
+        console.log(res)
+        commit('setdata',res)
   }
 }
 export default {

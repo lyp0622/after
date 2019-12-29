@@ -20,29 +20,12 @@ import request from '@/utils/request'
       url: '/exam/getQuestionsType',
       method: 'get',
     })
-  }  
+  }
+  
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
       method: 'get',
-    })
-  }
- 
-//获取所有用户信息
-export function examStudent() {
-  return request({
-    url: '/user/user',
-    method: 'get'
-  })
-}
-
-//获取身份信息
-export function examIDentity() {
-
-    return request({
-      url: '/exam/questions',
-      method: 'post',
-      data
     })
   }
 
@@ -79,13 +62,5 @@ export function examIDentity() {
         url: '/exam/questions/condition',
         method: 'get',
         params:data
-      })
-    }
-    //更新试题
-    export function updateType(params) {
-      return request({
-        url: '/exam/questions/update',
-        method: 'put',
-        params
       })
     }

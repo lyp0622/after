@@ -46,8 +46,8 @@
           <el-table-column label="开始时间" prop="start_time"></el-table-column>
           <el-table-column label="结束时间" prop="end_time"></el-table-column>
           <el-table-column label="操作" prop="cz">
-            <template>
-              <el-button type="text" size="small">操作</el-button>
+            <template slot-scope="scope">
+              <el-button @click="detail(scope.now)" type="text" size="small">操作</el-button>
             </template>
           </el-table-column>
         </el-table>

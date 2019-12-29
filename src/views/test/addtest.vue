@@ -98,16 +98,14 @@ export default {
   computed: {
     ...mapState({
       testType: state => state.testcont.testType,
-      classList: state => state.testcont.classList,
-      editcont: state => state.testcont.data
+      classList: state => state.testcont.classList
     })
   },
   methods: {
     ...mapActions({
       getTestType: "testcont/getTestType",
       getClassList: "testcont/getClassList",
-      addtest: "testcont/addtest",
-
+      addtest: "testcont/addtest"
     }),
     createPaper() {
       if (
@@ -129,12 +127,8 @@ export default {
           number:this.number,
           start_time:parseInt(this.start_time.getTime()/1000),
           end_time: parseInt(this.end_time.getTime()/1000)
-        } 
+        }
          this.addtest(data)
-         console.log(this.editcont,"567890-")      
-         this.$router.push({
-           path:"/edit"
-         })
       }
     }
   },

@@ -8,32 +8,11 @@ export function login(data) {
   })
 }
 
-// export function getInfo(token) {
-//   return request({
-//     url: '/user/info',
-//     method: 'get',
-//     params: { token }
-//   })
-// }
-
-// export function getInfo() {
-//   return request({
-//     url: '/user/info',
-//     method: 'get'
-//   })
-// }
-
-export function getInfo() {
+export function getInfo(token) {
   return request({
-    url: '/user/userInfo',
-    method: 'get'
-  })
-}
-
-export function getViewAuthority(){
-  return request({
-    url: '/user/view_authority',
-    method: 'get'
+    url: '/user/info',
+    method: 'get',
+    params: { token }
   })
 }
 

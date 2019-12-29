@@ -55,10 +55,10 @@ export function setIdentityView(data){
 }
 
 //更新用户/user/user
-export function userNew(data){
+export function userNew(params){
     return request({
         url: '/user/user',
         method: 'put',
-        data
+        params
     })
 }
