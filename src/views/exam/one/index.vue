@@ -97,13 +97,8 @@ import {addType} from '@/api/exam'
        })
    },
     methods: {
-<<<<<<< HEAD
       submit(formName) {
         console.log(formName)
-=======
-      submitForm(formName) {
-        console.log(formName,'11111')
->>>>>>> lyp
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
