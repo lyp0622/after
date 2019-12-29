@@ -38,11 +38,11 @@ const actions = {
   async login({ commit }, userInfo) {
     const { username, password } = userInfo
     const res = await login({ user_name: username, user_pwd: password })
-    // console.log('res...', res);
     setToken(res.token)
   },
 
   // get user info
+<<<<<<< HEAD
   async getInfo({ commit, state }) {
     // 1. 获取个人信息
     let userInfo = await getInfo();
@@ -56,6 +56,16 @@ const actions = {
     commit('SET_VIEWAUTHORITY', viewAuthority.data);
 
     return viewAuthority.data;
+=======
+  getInfo({ commit, state }) {
+    return new Promise((resolve, reject) => {
+
+      const roles = ['admin']
+      commit('SET_ROLES', roles)
+      resolve({ roles })
+
+    })
+>>>>>>> szw
   },
 
   // user logout

@@ -215,38 +215,6 @@ export const asyncRoutes = [
   },  
 
   {
-    //面试题管理
-    path: '/user', 
-    component: Layout,
-    redirect: '/user/index',
-    name: 'User',
-    meta: {
-      title: '用户管理',
-      icon: 'user'
-    },
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/user/index'),
-        name: 'User',
-        meta: { title: '用户展示'}
-      },
-      {
-        path: 'add',
-        component: () => import('@/views/user/add'),
-        name: 'User',
-        meta: { title: '添加用户'}
-      },
-      {
-        path: 'user',
-        component: () => import('@/views/user/user'),
-        name: 'User',
-        meta: { title: '角色管理'}
-      }
-    ]
-  },  
-
-  {
     path: '/icon',
     component: Layout,
     children: [
@@ -297,6 +265,93 @@ export const asyncRoutes = [
     ]
   },
   {
+<<<<<<< HEAD
+=======
+    path: '/exam',
+    component: Layout,
+    redirect:'/exam/index',
+    name:'exam',
+    meta:{
+      title:'试题管理',
+      icon:'user'
+    },
+    children: [
+      {
+        path:'one',
+        component: () => import('@/views/exam/one/index'),
+        name:'Page',
+        meta: { title: '添加试题' }
+      },
+      {
+        path:'two',
+        component: () => import('@/views/exam/two/index'),
+        name:'tow',
+        meta: { title: '试题分类' }
+      },
+      {
+        path:'three',
+        component: () => import('@/views/exam/three/index'),
+        name:'three',
+        meta: { title: '查看试题' }
+      }
+    ]
+  },
+  {
+    path: '/mark',
+    component: Layout,
+    redirect:'/mark/index',
+    name:'mark',
+    meta:{
+      title:'批卷',
+      icon:'user'
+    },
+    children: [
+      {
+        path:'first',
+        component: () => import('@/views/mark/first/index'),
+        name:'Page',
+        meta: { title: '待批班级' }
+      },
+      {
+        path:'second',
+        component: () => import('@/views/mark/second/index'),
+        name:'second',
+        meta: { title: '试题分类' }
+      }
+    ]
+  },
+  {
+    path: '/grand',
+    component: Layout,
+    redirect:'/grand/index',
+    name:'grand',
+    meta:{
+      title:'试题管理',
+      icon:'example'
+    },
+    children: [
+      {
+        path:'grand1',
+        component: () => import('@/views/grand/grand1/index'),
+        name:'grand1',
+        meta: { title: '班级管理' }
+      },
+      {
+        path:'grand2',
+        component: () => import('@/views/grand/grand2/index'),
+        name:'tow',
+        meta: { title: '教室管理' }
+      },
+      {
+        path:'grand3',
+        component: () => import('@/views/grand/grand3/index'),
+        name:'three',
+        meta: { title: '学生管理' }
+      }
+    ]
+  },
+  {
+>>>>>>> szw
     path: '/tab',
     component: Layout,
     children: [

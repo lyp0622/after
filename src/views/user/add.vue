@@ -1,8 +1,8 @@
 <template>
     <div class="box">
-        <p>添加用户</p>
+        <p class="title">添加用户</p>
         <div class="con">
-            <div class="one">
+            <div class="one"> <!--添加用户/更新用户-->
               <button @click="addAuthor" class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加用户</button>
               <button @click="gNew" class="newAuthor">更新用户</button>
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
@@ -19,7 +19,7 @@
                 </el-form-item>
                 <el-tabs :tab-position="tabPosition">
                   <el-select v-model="ruleForm.values" placeholder="请选择">
-                      <el-option v-for="item in shenfen" :key="item" :value="item"></el-option>
+                      <el-option v-for="(item,i) in userNPID" :key="i" :value="item.identity_text"></el-option>
                   </el-select>
                 </el-tabs>
                 <el-form-item>
@@ -28,7 +28,7 @@
                 </el-form-item>
               </el-form>
             </div>
-            <div class="two">
+            <div class="two">  <!--添加身份-->
               <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加身份</button>
               <el-form :model="numberValidateForm" ref="numberValidateForm" class="demo-ruleForm demo-two">
                 <el-form-item prop="author">
@@ -40,17 +40,17 @@
                 </el-form-item>
               </el-form>
 
-            </div>
-            <div class="three">
+            </div> 
+            <div class="three"> <!--添加api接口权限-->
               <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加api接口权限</button>
               <AddApiQuanXi/>
             </div>
-            <div class="four">
+            <div class="four"> <!--添加视图接口权限-->
                <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">添加视图接口权限</button>
                <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
                     <el-select v-model="ruleForm.valuesF" placeholder="请选择身份id">
-                        <el-option v-for="(item,ind) in allViewsQX" :key="ind" 
+                        <el-option v-for="item in allViewsQX" :key="item.view_authority_id" 
                         :label="item.view_authority_text"
                         :value="item.view_authority_id" 
                         ></el-option>
@@ -62,40 +62,42 @@
                   </el-form-item>
                 </el-form>
             </div>
-            <div class="five">
+            <div class="five"> <!--给身份设置api接口权限-->
               <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">给身份设置api接口权限</button>
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
-                    <el-select v-model="valuesFive" placeholder="请选择身份id">
-                        <el-option v-for="(item,inde) in shenfen" :key="inde" :value="item"></el-option>
+                    <el-select v-model="ruleForm.valuesFive" placeholder="请选择身份id">
+                        <el-option v-for="item in userNPID" :key="item.identity_id" :value="item.identity_text"
+                        :label="item.identity_text"></el-option>
                     </el-select>
                   </el-tabs>
                   <el-tabs :tab-position="tabPosition">
-                    <el-select v-model="valuesFiveTwo" placeholder="请选择api接口权限">
-                        <el-option v-for="item in allGuanXi" :key="item.identity_api_authority_relation_id" :value="item.api_authority_text"></el-option>
+                    <el-select v-model="ruleForm.valuesFiveTwo" placeholder="请选择api接口权限">
+                        <el-option v-for="item in allGuanXi" :key="item.identity_api_authority_relation_id" :value="item.api_authority_text"
+                        :label="item.api_authority_text"></el-option>
                     </el-select>
                   </el-tabs>
                   <el-form-item>
-                    <el-button type="primary" @click="submitFormFive('ruleForm')">提交</el-button>
+                    <el-button type="primary" @click="submitFormFive()">提交</el-button>
                     <el-button @click="resetFormFive('ruleForm')">重置</el-button>
                   </el-form-item>
                 </el-form>
             </div>
-            <div class="six">
+            <div class="six"> <!--给身份设置视图权限-->
               <button class="addAuthor" style="color:skyblue;border:1px solid skyblue">给身份设置视图权限</button>
               <el-form :model="ruleForm" status-icon ref="ruleForm" class="demo-ruleForm">
                   <el-tabs :tab-position="tabPosition">
-                    <el-select v-model="valuesSix" placeholder="请选择身份id">
-                        <el-option v-for="(item,int) in shenfen" :key="int" :value="item"></el-option>
+                    <el-select v-model="ruleForm.valuesSix" placeholder="请选择身份id">
+                        <el-option v-for="item in userNPID" :key="item.identity_text" :label="item.identity_text" :value="item.identity_text"></el-option>
                     </el-select>
                   </el-tabs>
                   <el-tabs :tab-position="tabPosition">
-                    <el-select v-model="valuesSixTwo" placeholder="请选择视图权限id">
-                        <el-option v-for="(item,indx) in allViewsQX" :key="indx" :value="item.view_authority_text"></el-option>
+                    <el-select v-model="ruleForm.valuesSixTwo" placeholder="请选择视图权限id">
+                        <el-option v-for="(item,ix) in allViewsQX" :key="ix" :label="item.view_authority_text" :value="item.view_authority_text"></el-option>
                     </el-select>
                   </el-tabs>
                   <el-form-item>
-                    <el-button type="primary" @click="submitFormSix('ruleForm')">提交</el-button>
+                    <el-button type="primary" @click="submitFormSix()">提交</el-button>
                     <el-button @click="resetFormSix('ruleForm')">重置</el-button>
                   </el-form-item>
                 </el-form>
@@ -115,16 +117,16 @@ export default {
         input: '',
         tabPosition: 'top',
         valuesFour: '',
-        valuesFive: '',
-        valuesFiveTwo: '',
-        valuesSix: '',
-        valuesSixTwo: '',
         ruleForm: {
           pass: '',
           checkPass: '',
           age: '',
           valuesF: '',
           value: '',
+          valuesSix: '',
+          valuesSixTwo: '',
+          valuesFive: '',
+          valuesFiveTwo: '',
         },
         numberValidateForm: {
           author: ''
@@ -135,16 +137,20 @@ export default {
   computed:{
     ...mapState({
       allShenFen: state => state.author.allShenFen,
-      shenfen: state => state.author.shenfen,
       allViewsQX: state => state.author.allViewsQX,
       allGuanXi: state => state.author.allGuanXi,
+      apiALL: state => state.author.apiALL, //所有api接口权限数据
+      userNPID: state => state.author.userNPID, //展示身份数据
+      allAuthorViews: state => state.author.allAuthorViews, //展示身份和视图权限关系的数据
     })
   },
   methods:{
       ...mapActions({
-        authorAll: 'author/authorAll',
         viesQuanXI: "author/viesQuanXI",
         authorGuanXi: "author/authorGuanXi",
+        authorIDentity: "author/authorIDentity",
+        authorViews: "author/authorViews",
+        authorityApi: "author/authorityApi",
       }),
       addAuthor(){ // one的事件
         this.$refs.select.$el.style="display:none"
@@ -155,22 +161,30 @@ export default {
         document.querySelector('.newAuthor').style="color:skyblue"
         document.querySelector('.addAuthor').style="none"        
       },
-      submitForm() {// one的事件 
-        console.log(this.shenfen,'322333333')
+     submitForm() {// one的事件 已完成(添加用户,更新用户) 
         let user_name = this.ruleForm.pass;
         let user_pwd = this.ruleForm.checkPass;
-        let identity_id = this.ruleForm.values
-        //密码必须为 一个大写字母+一个小写字母+一个数字+一个特殊字符 == 长度必须大于6
-        addYongHu({ user_name: user_name, user_pwd: user_pwd ,identity_id: identity_id }).then(res => {
-          // console.log(res,"==========----------??");
-          // console.log(identity_id,'dfghjkl;')
-        })
+        let identity_id = this.ruleForm.values;
 
-        // let user_id = this.ruleForm.value //更新用户
-        // userNew({ user_name: user_name, user_pwd: user_pwd ,identity_id: identity_id, user_id: user_id }).then(res=>{
-        //   console.log(res,'newadd')
-        // })
-        
+        //利用filter进行筛选，把相对应的数据返回去  =》 添加用户的参数(identity_text) 用户展示的参数(identity_id/下拉框选中的每一项进行从新的赋值)
+        let data = this.userNPID.filter(item => item.identity_text == identity_id)
+
+        if(this.$refs.select.$el.style="display:block"){
+            console.log(data[0].identity_id)
+            // allShenFen
+            console.log(this.allShenFen)
+            // identity_id: "63no9p-8y0k4"  身份id 正确
+            // user_id: "48jpzn-dxat5g" 用户id user_name的id(手动输入的名字的id值)
+            // user_name: "dddd"   用户名 正确
+            // user_pwd: "ASasa232!!" 手动输入的密码
+            let datas = this.examS.filter(item => item.user_name ==  this.ruleForm.value)
+            userNew({ user_name: user_name, user_pwd: user_pwd ,identity_id: data[0].identity_id ,user_id: datas[0].user_id}).then(res=>{
+              console.log(res,'newadd')
+            })
+        }else{
+          //密码必须为 一个大写字母+一个小写字母+一个数字+一个特殊字符 == 长度必须大于6
+           addYongHu({ user_name: user_name, user_pwd: user_pwd ,identity_id: data[0].identity_id })
+        }
       },
       resetForm(formName) {// one的事件
         this.$refs[formName].resetFields();
@@ -179,7 +193,7 @@ export default {
         this.ruleForm.values=''
         this.ruleForm.value=''
       },
-      submitFormTWO() { //two的事件  添加身份
+      submitFormTWO() { //two的事件  添加身份 已完成
         addAuthor({ identity_text:this.numberValidateForm.author })
       },
       resetFormTWO(formName) {//two的事件
@@ -188,57 +202,70 @@ export default {
       submitFormF() { //four的事件
         let str = this.ruleForm.valuesF
         let data = this.allViewsQX.filter(item => item.view_authority_id == str)
-        // console.log(data,'data')
-        // console.log(data[0].view_authority_text,'view_authority_text')
-        // console.log(data[0].view_authority_id,"view_authority_id")
-        
         authorityView({
           view_authority_text: data[0].view_authority_text,
           view_id: data[0].view_authority_id
-        }).then(res=>{
-          console.log(res,'dfghj')
-        })
+        }).then(res=>{ console.log(res,'dfghj')})
       },
       resetFormF(formName) {//four的事件
         this.$refs[formName].resetFields();
         this.ruleForm.valuesF=''
       },
-      submitFormFive(formName) { //five的事件
+      submitFormFive() { //five的事件 未完成(第二个参数传递有误)
+        let identity_id = this.ruleForm.valuesFive 
+        let data = this.userNPID.filter(item => item.identity_text ==  identity_id)  //正确
+        console.log(data)
+        console.log(data[0].identity_id) 
+
+        let api_authority_id = this.ruleForm.valuesFiveTwo
+        console.log(api_authority_id)
+        console.log(this.apiALL)
+        let datanew = this.apiALL.filter(item=>item.api_authority_text == api_authority_id)
+        console.log(datanew)
+        // console.log(datanew[0].identity_api_authority_relation_id)
         setIdentityApi({
-          identity_id: this.valuesFive,
-          api_authority_id: this.valuesFiveTwo
-        }).then(res=>{
-          console.log(res,'给身份设定api接口权限设置成功')
-        })
+          identity_id: data[0].identity_id,
+          api_authority_id: datanew[0].api_authority_id
+        }).then(res=>{ console.log(res,'给身份设定api接口权限设置成功') })
       },
       resetFormFive(formName) {//five的事件
         this.$refs[formName].resetFields();
-        this.valuesFive=''
-        this.valuesFiveTwo=''
+        this.ruleForm.valuesFive=''
+        this.ruleForm.valuesFiveTwo=''
       },
-      submitFormSix(formName) { //six的事件
-        setIdentityView({
-          identity_id: this.valuesSix,
-          view_authority_id: this.valuesSixTwo
-        }).then(res=>{
-          console.log(res,'给身份设定视图权限成功')
-        })
+      submitFormSix() { //six的事件  //添加成功 
+        let identity_id = this.ruleForm.valuesSix
+        let data = this.userNPID.filter(item => item.identity_text ==  identity_id)
+
+        let view_authority_id = this.ruleForm.valuesSixTwo
+        let datanew = this.allViewsQX.filter(item => item.view_authority_text ==  view_authority_id)
+
+        setIdentityView({ 
+          identity_id: data[0].identity_id, 
+          view_authority_id: datanew[0].view_authority_id
+        }).then(res => console.log(res,'添加成功'))
       },
       resetFormSix(formName) {//six的事件
         this.$refs[formName].resetFields();
-        this.valuesSix=''
-        this.valuesSixTwo=''
+        this.ruleForm.valuesSix=''
+        this.ruleForm.valuesSixTwo=''
       }
     },
   created(){
-    this.authorAll()
     this.viesQuanXI()
     this.authorGuanXi()
+    this.authorIDentity()
+    this.authorViews();
+    this.authorityApi()
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.title {
+  font-size: 18px;
+  padding: 10px
+}
 .box{
     margin-left: 20px;
 }
@@ -255,6 +282,9 @@ export default {
   background: #ffff;
   border: 1px solid #eeeeee;
   line-height: 30px;
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-left: 10px;
   margin-top: 10px;
 }
@@ -262,5 +292,18 @@ export default {
   margin-left: 10px;
   margin-right: 10px;
   margin-top:10px
+}
+.el-button{
+  margin-top: 10px;
+}
+.el-form-item:nth-child(2),.el-tabs--top{
+  margin-bottom: 10px
+}
+.el-form-item{
+  margin: 0
+}
+.el-form-item--medium{
+  margin-top: 10px;
+  margin-bottom: 10px
 }
 </style>

@@ -7,7 +7,7 @@
         <div class="first-box">
           <el-table :data="examS.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
             <el-table-column prop="user_name" label="用户名" width="180"></el-table-column>
-            <el-table-column prop="user_pwd" label="密码" width="520"></el-table-column>
+            <el-table-column prop="user_pwd" label="密码" width="600"></el-table-column>
             <el-table-column prop="identity_text" label="身份"></el-table-column>
           </el-table>
 
@@ -24,8 +24,9 @@
       <el-tab-pane label="身份数据" name="second"> <!--身份数据-->
         <h6 class="second-title">身份数据</h6>
         <div class="second-box">
+          <!-- {{userNPID}} -->
           <el-table :data="userNPID.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
-            <el-table-column prop="identity_text" label="身份名称" width="180" ></el-table-column>
+            <el-table-column prop="identity_text" label="身份名称" style="width:100%"></el-table-column>
           </el-table>
 
           <!-- 分页 -->
@@ -40,12 +41,13 @@
 
       <el-tab-pane label="api接口权限数据" name="third"> <!--api接口权限数据-->
         <h6 class="third-title">api接口权限数据</h6>
-        <el-table :data="apiALL.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
-          <el-table-column prop="api_authority_text" label="api权限名称" width="180"></el-table-column>
-          <el-table-column prop="api_authority_url" label="api权限url" width="520"></el-table-column>
-          <el-table-column prop="api_authority_method" label="api权限方法"></el-table-column>
-        </el-table>
-
+        <div class="third-box">
+          <el-table :data="apiALL.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
+            <el-table-column prop="api_authority_text" label="api权限名称" width="260"></el-table-column>
+            <el-table-column prop="api_authority_url" label="api权限url" width="520"></el-table-column>
+            <el-table-column prop="api_authority_method" label="api权限方法"></el-table-column>
+          </el-table>
+        </div>
         <!-- 分页 -->
           <el-pagination layout="prev, pager, next" @current-change="current_change"  @size-change="handleSizeChange"
             :total="+apilength"
@@ -56,13 +58,14 @@
 
       <el-tab-pane label="身份和api接口数据" name="fourth"> <!--身份和api接口数据-->
         <h6 class="fourth-title">身份和api接口数据</h6>
-        <el-table :data="allGuanXi.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
-          <el-table-column prop="identity_text" label="身份名称" width="180"></el-table-column>
-          <el-table-column prop="api_authority_text" label="api权限名称" width="200"></el-table-column>
-          <el-table-column prop="api_authority_url" label="api权限url" width="280"></el-table-column>
-          <el-table-column prop="api_authority_method" label="api权限方法"></el-table-column>
-        </el-table>
-
+        <div class="fourth-box">
+          <el-table :data="allGuanXi.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
+            <el-table-column prop="identity_text" label="身份名称" width="150"></el-table-column>
+            <el-table-column prop="api_authority_text" label="api权限名称" width="300"></el-table-column>
+            <el-table-column prop="api_authority_url" label="api权限url" width="300"></el-table-column>
+            <el-table-column prop="api_authority_method" label="api权限方法"></el-table-column>
+          </el-table>
+        </div>
         <!-- 分页 -->
         <el-pagination layout="prev, pager, next" @current-change="current_change"  @size-change="handleSizeChange"
           :total="+allGuanXilength"
@@ -73,11 +76,12 @@
 
       <el-tab-pane label="视图接口数据" name="fifth"> <!--视图接口数据-->
         <h6 class="fifth-title">视图接口数据</h6>
+        <div class="fifth-box">
          <el-table :data="allViewsQX.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
-          <el-table-column prop="view_authority_text" label="视图权限名称" width="180"></el-table-column>
-          <el-table-column prop="view_id" label="视图id" width="200"></el-table-column>
+          <el-table-column prop="view_authority_text" label="视图权限名称" width="400"></el-table-column>
+          <el-table-column prop="view_id" label="视图id" width="700"></el-table-column>
         </el-table>
-
+        </div>
         <!-- 分页 -->
         <el-pagination layout="prev, pager, next" @current-change="current_change"  @size-change="handleSizeChange"
           :total="+allViewsQXlength"
@@ -88,12 +92,13 @@
 
       <el-tab-pane label="身份和视图权限关系" name="sixth"> <!--身份和视图权限关系-->
          <h6 class="sixth-title">身份和视图权限关系</h6>
-         <el-table :data="allAuthorViews.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
-              <el-table-column prop="identity_text" label="身份" width="180"></el-table-column>
-              <el-table-column prop="api_authority_text" label="视图名称" width="200"></el-table-column>
-              <el-table-column prop="api_authority_method" label="视图id" width="280"></el-table-column>
+         <div class="sixth-box">
+          <el-table :data="allAuthorViews.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%">
+              <el-table-column prop="identity_text" label="身份" width="220"></el-table-column>
+              <el-table-column prop="view_authority_text" label="视图名称" width="420"></el-table-column>
+              <el-table-column prop="view_id" label="视图id" width="300"></el-table-column>
           </el-table>
-
+         </div>
         <!-- 分页 -->
         <el-pagination layout="prev, pager, next" @current-change="current_change"  @size-change="handleSizeChange"
           :total="+allAuthorViewslength"
@@ -112,13 +117,13 @@ export default {
     return {
       activeName: "first",
       // total: 1000, //默认数据总数
-      pagesize: 5, //每页的数据条数
+      pagesize: 10, //每页的数据条数
       currentPage: 1 //默认开始页面
     };
   },
   computed: {
     ...mapState({
-      examS: state => state.author.examS, //所有用户信息数据
+      examS: state => state.author.examS, //所有用户信息数据 
       userNPID: state => state.author.userNPID, //展示身份数据
       userlength: state => state.author.userlength,  //用户信息数据的长度
       authorlenght: state => state.author.authorlenght, //身份数据的长度
@@ -141,15 +146,13 @@ export default {
       authorViews: "author/authorViews",
       viesQuanXI: "author/viesQuanXI"
     }),
-    handleClick(){
-      console.log('1')
-    },
     current_change:function(currentPage){
         this.currentPage = currentPage;
     },
     handleSizeChange: function (size) {
         this.pagesize = size;
     },
+    handleClick(){}
   },
   mounted() {
     this.authorAll();
@@ -170,11 +173,6 @@ export default {
 .box .title {
   font-size: 20px;
 }
-.first-title {
-  font-size: 20px;
-  position: absolute;
-  top: -42px;
-}
 .first-ulto {
   display: flex;
   background: #eeeeee;
@@ -190,7 +188,7 @@ export default {
     flex: 4;
   }
 }
-.first-ult {
+.first-ult, .second-ult {
   display: flex;
   border-bottom: 1px solid #eeeeee;
   line-height: 25px;
@@ -204,29 +202,12 @@ export default {
     flex: 4;
   }
 }
-.first-box {
+.first-box , .second-box ,.third-box,.fourth-box,.fifth-box,.sixth-box{
   margin-top: 50px;
 }
-.second-box {
-  margin-top: 50px;
-}
-.second-title {
+.first-title , .second-title,.third-title ,.fourth-title ,.fifth-title ,.sixth-title{
   font-size: 20px;
   position: absolute;
-  top: -42px;
-}
-.second-ult {
-  display: flex;
-  border-bottom: 1px solid #eeeeee;
-  line-height: 25px;
-  li:nth-child(1) {
-    flex: 2;
-  }
-  li:nth-child(2) {
-    flex: 7;
-  }
-  li:nth-child(3) {
-    flex: 4;
-  }
+  top: 10px;
 }
 </style>

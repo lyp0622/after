@@ -5,9 +5,8 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-
-
-  baseURL: 'http://169.254.126.222:7002', // url = base url + request url
+  baseURL: 'http://169.254.0.62:7002', // url = base url + request url
+  // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
 
@@ -52,7 +51,6 @@ service.interceptors.response.use(
       })
 
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-
       // if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
       //   // to re-login
       //   MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
@@ -65,9 +63,13 @@ service.interceptors.response.use(
       //     })
       //   })
       // }
+
+      // return Promise.reject(new Error(res.message || 'Error'))
+
+      //容错处理
+
       try{
         if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
-          // to re-login
           MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
             confirmButtonText: 'Re-Login',
             cancelButtonText: 'Cancel',

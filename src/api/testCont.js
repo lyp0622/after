@@ -11,6 +11,7 @@ export function getClassList() {
     method: 'get'
   })
 }
+<<<<<<< HEAD
 // 更新试卷的试题和确认状态
 export function updataTest(params){
   // console.log(params,'payload')
@@ -23,3 +24,5 @@ export function updataTest(params){
     data:{question_ids:JSON.stringify(testArr)}
   })
 }
+=======
+>>>>>>> szw

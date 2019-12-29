@@ -1,5 +1,4 @@
 import request from '@/utils/request'
-
   //考试类型
   export function examType() {
     return request({
@@ -22,41 +21,11 @@ import request from '@/utils/request'
       method: 'get',
     })
   }
+  
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
       method: 'get',
-    })
-  }
- 
-  //添加类型
-  export function addType(data) {
-    console.log(data)
-
-//   //添加类型
-//   export function addType() {
-//     return request({
-//       url: '/exam/insertQuestionsType',
-//       method: 'get',
-//     })
-  }
-
-
-//获取所有用户信息
-export function examStudent() {
-  return request({
-    url: '/user/user',
-    method: 'get'
-  })
-}
-
-//获取身份信息
-export function examIDentity() {
-
-    return request({
-      url: '/exam/questions',
-      method: 'post',
-      data
     })
   }
 
@@ -95,13 +64,3 @@ export function examIDentity() {
         params:data
       })
     }
-    //更新试题
-    export function updateType(params) {
-      return request({
-        url: '/exam/questions/update',
-        method: 'put',
-        params
-      })
-    }
-
-    
