@@ -9,7 +9,7 @@ const state = {
     
   }
   const mutations = {
-      typeList(state,payload){
+     typeList(state,payload){
           state.list=payload
       },
       keType(state,payload){
@@ -79,9 +79,11 @@ const state = {
         console.log('res-------------------',res)
     }
   }
+
   export default {
     namespaced: true,
     state,
     mutations,
     actions
   }
+  

@@ -51,6 +51,7 @@
       </main>
   </div>
 </template>
+
 <script>
 import {mapActions, mapState} from 'vuex'
 import {addType} from '@/api/exam'
@@ -154,5 +155,8 @@ import {addType} from '@/api/exam'
       
     // }
 </style>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5

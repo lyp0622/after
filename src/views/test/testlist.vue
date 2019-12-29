@@ -46,8 +46,13 @@
           <el-table-column label="开始时间" prop="start_time"></el-table-column>
           <el-table-column label="结束时间" prop="end_time"></el-table-column>
           <el-table-column label="操作" prop="cz">
+<<<<<<< HEAD
+            <template>
+              <el-button @click="detail()" type="text" size="small">详情</el-button>
+=======
             <template slot-scope="scope">
               <el-button @click="detail(scope.now)" type="text" size="small">操作</el-button>
+>>>>>>> szw
             </template>
           </el-table-column>
         </el-table>
@@ -80,7 +85,12 @@ export default {
       getTestType: "testcont/getTestType",
       getClassList: "testcont/getClassList",
       getAlltest: "getAllTest/getAlltest"
-    })
+    }),
+    detail(){
+      this.$router.push({
+        path:"/detail"
+      })
+    }
   },
   computed: {
     ...mapState({
@@ -112,7 +122,6 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      // console.log(this.testlist, "11000");
     }, 1000);
   }
 };

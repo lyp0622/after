@@ -11,7 +11,7 @@ const state = {
 
     allGuanXi:[], //获取身份和api权限关系数据
     allGuanXilength:'', //身份和api权限关系数据长度
-
+    
     allAuthorViews:[], //所有身份和视图权限关系数据
     allAuthorViewslength:'', //所有身份和视图权限关系数据的长度
 
@@ -19,7 +19,6 @@ const state = {
     allViewsQXlength:'', //获取视图权限数据的所有数据的长度
 
     allShenFen:[], //更新用户的所有身份名字
-    shenfen:[], //更新用户的所有身份
 }
 
 const mutations = {
@@ -31,11 +30,6 @@ const mutations = {
         //名字
         let names=state.examS.map(item=>item.user_name) 
         state.allShenFen=Array.from(new Set(names))
-
-         //身份
-        let shenfen=state.examS.map(item=>item.identity_text)
-        state.shenfen=Array.from(new Set(shenfen))
-
     },
 
     //展示身份数据
@@ -47,12 +41,14 @@ const mutations = {
     //所有api接口权限数据
     SET_API(state,payload){
       state.apiALL=payload
+      console.log(state.apiALL)
       state.apilength=state.apiALL.length
     },
 
     //获取身份和api权限关系数据
     SET_GuanXi(state,payload){
       state.allGuanXi=payload
+      // console.log(state.allGuanXi)
       state.allGuanXilength=state.allGuanXi.length
     },
 
@@ -60,6 +56,7 @@ const mutations = {
     SET_AUTHORV(state,payload){
       state.allAuthorViews=payload
       state.allAuthorViewslength=state.allAuthorViews.length
+
     },
 
     //获取视图权限数据
@@ -67,11 +64,6 @@ const mutations = {
       state.allViewsQX=payload
       state.allViewsQXlength=state.allViewsQX.length
     },
-
-    //添加身份
-    // addAuthors(state,payload){
-    //   state.shenfen.push(payload)
-    // }
 }
 
 const actions = {

@@ -28,8 +28,12 @@ router.beforeEach(async(to, from, next) => {
       NProgress.done()
     } else {
       // determine whether the user has obtained his permission roles through getInfo
+<<<<<<< HEAD
       // const hasRoles = store.getters.roles && store.getters.roles.length > 0
       const hasViewAuthority = store.state.user.viewAuthority && store.state.user.viewAuthority.length>0
+=======
+      const hasViewAuthority = store.state.user.viewAuthority && store.state.user.viewAuthority.length > 0
+>>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
       if (hasViewAuthority) {
         next()
       } else {
@@ -37,12 +41,19 @@ router.beforeEach(async(to, from, next) => {
           // get user info
           // note: roles must be a object array! such as: ['admin'] or ,['developer','editor']
           const viewAuthority = await store.dispatch('user/getInfo')
+<<<<<<< HEAD
           console.log('viewAuthority老骥伏枥-------------',viewAuthority)
           // console.log('roles...', roles)
 
           // generate accessible routes map based on roles
           const accessRoutes = await store.dispatch('permission/generateRoutes', viewAuthority)
           console.log('accessRoutes老骥伏枥-------------',accessRoutes)
+=======
+
+          // generate accessible routes map based on roles
+          const accessRoutes = await store.dispatch('permission/generateRoutes', viewAuthority)
+
+>>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
           // dynamically add accessible routes
           router.addRoutes(accessRoutes)
 
@@ -50,7 +61,7 @@ router.beforeEach(async(to, from, next) => {
           // set the replace: true, so the navigation will not leave a history record
           next({ ...to, replace: true })
         } catch (error) {
-          console.log('error...', error)
+          console.log('error...', error);
           // remove token and go to login page to re-login
           // await store.dispatch('user/resetToken')
           // Message.error(error || 'Has Error')

@@ -1,4 +1,4 @@
-import { login, logout,getInfo,getViewAuthority} from '@/api/user'
+import { login, logout, getInfo,getViewAuthority } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
 
@@ -28,8 +28,8 @@ const mutations = {
   SET_ROLES: (state, roles) => {
     state.roles = roles
   },
-  SET_VIEWAUTHORITY: (state,viewAuthority) => {
-    state.viewAuthority = viewAuthority
+  SET_VIEWAUTHORITY:(state,viewAuthority)=>{
+    state.viewAuthority=viewAuthority
   }
 }
 
@@ -39,11 +39,11 @@ const actions = {
   async login({ commit }, userInfo) {
     const { username, password } = userInfo
     const res = await login({ user_name: username, user_pwd: password })
-    // console.log('res...', res);
     setToken(res.token)
   },
 
   // get user info
+
   async getInfo({ commit, state }) {
     let userInfo = await getInfo()
     console.log('userInfo...',userInfo);
@@ -80,6 +80,16 @@ const actions = {
       // reject(error)
       // })
     // })
+
+  getInfo({ commit, state }) {
+    return new Promise((resolve, reject) => {
+
+      const roles = ['admin']
+      commit('SET_ROLES', roles)
+      resolve({ roles })
+
+    })
+>>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
   },
 
   // user logout

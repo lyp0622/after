@@ -1,5 +1,4 @@
 import request from '@/utils/request'
-
   //考试类型
   export function examType() {
     return request({

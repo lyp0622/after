@@ -3,6 +3,16 @@
       <main>
           <h2>查看试题</h2>
            <div class="box">
+<<<<<<< HEAD
+=======
+                    <span>课程类型</span>
+                      <span v-for="(item,index) in keList" :key="index" class="lei">
+                          {{item.subject_text}}
+                      </span>
+           </div>
+           <div class="content">
+
+>>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
                   <div class="bo">
                     <div class="type"> 
                     <span>课程类型:</span>
@@ -34,8 +44,9 @@
                             </el-option>
                         </el-select>
                     </el-form-item>
+          
                     <el-form-item>
-                            <el-button type="primary" @click="submitForm('ruleForm')" class="btn">查询</el-button>
+                        <el-button type="primary" @click="submitForm('ruleForm')" class="btn">查询</el-button>
                     </el-form-item>
                 </el-form>
                       </span>
@@ -50,7 +61,11 @@
                       <span class="three">{{item.exam_name}}</span>
                     </p>
                     <span class="pull">{{item.user_name}}发布</span>
+<<<<<<< HEAD
                     <span class="edite" @click.stop="compile(item)">编辑</span>
+=======
+                    <a href="" class="edite">编辑</a>
+>>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
               </div>
            </div>
       </main>
@@ -59,7 +74,24 @@
 <script>
 import {mapActions, mapState} from 'vuex'
  export default {
+<<<<<<< HEAD
     data() {
+=======
+     computed: {
+       ...mapState({
+           keList: state => state.exam.keList,
+       })
+   },
+    methods:{
+      ...mapActions({
+        keType:'exam/keType',
+      })
+    },
+     created(){
+       this.keType()
+   },
+      data() {
+>>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
       return {
         ruleForm: {
           exam_id:'',
@@ -83,6 +115,7 @@ import {mapActions, mapState} from 'vuex'
            keList: state => state.exam.keList,
            tiList: state => state.exam.tiList,
            gaiList:state=>state.exam.gaiList,
+          //  includesList:state=>state.exam.includesList
        })
    },
     methods: {
@@ -95,16 +128,21 @@ import {mapActions, mapState} from 'vuex'
         console.log(index)
       },
       submitForm(formName) {
-        console.log('333333333',this.keList[this.curIndex])
+        console.log(this.keList[this.curIndex])
         this.ruleForm.subject=this.keList[this.curIndex]?this.keList[this.curIndex].subject_id:''
+        
         this.$refs[formName].validate(() => {
         this.includesType({ruleForm:this.ruleForm})
+            // includesType(this.ruleForm)
+              //  this.includesType()
+          
         });
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
       tiao(item){
+<<<<<<< HEAD
          this.$router.push({
            path:'detail',
            query:{item}
@@ -117,8 +155,12 @@ import {mapActions, mapState} from 'vuex'
              item
            }
          })
+=======
+        console.log(item)
+       
+>>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
       },
-      ...mapActions({
+       ...mapActions({
         examType:'exam/examType',
         keType:'exam/keType',
         tiType:'exam/tiType',
@@ -126,12 +168,12 @@ import {mapActions, mapState} from 'vuex'
         includesType:'exam/includesType'
       })
     },
-      created(){
-        this.examType(),
-        this.keType(),
-        this.tiType(),
-        this.gaiType(),
-        this.includesType()
+     created(){
+       this.examType(),
+       this.keType(),
+       this.tiType(),
+       this.gaiType(),
+       this.includesType()
    },
 }
 </script>
@@ -180,6 +222,7 @@ import {mapActions, mapState} from 'vuex'
         border-radius: 2%;
     }
     .bo{
+
         span{
         margin-left: 30px;
         margin-top: 10px
@@ -227,6 +270,7 @@ import {mapActions, mapState} from 'vuex'
       padding: 0px 10px 0px 10px;
       background:   #fff7e6;
       border: 1px solid #ffd591
+   
    }
    .pull{
      color: #5339fd;
