@@ -127,7 +127,6 @@ export default {
           number:this.number,
           start_time:parseInt(this.start_time.getTime()/1000),
           end_time: parseInt(this.end_time.getTime()/1000)
-<<<<<<< HEAD
         } 
          this.addtest(data).then(()=>{
                  this.$router.push({
@@ -137,10 +136,6 @@ export default {
 
          
        
-=======
-        }
-         this.addtest(data)
->>>>>>> szw
       }
     }
   },

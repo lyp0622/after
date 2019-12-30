@@ -25,4 +25,3 @@ const state = {
     mutations,
     actions
   }
-  

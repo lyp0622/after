@@ -62,7 +62,11 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: 'I18n',
     externalLink: 'External Link',
-    profile: 'Profile'
+    profile: 'Profile',
+    testquestionmanagement:'Testquestionmanagement',
+    additem:'Additem',
+    testquestionclassification:'Testquestionclassification',
+    checktheitem:'Checktheitem'
   },
   navbar: {
     dashboard: 'Dashboard',

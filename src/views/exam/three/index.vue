@@ -3,16 +3,6 @@
       <main>
           <h2>查看试题</h2>
            <div class="box">
-<<<<<<< HEAD
-=======
-                    <span>课程类型</span>
-                      <span v-for="(item,index) in keList" :key="index" class="lei">
-                          {{item.subject_text}}
-                      </span>
-           </div>
-           <div class="content">
-
->>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
                   <div class="bo">
                     <div class="type"> 
                     <span>课程类型:</span>
@@ -61,11 +51,7 @@
                       <span class="three">{{item.exam_name}}</span>
                     </p>
                     <span class="pull">{{item.user_name}}发布</span>
-<<<<<<< HEAD
                     <span class="edite" @click.stop="compile(item)">编辑</span>
-=======
-                    <a href="" class="edite">编辑</a>
->>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
               </div>
            </div>
       </main>
@@ -74,24 +60,7 @@
 <script>
 import {mapActions, mapState} from 'vuex'
  export default {
-<<<<<<< HEAD
     data() {
-=======
-     computed: {
-       ...mapState({
-           keList: state => state.exam.keList,
-       })
-   },
-    methods:{
-      ...mapActions({
-        keType:'exam/keType',
-      })
-    },
-     created(){
-       this.keType()
-   },
-      data() {
->>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
       return {
         ruleForm: {
           exam_id:'',
@@ -142,7 +111,6 @@ import {mapActions, mapState} from 'vuex'
         this.$refs[formName].resetFields();
       },
       tiao(item){
-<<<<<<< HEAD
          this.$router.push({
            path:'detail',
            query:{item}
@@ -155,10 +123,6 @@ import {mapActions, mapState} from 'vuex'
              item
            }
          })
-=======
-        console.log(item)
-       
->>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
       },
        ...mapActions({
         examType:'exam/examType',

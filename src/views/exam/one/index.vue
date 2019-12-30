@@ -56,7 +56,7 @@
 import {mapActions, mapState} from 'vuex'
 import {addType} from '@/api/exam'
  export default {
-       data() {
+   data() {
       return {
         ruleForm: {
           questions_stem:'',

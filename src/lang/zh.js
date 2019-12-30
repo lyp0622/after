@@ -62,7 +62,11 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: '国际化',
     externalLink: '外链',
-    profile: '个人中心'
+    profile: '个人中心',
+    testquestionmanagement:'试题管理',
+    additem:'添加试题',
+    testquestionclassification:'试题分类',
+    checktheitem:'查看试题'
   },
   navbar: {
     dashboard: '首页',
@@ -171,5 +175,8 @@ export default {
     tagsView: '开启 Tags-View',
     fixedHeader: '固定 Header',
     sidebarLogo: '侧边栏 Logo'
+  },
+  exam: {
+    title:'添加试题'
   }
 }
