@@ -16,7 +16,7 @@
       :key="imagecropperKey"
       :width="300"
       :height="300"
-      url="https://httpbin.org/post"
+      url="http://123.206.55.50:11000/upload"
       lang-type="en"
       @close="close"
       @crop-upload-success="cropSuccess"
@@ -27,7 +27,8 @@
 <script>
 import ImageCropper from '@/components/ImageCropper'
 import PanThumb from '@/components/PanThumb'
-
+import {mapActions,mapState} from 'vuex'
+import axios from 'axios'
 export default {
   name: 'AvatarUploadDemo',
   components: { ImageCropper, PanThumb },
@@ -38,11 +39,27 @@ export default {
       image: 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191'
     }
   },
+  computed: {
+    ...mapState({
+      userid:state=>state.user.userid
+    })
+  },
   methods: {
-    cropSuccess(resData) {
-      this.imagecropperShow = false
-      this.imagecropperKey = this.imagecropperKey + 1
-      this.image = resData.files.avatar
+    ...mapActions({
+      getInfo:'user/getInfo',
+      userUpdate:'userManagement/userUpdate'
+    }),
+    // cropSuccess(resData) {
+    //   this.imagecropperShow = false
+    //   this.imagecropperKey = this.imagecropperKey + 1
+    //   this.image = resData.files.avatar
+    // },
+    cropSuccess(resData){
+      this.imagecropperShow=false
+      this.imagecropperKey=this.imagecropperKey+1
+      this.image=resData[0].path
+      this.userUpdate({user_id:this.userid,avatar:resData[0].path})
+      this.getInfo()
     },
     close() {
       this.imagecropperShow = false

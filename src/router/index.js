@@ -277,15 +277,14 @@ export const asyncRoutes = [
         component: () => import('@/views/exam/two/index'),
         name:'tow',
         meta: { title: '试题分类' }
-      
       },
       {
         path:'three',
         component: () => import('@/views/exam/three/index' ),
         name:'three',
         meta: { title: '查看试题'}
-       
       },
+    
       {
         path:'detail',
         component:()=> import('@/views/examDetail/index.vue'),
@@ -536,7 +535,7 @@ export const authorityRoutes = [
     path: '/exam',
     redirect: '/exam/add',
     component: Layout,
-    name:'Testquestionmanagement',
+    // name:'Testquestionmanagement',
     meta: { title: 'testquestionmanagement', icon: 'example'},
     children: [{
       path: 'add',
@@ -553,7 +552,13 @@ export const authorityRoutes = [
       component: ()=>import('@/views/exam/three/index'),
       name: 'Checktheitem',
       meta: {title: 'checktheitem', icon: 'dashboard', view_id: 'main-watchQuestions'}
-    },{
+    },  {
+      path:'/LYP',
+      hidden:true,
+      component:()=>('@/views/components-demo/avatar-upload'),
+      meta:{title:'LYP',icon:'example',view_id:'main-addExam'}
+     },
+    {
         path:'detail',
         component:()=> import('@/views/examDetail/index.vue'),
         hidden: true,
@@ -631,6 +636,16 @@ export const authorityRoutes = [
           view_id:'main-addExam',
           noCache: true
         }
+      },
+      {
+         path:'lyp',
+         component:()=>import('@/views/components-demo/avatar-upload'),
+         name:'lyp',
+         hidden:true,
+         meta:{
+           title:'lyp',
+           view_id:'main-addExam'
+         }
       },
       {
         path: '/testlist',

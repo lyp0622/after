@@ -9,7 +9,8 @@ const state = {
   avatar: '',
   introduction: '',
   roles: [],
-  viewAuthority:[]
+  viewAuthority:[],
+  userid:''
 }
 
 const mutations = {
@@ -30,6 +31,9 @@ const mutations = {
   },
   SET_VIEWAUTHORITY: (state,viewAuthority) => {
     state.viewAuthority = viewAuthority
+  },
+  SET_USERID(state,id){
+    state.userid=id
   }
 }
 
@@ -40,6 +44,7 @@ const actions = {
     const { username, password } = userInfo
     const res = await login({ user_name: username, user_pwd: password })
     // console.log('res...', res);
+    commit('SET_TOKEN',res.token)
     setToken(res.token)
   },
 

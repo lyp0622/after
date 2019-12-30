@@ -26,6 +26,11 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
+          <router-link to="/LYP">
+            <el-dropdown-item>
+              上传头像
+            </el-dropdown-item>
+          </router-link>
           <router-link to="/profile/index">
             <el-dropdown-item>
               {{ $t('navbar.profile') }}
@@ -93,6 +98,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
 .navbar {
   height: 50px;
   overflow: hidden;
