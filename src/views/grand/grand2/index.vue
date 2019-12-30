@@ -18,7 +18,8 @@
           </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
-              <el-button  type="success" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+
+              <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -55,7 +56,8 @@ export default {
       dialogFormVisible: false,
       labelPosition: "top",
       ruleForm: {
-        region: "",   
+        region: "",
+        
       },
       formLabelWidth: "70%",
       rules: {
@@ -66,8 +68,9 @@ export default {
   methods: {
     handleAddGrade() {
      this.dialogFormVisible = true;
-     this.title = "添加教室";
-     this.ruleForm.region = "";   
+      this.title = "添加教室";
+      this.ruleForm.region = "";
+     
     },
     // 删除
      handleDelete(index, row) {
@@ -80,12 +83,16 @@ export default {
      handleConfirm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!"); 
+          alert("submit!");
+         
             let params = {};
+         
             params.room_text = this.ruleForm.region;
              createRoom(params).then(res => {
               this.getRoom()
-            }); 
+            });
+       
+       
           this.dialogFormVisible = false;
         } else {
           return false;
@@ -104,6 +111,7 @@ export default {
   computed: {
     ...mapState({ 
       getRoomList: state=>state.room.getRoomList,
+      // getDetailList:state=>state.room.getDetailList,
 
     }),
     

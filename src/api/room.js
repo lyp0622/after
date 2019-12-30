@@ -17,7 +17,7 @@ export function getDetail(data) {
 }
 export function createRoom(data) {
   return request({
-    url:"/manger/room", // 删除教室接口
+    url:"/manger/room", // 增教室接口
     method: 'POST',
     data 
   })

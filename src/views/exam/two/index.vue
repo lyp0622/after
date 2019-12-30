@@ -49,6 +49,7 @@
   </el-table>
   </main>
   </div>
+  
 </template>
 <script>
 import {mapActions, mapState} from 'vuex'
@@ -90,12 +91,9 @@ import {stType,remType} from '@/api/exam'
       ...mapActions({
              getType:'exam/getType'
       })
-    },
-
-     data() {
-      return {
-        tableData4: []
-      }
+     },
+    created(){
+       this.getType()
     }
   }
 </script>
@@ -127,4 +125,8 @@ import {stType,remType} from '@/api/exam'
       height: 30px;
       margin-left: 20px
     }
+ 
+
 </style>
+
+

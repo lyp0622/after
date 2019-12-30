@@ -37,20 +37,20 @@ export function authorityView(params){
 }
 
 //给身份设定api接口权限
-export function setIdentityApi(params){
+export function setIdentityApi(data){
     return request({
         url: '/user/setIdentityApi',
         method: 'post',
-        params
+        data
     })
 }
 
 //给身份设定视图权限
-export function setIdentityView(params){
+export function setIdentityView(data){
     return request({
         url: '/user/setIdentityView',
         method: 'post',
-        params
+        data
     })
 }
 

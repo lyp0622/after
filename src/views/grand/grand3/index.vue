@@ -8,12 +8,12 @@
           </el-form-item>
           <el-form-item prop="region">
             <el-select v-model="ruleForm.region" placeholder="请选择教室号">
-              <el-option :label="item" :value="item" v-for="(item,index) in getRoomList" :key="index"></el-option>
+              <el-option :label="item" :value="item" v-for="(item,index) in roomList" :key="index"></el-option>
             </el-select>
           </el-form-item>
            <el-form-item prop="desc">
             <el-select v-model="ruleForm.desc" placeholder="请选择班级名">
-               <el-option :label="val" :value="val" v-for="(val,ind) in getGrandList" :key="ind"></el-option>
+               <el-option :label="val" :value="val" v-for="(val,ind) in gradeList" :key="ind"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item>
@@ -57,7 +57,7 @@
           </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
-              <el-button type="success" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -77,7 +77,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
 import { deleteStudent } from "@/api/student";
@@ -85,8 +84,8 @@ export default {
   computed: {
     //获取数据
     ...mapState({
-      getGrandList: state => state.student.getGrandList,
-      getRoomList: state => state.student.getRoomList,
+      gradeList: state => state.student.gradeList,
+      roomList: state => state.student.roomList,
       studentList: state => state.student.studentList
     })
   },
@@ -140,7 +139,6 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" scoped>
 .ant-layout {
   display: flex;

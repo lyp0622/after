@@ -44,7 +44,7 @@
                         <el-input type="textarea" v-model="ruleForm.questions_answer"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                        <el-button type="primary" @click="submit('ruleForm')">提交</el-button>
                     </el-form-item>
                 </el-form>
           </div>
@@ -56,7 +56,7 @@
 import {mapActions, mapState} from 'vuex'
 import {addType} from '@/api/exam'
  export default {
-       data() {
+   data() {
       return {
         ruleForm: {
           questions_stem:'',
@@ -70,7 +70,7 @@ import {addType} from '@/api/exam'
         rules: {
           questions_stem: [
             { required: true, message: '请输入题干信息', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+            { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
           ],
           title: [
             { required: true, message: '请输入题目主题', trigger: 'blur' }
@@ -98,7 +98,7 @@ import {addType} from '@/api/exam'
        })
    },
     methods: {
-      submitForm(formName) {
+      submit(formName) {
         console.log(formName)
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -155,3 +155,8 @@ import {addType} from '@/api/exam'
       
     // }
 </style>
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
