@@ -142,6 +142,7 @@ export default {
       apiALL: state => state.author.apiALL, //所有api接口权限数据
       userNPID: state => state.author.userNPID, //展示身份数据
       allAuthorViews: state => state.author.allAuthorViews, //展示身份和视图权限关系的数据
+      examS: state => state.author.examS, //所有用户信息数据 
     })
   },
   methods:{
@@ -151,6 +152,7 @@ export default {
         authorIDentity: "author/authorIDentity",
         authorViews: "author/authorViews",
         authorityApi: "author/authorityApi",
+        authorAll: "author/authorAll",
       }),
       addAuthor(){ // one的事件
         this.$refs.select.$el.style="display:none"
@@ -168,22 +170,21 @@ export default {
 
         //利用filter进行筛选，把相对应的数据返回去  =》 添加用户的参数(identity_text) 用户展示的参数(identity_id/下拉框选中的每一项进行从新的赋值)
         let data = this.userNPID.filter(item => item.identity_text == identity_id)
-
-        if(this.$refs.select.$el.style="display:block"){
-            console.log(data[0].identity_id)
-            // allShenFen
-            console.log(this.allShenFen)
-            // identity_id: "63no9p-8y0k4"  身份id 正确
-            // user_id: "48jpzn-dxat5g" 用户id user_name的id(手动输入的名字的id值)
-            // user_name: "dddd"   用户名 正确
-            // user_pwd: "ASasa232!!" 手动输入的密码
-            let datas = this.examS.filter(item => item.user_name ==  this.ruleForm.value)
-            userNew({ user_name: user_name, user_pwd: user_pwd ,identity_id: data[0].identity_id ,user_id: datas[0].user_id}).then(res=>{
-              console.log(res,'newadd')
+        let datas = this.examS.filter(item => item.user_name ==  this.ruleForm.value)
+        
+        if(this.$refs.select.$el.style="display:none"){
+            //密码必须为 一个大写字母+一个小写字母+一个数字+一个特殊字符 == 长度必须大于6
+           addYongHu({ user_name: user_name, user_pwd: user_pwd ,identity_id: data[0].identity_id }).then(res=>{
+             console.log(res,'2222222222222222222222222')
+           })
+        }else {
+          userNew({ user_name: user_name, 
+                      user_pwd: user_pwd ,
+                      identity_id: data[0].identity_id ,
+                      user_id: datas[0].user_id 
+                      }).then(res=>{
+              console.log(res,'44444444444444444444444444444')
             })
-        }else{
-          //密码必须为 一个大写字母+一个小写字母+一个数字+一个特殊字符 == 长度必须大于6
-           addYongHu({ user_name: user_name, user_pwd: user_pwd ,identity_id: data[0].identity_id })
         }
       },
       resetForm(formName) {// one的事件
@@ -214,15 +215,9 @@ export default {
       submitFormFive() { //five的事件 未完成(第二个参数传递有误)
         let identity_id = this.ruleForm.valuesFive 
         let data = this.userNPID.filter(item => item.identity_text ==  identity_id)  //正确
-        console.log(data)
-        console.log(data[0].identity_id) 
 
         let api_authority_id = this.ruleForm.valuesFiveTwo
-        console.log(api_authority_id)
-        console.log(this.apiALL)
         let datanew = this.apiALL.filter(item=>item.api_authority_text == api_authority_id)
-        console.log(datanew)
-        // console.log(datanew[0].identity_api_authority_relation_id)
         setIdentityApi({
           identity_id: data[0].identity_id,
           api_authority_id: datanew[0].api_authority_id
@@ -257,6 +252,8 @@ export default {
     this.authorIDentity()
     this.authorViews();
     this.authorityApi()
+        this.authorAll();
+
   }
 }
 </script>

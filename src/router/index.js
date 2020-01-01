@@ -171,41 +171,7 @@ export const asyncRoutes = [
         }
       }
     ]
-  },
-
-
-  {
-    //用户管理
-    path: '/user', 
-    component: Layout,
-    redirect: '/user/index',
-    name: 'User',
-    meta: {
-      title: '用户管理',
-      icon: 'user'
-    },
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/user/index'),
-        name: 'User',
-        meta: { title: '用户展示'}
-      },
-      {
-        path: 'add',
-        component: () => import('@/views/user/add'),
-        name: 'User',
-        meta: { title: '添加用户'}
-      },
-      // {
-      //   path: 'user',
-      //   component: () => import('@/views/user/user'),
-      //   name: 'User',
-      //   meta: { title: '角色管理'}
-      // }
-    ]
-  },  
-
+  }, 
   {
     path: '/icon',
     component: Layout,
@@ -220,7 +186,7 @@ export const asyncRoutes = [
   },
 
   /** when your routing map is too long, you can split it into small modules **/
-  componentsRouter,
+  // componentsRouter,
   chartsRouter,
   nestedRouter,
   tableRouter,
@@ -257,102 +223,6 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/exam',
-    component: Layout,
-    redirect:'/exam/index',
-    name:'exam',
-    meta:{
-      title:'试题管理',
-      icon:'user'
-    },
-    children: [
-      {
-        path:'one',
-        component: () => import('@/views/exam/one/index'),
-        name:'one',
-        meta: { title: '添加试题',view_id: 'main-addQuestions' }
-      },
-      {
-        path:'two',
-        component: () => import('@/views/exam/two/index'),
-        name:'tow',
-        meta: { title: '试题分类' }
-      
-      },
-      {
-        path:'three',
-        component: () => import('@/views/exam/three/index' ),
-        name:'three',
-        meta: { title: '查看试题'}
-       
-      },
-      {
-        path:'detail',
-        component:()=> import('@/views/examDetail/index.vue'),
-        hidden: true
-      },
-      {
-        path:'edit',
-        component:()=> import('@/views/examedit/index.vue'),
-        hidden: true
-      }
-    ]
-  },
-  {
-    path: '/mark',
-    component: Layout,
-    redirect:'/mark/index',
-    name:'mark',
-    meta:{
-      title:'批卷',
-      icon:'user'
-    },
-    children: [
-      {
-        path:'first',
-        component: () => import('@/views/mark/first/index'),
-        name:'Page',
-        meta: { title: '待批班级' }
-      },
-      {
-        path:'second',
-        component: () => import('@/views/mark/second/index'),
-        name:'second',
-        meta: { title: '试题分类' }
-      }
-    ]
-  },
-  {
-    path: '/grand',
-    component: Layout,
-    redirect:'/grand/index',
-    name:'grand',
-    meta:{
-      title:'试题管理',
-      icon:'example'
-    },
-    children: [
-      {
-        path:'grand1',
-        component: () => import('@/views/grand/grand1/index'),
-        name:'grand1',
-        meta: { title: '班级管理' }
-      },
-      {
-        path:'grand2',
-        component: () => import('@/views/grand/grand2/index'),
-        name:'tow',
-        meta: { title: '教室管理' }
-      },
-      {
-        path:'grand3',
-        component: () => import('@/views/grand/grand3/index'),
-        name:'three',
-        meta: { title: '学生管理' }
-      }
-    ]
-  },
-  {
     path: '/tab',
     component: Layout,
     children: [
@@ -364,8 +234,6 @@ export const asyncRoutes = [
       }
     ]
   },
- 
-
   {
     path: '/error',
     component: Layout,
@@ -390,7 +258,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: '/error-log',
     component: Layout,
@@ -403,7 +270,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: '/excel',
     component: Layout,
@@ -440,7 +306,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: '/zip',
     component: Layout,
@@ -457,9 +322,7 @@ export const asyncRoutes = [
       }
     ]
   },
-
-  {
-    path: '/pdf',
+  { path: '/pdf',
     component: Layout,
     redirect: '/pdf/index',
     children: [
@@ -476,7 +339,6 @@ export const asyncRoutes = [
     component: () => import('@/views/pdf/download'),
     hidden: true
   },
-
   {
     path: '/theme',
     component: Layout,
@@ -489,7 +351,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: '/clipboard',
     component: Layout,
@@ -502,7 +363,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: '/i18n',
     component: Layout,
@@ -532,42 +392,135 @@ export const asyncRoutes = [
 
 
 export const authorityRoutes = [
-  {
+  { //试题管理
     path: '/exam',
     redirect: '/exam/add',
     component: Layout,
-    meta: { title: '试题管理', icon: 'example'},
+    meta: { title: 'exam.title', icon: 'example'},
     children: [{
       path: 'add',
       component: ()=>import('@/views/exam/one/index'),
       name: 'Exam',
-      meta: {title: '添加试题', icon: 'dashboard', view_id: 'main-addQuestions'}
+      meta: {title: 'exam.add', icon: 'dashboard', view_id: 'main-addQuestions'}
     },{
       path: 'classify',
       component: ()=>import('@/views/exam/two/index'),
       name: 'Exam',
-      meta: {title: '试题分类', icon: 'dashboard', view_id: 'main-questionsType'}
+      meta: {title: 'exam.classify', icon: 'dashboard', view_id: 'main-questionsType'}
     },{
       path: 'view',
       component: ()=>import('@/views/exam/three/index'),
       name: 'Exam',
-      meta: {title: '查看试题', icon: 'dashboard', view_id: 'main-watchQuestions'}
-    },{
+      meta: {title: 'exam.view', icon: 'dashboard', view_id: 'main-watchQuestions'}
+    },
+    {
         path:'detail',
         component:()=> import('@/views/examDetail/index.vue'),
         hidden: true,
         meta:{view_id: 'main-watchQuestions'} 
-      },{
+      },
+      {
         path:'edit',
         component:()=> import('@/views/examedit/index.vue'),
         hidden: true,
         meta:{view_id: 'main-watchQuestions'}  
       }
-  ]
+    ]
+  },
+  {    //用户管理
+    path: '/user', 
+    component: Layout,
+    redirect: '/user/index',
+    name: 'User',
+    meta: { title: 'author.title', icon: 'user'},
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        name: 'User',
+        meta: { title: 'author.look', view_id: "main-showUser"}
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/user/add'),
+        name: 'User',
+        meta: { title: 'author.add', view_id: "main-addUser"}
+      }
+    ]
+  },
+  {   //考试管理
+    path: '/testmsg',
+    component: Layout,
+    meta: {
+      title: '考试管理',
+      icon: 'form'
+    },
+    children: [
+      {
+        path: '/addtest',
+        component: () => import('@/views/test/addtest'),
+        name: 'Addtest',
+        meta: {
+          title: '添加考试',
+          view_id:'main-addExam',
+          noCache: true
+        }
+      },
+      {
+        path: '/testlist',
+        component: () => import('@/views/test/testlist'),
+        name: 'Testlist',
+        meta: {
+          title: '试卷列表',
+          noCache: true,
+          view_id:'main-examList',
+        }
+      },
+      {
+        path:"/edit",
+        hidden:true,
+        component:()=>import("@/views/test/editTest"),
+        meta:{view_id: "main-examEdit"}
+      },
+      {
+        path:"/detail",
+        hidden:true,
+        component:()=>import("@/views/test/testDetail"),
+        meta:{view_id: "main-examList"}
+      },
+    ]
+  },
+  {
+    path: '/grand',
+    component: Layout,
+    redirect:'/grand/index',
+    name:'grand',
+    meta:{
+      title:'班级管理',
+      icon:'example'
+    },
+    children: [
+      {
+        path:'grand1',
+        component: () => import('@/views/grand/grand1/index'),
+        name:'grand1',
+        meta: { title: '班级管理',view_id: "main-grade" }
+      },
+      {
+        path:'grand2',
+        component: () => import('@/views/grand/grand2/index'),
+        name:'tow',
+        meta: { title: '教室管理' ,view_id: "main-room"}
+      },
+      {
+        path:'grand3',
+        component: () => import('@/views/grand/grand3/index'),
+        name:'three',
+        meta: { title: '学生管理',view_id: "main-student" }
+      }
+    ]
   }
 ]
-
-
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support

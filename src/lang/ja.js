@@ -1,4 +1,5 @@
 export default {
+  i18n: '国際化',
   route: {
     dashboard: 'トップ',
     documentation: 'ドキュメント',
@@ -62,7 +63,18 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: '多言語',
     externalLink: '外部リンク',
-    profile: 'プロフィール'
+    profile: 'プロフィール',
+    exam: {
+      title: '試験問題の管理',
+      add: '試験問題を追加',
+      view: '試験問題を見る',
+      classify: '試験問題の分類'
+    },
+    author: {
+      title: 'ユーザー管理',
+      look: 'ユーザディスプレイ',
+      add: 'ユーザを追加'
+    }
   },
   navbar: {
     dashboard: 'トップ',

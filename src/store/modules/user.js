@@ -81,15 +81,14 @@ const actions = {
       // })
     // })
 
-  getInfo({ commit, state }) {
-    return new Promise((resolve, reject) => {
+  // getInfo({ commit, state }) {
+  //   return new Promise((resolve, reject) => {
 
-      const roles = ['admin']
-      commit('SET_ROLES', roles)
-      resolve({ roles })
+  //     const roles = ['admin']
+  //     commit('SET_ROLES', roles)
+  //     resolve({ roles })
 
-    })
->>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
+  //   })
   },
 
   // user logout

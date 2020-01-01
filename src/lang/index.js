@@ -12,6 +12,16 @@ import jaLocale from './ja'
 
 Vue.use(VueI18n)
 
+//   Vue.use(VueI18n, {
+//    i18n: function(path, options) {
+//      let value = i18n.t(path, options)
+//      if (value !== null && value !== undefined) {
+//        return value
+//      }
+//      return ''
+//    }
+//  })
+
 const messages = {
   en: {
     ...enLocale,

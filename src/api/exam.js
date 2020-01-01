@@ -23,16 +23,12 @@ import request from '@/utils/request'
     })
   }
   
-
-
-
   export function gaiType() {
     return request({
       url: '/exam/questions/condition',
       method: 'get',
     })
   }
-
 
   export function addType(data) {
     console.log(data)
@@ -42,8 +38,6 @@ import request from '@/utils/request'
       data
     })
   }
-
-
 
     //添加试题类型
     export function stType(data) {
@@ -74,9 +68,6 @@ import request from '@/utils/request'
           })
         }
 
-
-
-        
     //按条件获取试题
     export function includesType(data) {
       return request({
@@ -94,7 +85,3 @@ import request from '@/utils/request'
         data
       })
     }
-
-    
-
-

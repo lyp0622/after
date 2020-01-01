@@ -91,23 +91,10 @@ import {stType,remType} from '@/api/exam'
       ...mapActions({
              getType:'exam/getType'
       })
-<<<<<<< HEAD
      },
     created(){
        this.getType()
     }
-=======
-    },
-
-     data() {
-      return {
-        tableData4: []
-      }
-     },
-    created(){
-       this.getType()
-     }
->>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
   }
 </script>
 
@@ -138,7 +125,6 @@ import {stType,remType} from '@/api/exam'
       height: 30px;
       margin-left: 20px
     }
-<<<<<<< HEAD
   .el-table__body-el-table__body-wrapper is-scrolling-none{
     height: 1000px;
     }
@@ -146,6 +132,3 @@ import {stType,remType} from '@/api/exam'
 </style>
 
 
-=======
-</style>
->>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5

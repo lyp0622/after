@@ -25,6 +25,7 @@ module.exports = {
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
   publicPath: '/',
+  // publicPath: '/1704B/songzhiwei/after/', //打包上线后修改
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -40,20 +41,9 @@ module.exports = {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-<<<<<<< HEAD
 
         // target: `http://127.0.0.1:${port}/mock`,  框架默认的地址
-        // target: `http://127.0.0.1:${port}/mock`,
-
-
-        target: `http://169.254.0.62:7002`,
-
-        // target: `http://127.0.0.1:${port}/mock`,
-
-=======
-        // target: `http://127.0.0.1:${port}/mock`,
-        target: `http://169.254.0.62:7002`,
->>>>>>> 7df34de40e6a213800c2a4c6dbd27535a43627b5
+        target: `http://169.254.12.194:7002`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''

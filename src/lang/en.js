@@ -1,4 +1,5 @@
 export default {
+  i18n: 'Internationalization',
   route: {
     dashboard: 'Dashboard',
     documentation: 'Documentation',
@@ -62,7 +63,18 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: 'I18n',
     externalLink: 'External Link',
-    profile: 'Profile'
+    profile: 'Profile',
+    exam: {
+      title: 'Exam Mange',
+      add: 'Add',
+      view: 'View',
+      classify: 'Classify'
+    },
+    author: {
+      title: 'user management',
+      look: 'User display',
+      add: 'Add user'
+    }
   },
   navbar: {
     dashboard: 'Dashboard',

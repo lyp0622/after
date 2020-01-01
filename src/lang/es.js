@@ -1,4 +1,5 @@
 export default {
+  i18n: 'Internacionalización',
   route: {
     dashboard: 'Panel de control',
     documentation: 'Documentación',
@@ -62,7 +63,18 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: 'I18n',
     externalLink: 'Enlace externo',
-    profile: 'Profile'
+    profile: 'Profile',
+    exam: {
+      title: 'Gestión de pruebas',
+      add: 'Añadir prueba',
+      view: 'Ver prueba',
+      classify: 'Clasificación de ensayo'
+    },
+    author: {
+      title: 'Gestión de usuarios',
+      look: 'Exposición del usuario',
+      add: 'Añadir usuario'
+    }
   },
   navbar: {
     logOut: 'Salir',

@@ -11,22 +11,27 @@
       Change Avatar
     </el-button>
 
-    <image-cropper
+    <image-cropper  
       v-show="imagecropperShow"
       :key="imagecropperKey"
       :width="300"
       :height="300"
-      url="https://httpbin.org/post"
+      url="http://123.206.55.50:11000/upload"
       lang-type="en"
       @close="close"
       @crop-upload-success="cropSuccess"
-    />
+    /><!--上传头像F  url需要更改为线上的API地址-->
+
+    <!-- url="//service.jasonandjay.com/upload"     url="http://123.206.55.50:11000/upload" --> <!--打包时需要书写的-->
   </div>
 </template>
 
 <script>
 import ImageCropper from '@/components/ImageCropper'
 import PanThumb from '@/components/PanThumb'
+import { mapActions, mapState, mapMutations } from "vuex" //上传头像G
+import axios from "axios"  //上传头像H
+// import { userNew } from '@/api/addAuthor.js'
 
 export default {
   name: 'AvatarUploadDemo',
@@ -39,10 +44,19 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+       SET_AVATAR: "user/SET_AVATAR"   //上传头像I
+    }),
     cropSuccess(resData) {
+      console.log(resData)
       this.imagecropperShow = false
-      this.imagecropperKey = this.imagecropperKey + 1
-      this.image = resData.files.avatar
+      this.imagecropperKey = this.imagecropperKey + 1 //上传头像J
+      this.image = resData[0].path  //上传头像K
+      let data = this.SET_AVATAR(resData[0].path) //上传头像L
+      // let data = {}
+      // data.id=
+      // this.userNew()
+      localStorage.setItem('key',this.image)
     },
     close() {
       this.imagecropperShow = false
@@ -52,10 +66,3 @@ export default {
 </script>
 
 <style scoped>
-  .avatar{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-  }
-</style>
-
