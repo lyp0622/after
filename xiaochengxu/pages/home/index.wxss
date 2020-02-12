@@ -1,0 +1,33 @@
+/* pages/home/index.wxss */
+
+.box{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.header{
+  width: 100%;
+  height: 35px;
+}
+.center{
+  width: 100%;
+  height: 419px;
+}
+.txt{
+  width: 100%;
+  height: 35px;
+  display: inline-block;
+  text-align: center;
+  font-size: 15px;
+  line-height: 25px;
+}
+.footer{
+  width: 100%;
+  height: 50px;
+  background: #666;
+  display: flex;
+  justify-content: space-around;
+  line-height: 50px;
+  color: #eee;
+ }
