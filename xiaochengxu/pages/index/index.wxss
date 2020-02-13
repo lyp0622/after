@@ -1,21 +1,15 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* 
+  小程序中的响应式单位
+  假设宽度750*1334，iphone6，7，8的尺寸，也是绝大多数公司移动端的标准尺寸
+  1rem = 100px;
+  1rpx = 1px;
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
 
-.userinfo-nickname {
-  color: #aaa;
-}
+=>无论屏幕宽度怎么变化，1rem = 100rpx
+*/
 
-.usermotto {
-  margin-top: 200px;
+progress{
+  width: 100%;
+  font-size: 30rpx;
+  height: 60rpx;
 }

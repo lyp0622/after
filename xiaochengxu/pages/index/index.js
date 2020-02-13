@@ -4,51 +4,58 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    birthday: 0,
+    year: 0,
+    month: 0,
+    distance: 0,
+    end: '',
+    percent: 0
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  onLoad(options){
+    // 在这里获取路由传参，赋给this
+  },
+  onReady(){
+    // 不怎么使用
+  },
+  onShow(){
+    // 统一在这里发起网络请求和一些初始化的工作
+    let now = new Date();
+    this.setData({
+      end: `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2, '0')}`
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+  onHide(){
+
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  onUnload(){
+
+  },
+  changeBirthday(e){
+    console.log('e...', e);
+    let value = e.detail.value.split('-');
+    let distance = this.getDistanceMonth(e.detail.value, this.data.end);
+    
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      birthday: e.detail.value,
+      year: value[0],
+      month: value[1],
+      distance,
+      percent: (distance/9).toFixed(0)
+    })
+  },
+  // pre 2020-02 now 2019-12
+  getDistanceMonth(pre, now){
+    let preArr = pre.split('-'),
+        nowArr = now.split('-');
+    return Number((nowArr[0]-preArr[0])*12) + Number(nowArr[1]-preArr[1])
+  },
+  clear(){
+    let now = new Date();
+    this.setData({
+      birthday: 0,
+      month: String(now.getMonth()+1).padStart(2, '0'),
+      year: now.getFullYear(),
+      distance: 0
     })
   }
 })
