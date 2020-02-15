@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/1704B/liuyupeng/txxg/static/css/main.7688ac38.chunk.css",
+    "main.js": "/1704B/liuyupeng/txxg/static/js/main.0d5c679e.chunk.js",
+    "main.js.map": "/1704B/liuyupeng/txxg/static/js/main.0d5c679e.chunk.js.map",
+    "runtime-main.js": "/1704B/liuyupeng/txxg/static/js/runtime-main.cb255370.js",
+    "runtime-main.js.map": "/1704B/liuyupeng/txxg/static/js/runtime-main.cb255370.js.map",
+    "static/js/2.0137b206.chunk.js": "/1704B/liuyupeng/txxg/static/js/2.0137b206.chunk.js",
+    "static/js/2.0137b206.chunk.js.map": "/1704B/liuyupeng/txxg/static/js/2.0137b206.chunk.js.map",
+    "index.html": "/1704B/liuyupeng/txxg/index.html",
+    "precache-manifest.9d26762992c4ddf38c9fb51ef834cfb2.js": "/1704B/liuyupeng/txxg/precache-manifest.9d26762992c4ddf38c9fb51ef834cfb2.js",
+    "service-worker.js": "/1704B/liuyupeng/txxg/service-worker.js",
+    "static/css/main.7688ac38.chunk.css.map": "/1704B/liuyupeng/txxg/static/css/main.7688ac38.chunk.css.map",
+    "static/js/2.0137b206.chunk.js.LICENSE.txt": "/1704B/liuyupeng/txxg/static/js/2.0137b206.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cb255370.js",
+    "static/js/2.0137b206.chunk.js",
+    "static/css/main.7688ac38.chunk.css",
+    "static/js/main.0d5c679e.chunk.js"
+  ]
+}
