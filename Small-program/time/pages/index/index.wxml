@@ -1,0 +1,22 @@
+<!--index.wxml-->
+
+<view class="userinfo">
+  <text class="tit">中国现阶段人均寿命900个月</text>
+  <text>{{years}}年 {{month}}月至今 {{ss}}个月</text>
+  <picker mode="date" value="{{date}}"   fields='month' bindchange="bindDateChange">
+    <view class="picker">
+      换一个日期
+    </view>
+  </picker>
+  <view class="usermotto">
+    <view class="bat" >
+       
+      <view class="batn" style="height:{{lyp}}%">
+         <text class="cen">{{lyp}}</text>  
+      </view>
+      
+    </view>
+    <text>出门走好路，出口说好话，出手做好事</text>
+  </view>
+
+</view>
