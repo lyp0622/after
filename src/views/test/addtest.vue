@@ -8,7 +8,7 @@
             <span>试卷称</span>
           </label>
           <div>
-            <el-input v-model="testNamevalue" placeholder="试卷名称" />
+            <el-input v-model="title" placeholder="试卷名称"/>
           </div>
         </div>
         <!-- 选择考试的类型 -->
@@ -17,12 +17,12 @@
             <span>选择考试的类型</span>
           </label>
           <div>
-            <el-select v-model="testype" placeholder="请选择">
+            <el-select v-model="exam_id" placeholder="请选择">
               <el-option
                 v-for="(item,index) in testType"
                 :key="index"
                 :label="item.exam_name"
-                :value="item.exam_name"
+                :value="item.exam_id"
               />
             </el-select>
           </div>
@@ -34,12 +34,12 @@
             <span>选择课程</span>
           </label>
           <div>
-            <el-select v-model="addclass" placeholder="请选择课程">
+            <el-select v-model="subject_id" placeholder="请选择课程">
               <el-option
                 v-for="(item,index) in classList"
                 :key="index"
                 :label="item.subject_text"
-                :value="item.subject_text"
+                :value="item.subject_id"
               />
             </el-select>
           </div>
@@ -51,7 +51,7 @@
           </label>
           <div>
             <el-input-number
-              v-model="num"
+              v-model="number"
               class="quesnum"
               controls-position="right"
               :min="3"
@@ -61,15 +61,16 @@
         </div>
         <!--考试时间  -->
         <div>
+          <p>考试时间</p>
           <div class="block">
-            <p>考试时间</p>
-            <el-date-picker
-              v-model="timing"
-              type="daterange"
-              start-placeholder="开始日期"
-              end-placeholder="结束日期"
-              :default-time="['00:00:00', '23:59:59']"
-            />
+            <div class="block">
+              <el-date-picker v-model="start_time" type="datetime" placeholder="选择开始时间"></el-date-picker>
+            </div>
+          </div>
+          <div class="block">
+            <div class="block">
+              <el-date-picker v-model="end_time" type="datetime" placeholder="选择结束时间"></el-date-picker>
+            </div>
           </div>
         </div>
         <!-- 提交按钮 -->
@@ -82,17 +83,18 @@
 </template>
 
 <script>
-import { addtest } from '@/api/addtestpaper'
-import { mapState, mapActions } from 'vuex'
+import { addtest } from "@/api/addtestpaper";
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      addclass: '',
-      testype: '',
-      num: '',
-      timing: '',
-      testNamevalue: ''
-    }
+      subject_id: "",
+      exam_id: "",
+      number: "",
+      start_time:"",
+      end_time:"",
+      title: ""
+    };
   },
   computed: {
     ...mapState({
@@ -102,33 +104,39 @@ export default {
   },
   methods: {
     ...mapActions({
-      getTestType: 'testcont/getTestType',
-      getClassList: 'testcont/getClassList',
-      addtest: 'testpaper/addtest'
+      getTestType: "testcont/getTestType",
+      getClassList: "testcont/getClassList",
+      addtest: "testpaper/addtest"
     }),
     createPaper() {
-      if (this.addclass == '' || this.testype == '' || this.num == '' || this.timing == '' || this.testNamevalue == '') {
-        alert('信息不全')
+      if (
+        this.subject_id == "" ||
+        this.exam_id == "" ||
+        this.number == "" ||
+        this.start_time == "" ||
+        this.title == ""||
+        this.end_time==""
+      ) {
+        alert("信息不全");
       } else {
-        console.log(this.timing[0], this.timing[1])
-        const title = this.testNamevalue
-        // let subject_id=this.
-        //  console.log(this.testNamevalue,this.testype,this.num,this.timing,this.addclass);
-        this.addtest(this.testNamevalue, this.testype, this.num, this.timing, this.addclass)
+        console.log(parseInt(this.start_time.getTime()/1000), parseInt(this.end_time.getTime()/1000),this.subject_id,this.exam_id);
+        const title = this.testNamevalue;
+        this.addtest(
+        );
       }
     }
   },
   created() {
-    this.getTestType()
-    this.getClassList()
+    this.getTestType();
+    this.getClassList();
   },
   mounted() {}
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .addtest-box {
-background: #f0f2f5;
+  background: #f0f2f5;
   width: 100%;
   height: 100%;
   padding: 0px 24px 24px;

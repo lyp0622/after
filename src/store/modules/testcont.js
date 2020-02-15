@@ -20,12 +20,12 @@ const mutations = {
 const actions = {
   async getTestType({ commit }, payload) {
     const res = await getTestType()
-    console.log(res.data)
+    console.log(res,"type")
     commit('setTestType', res)
   },
   async getClassList({ commit }, payload) {
     const res = await getClassList()
-    console.log(res)
+    console.log(res,"class")
     commit('setClassList', res.data)
   }
 }
