@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/mb/index",
+    "pages/xg/logs",
+    "pages/sj/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "有爱清单",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "position": "top",
+    "list": [
+      {
+        "pagePath": "pages/mb/index",
+        "text": "目标"
+      },
+      {
+        "pagePath": "pages/xg/logs",
+        "text": "习惯"
+      },
+      {
+        "pagePath": "pages/sj/logs",
+        "text": "手记"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
