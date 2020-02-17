@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "target":"../../component/target/index",
+    "note":"../../component/note/index",
+    "habit":"../../component/habit/index"
+  }
+}

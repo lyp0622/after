@@ -1,0 +1,35 @@
+/* pages/list/index.wxss */
+
+.tab {
+  width: 96%;
+  height: 100%;
+  margin: 0rpx auto;
+}
+
+.tab .btns {
+  height: 100rpx;
+  background: #eee;
+  display: flex;
+}
+
+.tab .btns view {
+  flex: 1;
+  text-align: center;
+  line-height: 120rpx;
+}
+
+.tab .btns .cur {
+  background: #fff;
+}
+
+.tab .cons view {
+  height: 800rpx;
+  display: none;
+  text-align: center;
+  line-height: 480rpx;
+  font-size: 60rpx;
+}
+
+.tab .cons .cur {
+  display: block;
+}

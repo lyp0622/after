@@ -1,0 +1,23 @@
+<!--pages/list/index.wxml-->
+
+  <!-- <view>
+    <target></target>
+    <habit></habit>
+    <note></note>
+  </view> -->
+
+<view class="tab">
+   <view class="btns">
+       <view wx:for="{{btns}}" class="{{index==active?'cur':''}}" 
+       data-index="{{index}}" bindtap="toggle">{{item}}</view>
+   </view>
+<view class="cons">
+  <target hidden="{{active==0}}"></target>
+    <habit hidden="{{active==1}}"></habit>
+    <note hidden="{{active==2}}"></note>
+  <view wx:for="{{cons}}" class="{{index==active?'cur':''}}">{{item}}
+ 
+   </view>
+</view>
+
+</view>
