@@ -1,0 +1,35 @@
+<!--pages/list/list.wxml-->
+<!-- <text>pages/list/list.wxml</text> -->
+<view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}"       data-current="0" bindtap="swichNav">目标</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}"       data-current="1" bindtap="swichNav">习惯</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}"       data-current="2" bindtap="swichNav">手记</view>
+</view>
+<view class="center"> 
+  <view class="center-tab">
+      <text class="txt-title">多彩周末体验计划 <text class="check">2/6</text> 
+      </text>
+      <view class="list">
+        1.看一场私人电影
+      </view>
+      <view class="list">
+        2.玩一次保龄球
+      </view>
+      <view class="list">
+        3.玩一次射箭
+      </view>
+      <view class="list">
+        4.练出几首自己的经典曲目
+      </view>
+      <view class="list">
+        5.好好
+      </view>
+      <view class="list">
+        6.在大庭广众之下演讲一次
+      </view>
+  </view>
+
+
+</view>
+
+
