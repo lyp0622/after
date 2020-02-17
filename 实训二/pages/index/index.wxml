@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <view wx:for="{{array}}" wx:key="key" class="box">
+    <text class="txt"> {{index+1}} {{item.message}}</text>
+  </view>
+</view>
+<view>
+ <text class="add" bindTap='gotoPage1'>+</text>
+</view>
+
+<view class="but">
+  <text>清单</text>
+  <text>广场</text>
+  <text>通知</text>
+  <text>我</text>
+</view>

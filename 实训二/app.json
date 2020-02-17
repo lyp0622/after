@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/three/three"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "有爱清单",
+    "navigationBarTextStyle": "black"
+   
+  },
+  "tabBar": {
+    "position": "top",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "目标"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "习惯"
+      },
+      {
+        "pagePath": "pages/three/three",
+        "text": "手记"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

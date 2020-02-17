@@ -1,0 +1,39 @@
+/**index.wxss**/
+.box{
+  width: 90%;
+  background: white;
+  margin: 30rpx 30rpx 50rpx 30rpx;
+  flex: 1;
+  overflow: auto;
+  margin-bottom: 10rpx
+}
+.but{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #777;
+  background: white;
+}
+.txt{
+  margin-top: 100rpx;
+  height: 40rpx;
+  line-height: 95rpx;
+  margin-left: 30rpx
+}
+.add{
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  background: #eee;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100rpx;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%)
+}
