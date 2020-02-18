@@ -1,9 +1,11 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Input, Button, Form  } from '@tarojs/components'
+import { View, Text, Input, Button, Form, PickerView, PickerViewColumn } from '@tarojs/components'
 import './index.scss'
-
-class AddSign extends Component {
+interface TimeType {
+  years: []
+}
+class AddSign extends Component<TimeType> {
   config: Config = {
     navigationBarTitleText: '添加面试'
   }
@@ -13,7 +15,9 @@ class AddSign extends Component {
     phone: '',
     time: '',
     address: '',
-    info: ''
+    info: '',
+    value: [9999, 1, 1],
+    years: years //?????
   }
 
   componentDidShow () { }
@@ -40,6 +44,16 @@ class AddSign extends Component {
     })
   }
 
+  onChange = e => {
+    const val = e.detail.value
+    this.setState({
+      year: this.state.years[val[0]],
+      // month: this.state.months[val[1]],
+      // day: this.state.days[val[2]],
+      // value: val
+    })
+  }
+
   render () {
     return (
       <View className='wrap'>
@@ -55,6 +69,15 @@ class AddSign extends Component {
           <View>
             <Text>面试时间</Text>
             <Input placeholder="面试时间" value={this.state.time} onInput={e=>this.setState({time:e.detail.value})}></Input>
+            <PickerView indicatorStyle='height: 50px;' style='width: 100%; height: 300px;' value={this.state.value} onChange={this.onChange}>
+              <PickerViewColumn>
+                {this.state.years.map(item => {
+                  return (
+                    <View>{item}年</View>
+                  );
+                })}
+              </PickerViewColumn>
+            </PickerView>
           </View>
           <View>
             <Text>面试地址</Text>
