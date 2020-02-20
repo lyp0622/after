@@ -1,6 +1,7 @@
 
 const INITIAL_STATE = {
-  address: {}
+  address: {},
+  flag:-1
 }
 
 export default function sign (state = INITIAL_STATE, action) {
@@ -10,6 +11,11 @@ export default function sign (state = INITIAL_STATE, action) {
         ...state,
         address: action.payload
       }
+      case 'SUBMIT_SIGN':
+        return {
+          ...state,
+          flag:action.payload
+        }
      default:
        return state
   }

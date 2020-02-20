@@ -61,7 +61,9 @@ class LocationSign extends Component<{}, {keyword: string, list: TipType[]}> {
 
   }
 
-  componentDidHide () { }
+  componentDidHide () { 
+
+  }
 
   changeKeyWord(e){
     this.setState({
@@ -72,7 +74,6 @@ class LocationSign extends Component<{}, {keyword: string, list: TipType[]}> {
         keyword: e.detail.value, //用户输入的关键词，可设置固定值,如keyword:'KFC'
         //region:'北京', //设置城市名，限制关键词所示的地域范围，非必填参数
         success: (res)=>{//搜索成功后的回调
-          console.log(res);
           var sug: TipType[] = [];
           for (var i = 0; i < res.data.length; i++) {
             // console.log('sug...', sug);
@@ -93,9 +94,9 @@ class LocationSign extends Component<{}, {keyword: string, list: TipType[]}> {
       })
     })
   }
-
   selectAddress(item){
     this.props.updateAddress(item);
+    console.log('666',item)
     wx.navigateBack();
   }
 

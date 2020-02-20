@@ -2,11 +2,60 @@ import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text, Input, Button, Form  } from '@tarojs/components'
 import './index.scss'
+import {connect} from '@tarojs/redux'
+import {submitSign} from '../../../actions/sign'
 
-class AddSign extends Component {
-  config: Config = {
-    navigationBarTitleText: '添加面试'
-  }
+   
+   type PageStateProps= {
+     address:{
+       [key:string]:any
+     },
+     flag:number
+   }
+   
+   type PageDispatchProps = {
+     submit: (payload:{})=>void,
+     resetSubmit:()=>void
+   }
+   type PageOwnProps = {}
+   type PageState = {}
+   type Addrops = PageStateProps & PageDispatchProps & PageOwnProps
+
+   interface AddSign {
+     props:Addrops
+   }
+   const mapStateToProps = state=>{
+     return{
+       address: state.sign.address,
+       flag:state.sign.flag
+     }
+   }
+
+   const mapDispatchToProps = dispatch=>{
+     return {
+       submit: payload=>{
+         dispatch(submitSign(payload))
+       },
+       resetSubmit:()=>{
+         dispatch({
+           type:'SUBMIT_SIGN',
+           payload:-1
+         })
+       }
+     }
+   }
+   
+   const mergeProps = (stateProps,dispatchProps,ownProps)=>{
+     return Object.assign({},ownProps,stateProps,dispatchProps)
+   }
+
+
+   @connect(mapStateToProps,mapDispatchToProps)
+   class AddSign extends Component<PageState>{
+     config:Config={
+       navigationBarTitleText:'添加面试'
+     }
+  
 
   state={
     company: '',
@@ -24,7 +73,16 @@ class AddSign extends Component {
 
   formSubmit(e){
     console.log('e...', this.state);
-
+    this.props.submit({
+      company:this.state.company,
+      phone:this.state.phone,
+      form_id:'',
+      address:this.props.address.addr,
+      latitude:this.props.address.latitude,
+      longitude:this.props.address.longitude,
+      start_time:+new Date(),
+      description:this.state.info
+    })
   }
 
   formReset(){
@@ -44,6 +102,21 @@ class AddSign extends Component {
   }
 
   render () {
+      if(this.props.flag===0){
+        wx.showToast({
+          title:'添加面试失败',
+          icon:'none'
+        })
+        this.props.resetSubmit()
+      }else if(this.props.flag===1){
+        wx.showToast({
+          title:'添加面试成功',
+          icon:'none'
+        })
+        this.props.resetSubmit()
+      }
+
+    let {addr} =this.props.address
     return (
       <View className='wrap'>
          <Form onSubmit={this.formSubmit.bind(this)} onReset={this.formReset.bind(this)}>
@@ -61,7 +134,9 @@ class AddSign extends Component {
           </View>
           <View>
             <Text>面试地址</Text>
-            <Text onClick={this.goLocation}></Text>
+            <Text onClick={this.goLocation}>
+                 {addr}
+            </Text>
           </View>
           <View>
             <Text>备注</Text>
@@ -74,6 +149,5 @@ class AddSign extends Component {
     )
   }
 }
-
 
 export default AddSign as ComponentClass;
