@@ -1,7 +1,63 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text, Input, Button, Form  } from '@tarojs/components'
+import {connect} from "@tarojs/redux"
+import {submitSign} from "../../../actions/sign"
 import './index.scss'
+
+
+type PageStateProps = {
+  address: {
+    [key:string]: any
+  },
+  flag: number
+}
+
+type PageDispatchProps = {
+  submit: (payload:{})=>void,
+  resetSubmit: ()=>void
+}
+
+type PageOwnProps = {}
+
+type PageState = {}
+
+type Addrops = PageStateProps & PageDispatchProps & PageOwnProps
+
+interface AddSign {
+  props: Addrops;
+}
+const mapStateToProps = state=>{
+  return {
+    address: state.sign.address,
+    flag: state.sign.flag
+  }
+}
+
+const mapDispatchToProps = dispatch=>{
+  return {
+    submit: payload=>{
+      dispatch(submitSign(payload))
+    },
+    resetSubmit: ()=>{
+      dispatch({
+        type: 'SUBMIT_SIGN',
+        payload: -1
+      })
+    }
+  }
+}
+
+const mergeProps = (stateProps, dispatchProps, ownProps)=>{
+  return Object.assign({}, ownProps, stateProps, dispatchProps)
+}
+
+const options = {
+  pure: true  // 默认为true，会对组件执行shouldComonentUpdate的对比
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
+
 
 class AddSign extends Component {
   config: Config = {
@@ -44,6 +100,8 @@ class AddSign extends Component {
   }
 
   render () {
+    // console.log('this.props...',this.props.address)
+    let {addr}=this.props.address
     return (
       <View className='wrap'>
          <Form onSubmit={this.formSubmit.bind(this)} onReset={this.formReset.bind(this)}>
@@ -61,7 +119,7 @@ class AddSign extends Component {
           </View>
           <View>
             <Text>面试地址</Text>
-            <Text onClick={this.goLocation}></Text>
+            <Text onClick={this.goLocation}>{addr}</Text>
           </View>
           <View>
             <Text>备注</Text>
