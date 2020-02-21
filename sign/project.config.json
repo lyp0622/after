@@ -46,6 +46,13 @@
 					"id": -1,
 					"name": "添加面试页面",
 					"pathName": "pages/sign/add/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "面试列表",
+					"pathName": "pages/sign/list/index",
 					"scene": null
 				}
 			]
