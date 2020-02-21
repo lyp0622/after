@@ -1,6 +1,6 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Input, Button, Form  } from '@tarojs/components'
+import { View, Text, Input, Button, Form,Picker  } from '@tarojs/components'
 import {connect} from "@tarojs/redux"
 import {submitSign} from "../../../actions/sign"
 import './index.scss'
@@ -57,30 +57,51 @@ const options = {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-
-
 class AddSign extends Component {
   config: Config = {
     navigationBarTitleText: '添加面试'
   }
 
   state={
+    date: new Date(),
     company: '',
+    timeSel:new Date(),
     phone: '',
     time: '',
     address: '',
-    info: ''
+    info: '',
+    dateSel: '2018-04-22'
   }
 
   componentDidShow () {
 
   }
 
+  //改变时间
+  onTimeChange = e => {
+    this.setState({
+      timeSel: e.detail.value
+    })
+  }
+  onDateChange = e => {
+    this.setState({
+      dateSel: e.detail.value
+    })
+  }
   componentDidHide () { }
 
   formSubmit(e){
-    console.log('e...', this.state);
-
+    // console.log('e...', this.state);
+    this.props.submit({
+      company:this.state.company,
+      phone: this.state.phone,
+      form_id: '',
+      address: this.props.address.addr,
+      latitude: this.props.address.latitude,
+      longitude: this.props.address.longitude,
+      start_time: +new Date(),
+      description: this.state.info
+    })
   }
 
   formReset(){
@@ -100,7 +121,25 @@ class AddSign extends Component {
   }
 
   render () {
-    // console.log('this.props...',this.props.address)
+       if(this.props.flag===0){
+         wx.showToast({
+           title:'添加面试失败',
+           icon:'none'
+         })
+         this.props.resetSubmit()
+       }else if(this.props.flag===1){
+         wx.showToast({
+           title:"添加面试成功",
+           icon:'none'
+         })
+         wx.navigateTo({
+          url:'/pages/sign/list/index'
+        })
+         this.props.resetSubmit()
+       }
+
+
+    console.log('this.props...',this.props.address,this.props.address.addr)
     let {addr}=this.props.address
     return (
       <View className='wrap'>
@@ -115,7 +154,17 @@ class AddSign extends Component {
           </View>
           <View>
             <Text>面试时间</Text>
-            <Input placeholder="面试时间" value={this.state.time} onInput={e=>this.setState({time:e.detail.value})}></Input>
+            {/* <Input placeholder="面试时间" value={this.state.time} onInput={e=>this.setState({time:e.detail.value})}></Input> */}
+            {/* <Picker mode='time' onChange={this.onTimeChange}>
+                <View className='picker'>
+                  {this.state.date.toLocaleTimeString()}
+                </View> 
+              </Picker> */}
+                <Picker mode='date' onChange={this.onDateChange}>
+                <View className='picker'>
+                  {this.state.dateSel}
+                </View>
+              </Picker>
           </View>
           <View>
             <Text>面试地址</Text>

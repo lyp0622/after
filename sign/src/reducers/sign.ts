@@ -1,16 +1,28 @@
 
 const INITIAL_STATE = {
-  address: {}
+  address: {},
+  flag: -1,
+  //-1表示未提交表单，0则为提交失败，1则为表单提交成功
 }
 
-export default function sign (state = INITIAL_STATE, action) {
+export default function sign(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'CHANGE_ADDRESS':
       return {
         ...state,
         address: action.payload
       }
-     default:
-       return state
+    case "SUBMIT_SIGN":
+      return {
+        ...state,
+        flag: action.payload
+      }
+    case "SIGN_LIST":
+    return {
+      ...state,
+      list:action.payload
+    }
+    default:
+      return state
   }
 }

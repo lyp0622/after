@@ -1,0 +1,17 @@
+.wrap view{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  text:first-child{
+    width: 300rpx;
+  }
+  text:last-child{  
+    flex: 1;
+  }
+
+  .Tab_header{
+    width: 100%;
+    height: 50rpx;
+    border-bottom: 1rpx solid #222;
+  }
