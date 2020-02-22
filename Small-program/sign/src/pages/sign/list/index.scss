@@ -1,30 +1,46 @@
 .wrap{
-    height: 100%;
+    height: auto;
     background: #ccc;
+    display: flex;
 }
 view{
-    width: 100%;
-    height: 100%;
+  width: 100%;
+    height: 5%;
     background: #fff;
     display: flex;
     flex-direction: column;
 }
+.Tab{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  display: inline-block;
+  top: 0;
+  position: sticky
+}
+.Tab text{
+  width: 25%;
+  height: 100%;
+  float: left;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  font-size: 30rpx;
+}
+
 .box{
-    width: 100%;
      height: 180rpx;
      background: #fff;
+     overflow: auto;
      margin-top: 20rpx;
 }
 
 .box>view:last-child{
-    width: 100%;
-    // display: flex;
     flex-wrap: 1;
     background: #fff;
-    // margin-top: 20rpx;
+    overflow: auto;
 }
   text{
-      width: 100%;
       display: flex;
     height: 50rpx;
     line-height: 90rpx;

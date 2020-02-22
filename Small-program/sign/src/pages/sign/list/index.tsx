@@ -11,7 +11,6 @@ type PageStateProps = {
     list: Array<{
         [key: string]: any
     }>
-   
 }
 type PageDispatchProps = {
     getSignList: (params) => void
@@ -22,8 +21,9 @@ type PageState = {
     status: number,
     page: number,
     pageSize: number,
- 
+
 }
+
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps
 
@@ -43,7 +43,7 @@ interface SignList {
     }
 })
 
-class SignList extends Component<{},PageState> {
+class SignList extends Component<{}, PageState> {
 
 
     config: Config = {
@@ -54,10 +54,12 @@ class SignList extends Component<{},PageState> {
         status: 2,
         page: 1,
         pageSize: 10,
+        // current:0
     }
 
-    lyp={
-        navList:['tab1','tab2','tab3','tab4']
+    lyp = {
+        navList: ['未开始', '已开始', '已放弃', '全部'],
+
     }
 
     componentDidShow() {
@@ -69,43 +71,41 @@ class SignList extends Component<{},PageState> {
     }
 
     componentDidHide() { }
-    // tab1(index){
-    //     // this.setState({
-    //     //     curIndex:index
-    //     // })
-    // }
+    itemNav = (index) => {
+        this.setState({
+            current: index
+        })
+    }
 
     render() {
+        let {current} =this.lyp
         return (
-            <View className='wrap'> 
-               <>
-               {
-                    this.lyp.navList.map((item,ind)=>{
-                        return(
-                        <Text key={ind}>{item}</Text>
-                        )
-                    })
-                }
-               </>
-               <>
-                {
-                    this.state.list.map((item, index) => {
-                        return (
-                            <View key={index} className='box'>
-                                  <Text>
-                                    {item["company"]}
-                                </Text>
-                                <Text>
-                                    {item["phone"]}
-                                </Text>
-                              
-                            </View>
-
-
-                        )
-                    })
-                }
-                </>
+            <View className='wrap'>
+                <View className='Tab'>
+                    {/* {
+                        this.lyp.navList.map((ite, index) => {
+                            return (
+                                <Text key={index} className={index ===current ? 'active' : ''} onClick={() => { this.itemNav(index) }}>{ite}</Text>
+                            )
+                        })
+                    } */}
+                </View>
+               
+                    {
+                        this.state.list.map((item, index) => {
+                            return (
+                                <View key={index} className='box'>
+                                    <Text>
+                                        {item["company"]}
+                                    </Text>
+                                    <Text>
+                                        {item["phone"]}
+                                    </Text>
+                                </View>
+                            )
+                        })
+                    }
+            
             </View>
         )
     }

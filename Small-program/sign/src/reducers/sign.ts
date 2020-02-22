@@ -2,7 +2,7 @@
 const INITIAL_STATE = {
   address: {},
   list: [],
-  flag:-1
+  flag:-1,
 }
 
 export default function sign (state = INITIAL_STATE, action) {
