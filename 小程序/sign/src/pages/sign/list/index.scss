@@ -1,0 +1,59 @@
+.top {
+  display: flex;
+  border-top: 1rpx solid #aaaa;
+  padding: 10rpx;
+  font-size: 30rpx;
+}
+
+.top Text {
+  flex: 1;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  background: #eeeeee;
+}
+
+.itmeCon {
+  display: flex;
+  flex-direction: column;
+  background: #ffff;
+  margin-top: 30rpx;
+  padding: 20rpx;
+  position: relative;
+}
+
+.itmeCon Text {
+  flex: 1;
+}
+
+.itmeCon Text:nth-child(2) {
+  position: absolute;
+  left: 610rpx;
+  background: #eeeeee;
+  color: #aaaa;
+  font-size: 30rpx;
+  padding: 10rpx;
+}
+
+.itmeCon Text:nth-child(3) {
+  margin: 20rpx 0;
+  font-size: 35rpx;
+  color: rgba(68, 66, 66, 0.667);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.itmeCon Text:last-child {
+  position: absolute;
+  left: 610rpx;
+  top: 140rpx;
+  background: #eeeeee;
+  color: rgba(241, 113, 113, 0.667);
+  font-size: 30rpx;
+  padding: 10rpx;
+}
