@@ -14,7 +14,7 @@ export const submitSign = (payload) =>{
     addSign(payload).then(res=>{
       dispatch({
         type:'SUBMIT_SIGN',
-        payload:res.code===0?1:0
+        payload:res.code===0?1:0,
       })
     })
   }

@@ -11,6 +11,10 @@ type PageStateProps = {
     list: Array<{
         [key: string]: any
     }>
+    navList:Array<{
+        [key:string]:any
+    }>
+    current:number
 }
 type PageDispatchProps = {
     getSignList: (params) => void
@@ -21,10 +25,7 @@ type PageState = {
     status: number,
     page: number,
     pageSize: number,
-
 }
-
-
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps
 
 interface SignList {
@@ -33,7 +34,9 @@ interface SignList {
 
 @connect(state => {
     return {
-        list: state.sign.list
+        list: state.sign.list,
+        navList:state.sign.navList,
+        current:state.sign.current
     }
 }, dispatch => {
     return {
@@ -44,8 +47,6 @@ interface SignList {
 })
 
 class SignList extends Component<{}, PageState> {
-
-
     config: Config = {
         navigationBarTitleText: '面试列表'
     }
@@ -53,15 +54,9 @@ class SignList extends Component<{}, PageState> {
     state = {
         status: 2,
         page: 1,
-        pageSize: 10,
-        // current:0
+        pageSize: 10
     }
-
-    lyp = {
-        navList: ['未开始', '已开始', '已放弃', '全部'],
-
-    }
-
+ 
     componentDidShow() {
         let params = { ...this.state };
         if (params.status === 2) {
@@ -70,29 +65,31 @@ class SignList extends Component<{}, PageState> {
         this.props.getSignList(params);
     }
 
-    componentDidHide() { }
-    itemNav = (index) => {
-        this.setState({
-            current: index
-        })
+    componentDidHide() {
+      
+     }
+    
+    itemNav(index){
+        // this.setState({
+        //     current:index
+        // })
+        // console.log(index)
     }
 
     render() {
-        let {current} =this.lyp
         return (
             <View className='wrap'>
                 <View className='Tab'>
-                    {/* {
-                        this.lyp.navList.map((ite, index) => {
+                    {
+                        this.props.navList.map((ite, index) => {
                             return (
-                                <Text key={index} className={index ===current ? 'active' : ''} onClick={() => { this.itemNav(index) }}>{ite}</Text>
+                                <Text key={index} className={ index===this.props.current?'active':''} onClick={this.itemNav.bind(index)}>{ite}</Text>
                             )
                         })
-                    } */}
+                    }
                 </View>
-               
                     {
-                        this.state.list.map((item, index) => {
+                        this.props.list.map((item, index) => {
                             return (
                                 <View key={index} className='box'>
                                     <Text>
@@ -105,7 +102,6 @@ class SignList extends Component<{}, PageState> {
                             )
                         })
                     }
-            
             </View>
         )
     }

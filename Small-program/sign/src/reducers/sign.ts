@@ -3,6 +3,8 @@ const INITIAL_STATE = {
   address: {},
   list: [],
   flag:-1,
+  current:0,
+  navList: ['未开始', '已开始', '已放弃', '全部']
 }
 
 export default function sign (state = INITIAL_STATE, action) {
@@ -20,8 +22,8 @@ export default function sign (state = INITIAL_STATE, action) {
       case 'SIGN_LIST':
         return {
           ...state,
-          list:action.payload
-        }
+          list:action.payload, 
+       }
      default:
        return state
   }
