@@ -47,20 +47,6 @@ class SignList extends Component<{}, PageState> {
     status: 2,
     page: 1,
     pageSize: 10
-    // topTab: [
-    //   {
-    //     'name': '未开始'
-    //   },
-    //   {
-    //     'name': '已打卡'
-    //   },
-    //   {
-    //     'name': '已放弃'
-    //   },
-    //   {
-    //     'name': '全部'
-    //   }
-    // ]
   }
 
   componentDidShow() {
@@ -72,12 +58,16 @@ class SignList extends Component<{}, PageState> {
   }
 
   componentDidHide() { }
+  tabColor = () => {
+    console.log('颜色.....')
 
+  }
   render() {
+    // let flage=false;
     return (
       <View className='wrap'>
         <View className='top'>
-          <Text>未开始</Text>
+          <Text onClick={this.tabColor}>未开始</Text>
           <Text>已打卡</Text>
           <Text>已放弃</Text>
           <Text>全部</Text>
@@ -90,7 +80,7 @@ class SignList extends Component<{}, PageState> {
                 <Text>{item.company}</Text>
                 <Text>未开始</Text>
                 <Text>{item.address}</Text>
-                <Text>面试时间: {item.latitude} {item.longitude}</Text>
+                <Text>面试时间: {item.start_time.toLocaleString()}</Text>
                 <Text>未提醒</Text>
               </View>
             })

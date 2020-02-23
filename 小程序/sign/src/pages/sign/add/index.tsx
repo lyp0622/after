@@ -1,6 +1,6 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Input, Button, Form } from '@tarojs/components'
+import { View, Text, Input, Button, Form, Picker } from '@tarojs/components'
 import './index.scss'
 import { connect } from '@tarojs/redux'
 import { submitSign } from '../../../actions/sign'
@@ -66,7 +66,10 @@ class AddSign extends Component<PageState> {
     phone: '',
     time: '',
     address: '',
-    info: ''
+    info: '',
+    timeSel: '12:01',
+    dateSel: '2018-04-22',
+    dateTime: new Date().toLocaleString()
   }
 
   componentDidShow() {
@@ -77,6 +80,7 @@ class AddSign extends Component<PageState> {
 
   formSubmit(e) {
     console.log('e...', this.state);
+    console.log('当前时间', this.state.dateTime)
     this.props.submit({
       company: this.state.company,
       phone: this.state.phone,
@@ -105,6 +109,17 @@ class AddSign extends Component<PageState> {
     })
   }
 
+  onTimeChange = e => {
+    this.setState({
+      timeSel: e.detail.value
+    })
+  }
+  onDateChange = e => {
+    this.setState({
+      dateSel: e.detail.value
+    })
+  }
+
   render() {
     if (this.props.flag === 0) {
       wx.showToast({
@@ -119,7 +134,6 @@ class AddSign extends Component<PageState> {
       })
       this.props.resetSubmit();
     }
-
 
     console.log('this.props...', this.props.address, this.props.address.addr);
     let { addr } = this.props.address;
@@ -136,15 +150,30 @@ class AddSign extends Component<PageState> {
           </View>
           <View>
             <Text>面试时间</Text>
-            <Input placeholder="面试时间" value={this.state.time} onInput={e => this.setState({ time: e.detail.value })}></Input>
+            <View className='page-body'>
+              <View className='page-section'>
+                <View>
+                  <Picker mode='date' onChange={this.onDateChange}>
+                    <View className='picker'> {this.state.dateSel} </View>
+                  </Picker>
+                </View>
+              </View>
+              <View className='page-section'>
+                <View>
+                  <Picker mode='time' onChange={this.onTimeChange}>
+                    <View className='picker'> {this.state.timeSel} </View>
+                  </Picker>
+                </View>
+              </View>
+            </View>
           </View>
           <View>
             <Text>面试地址</Text>
             <Text onClick={this.goLocation}>{addr}</Text>
           </View>
           <View>
-            <Text>备注</Text>
-            <Input placeholder="备注" value={this.state.info} onInput={e => this.setState({ info: e.detail.value })}></Input>
+            <Text>备注信息</Text>
+            <Input placeholder="备注信息" value={this.state.info} onInput={e => this.setState({ info: e.detail.value })}></Input>
           </View>
           <Button form-type="submit">确认</Button>
           <Button form-type="reset">重置</Button>
