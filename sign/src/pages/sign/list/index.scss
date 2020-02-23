@@ -1,8 +1,9 @@
-.wrap view{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+// .wrap view{
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     flex-direction: column
+//   }
   text:first-child{
     width: 300rpx;
   }
@@ -10,8 +11,28 @@
     flex: 1;
   }
 
-  .Tab_header{
-    width: 100%;
-    height: 50rpx;
-    border-bottom: 1rpx solid #222;
+.tab_Header{
+  width: 100%;
+  display: flex;
+  border-bottom: 1rpx solid #222;
+  Text{
+    width: 25%;
+    text-align: center;
+    align-items: center
   }
+}
+.active{
+  background: #ccc;
+  border-bottom: 1rpx solid #222
+}
+
+.title_head{
+  width: 100%;
+  display: flex;
+  Text{
+    width: 25%;
+    text-align: center;
+    align-items: center
+  }
+
+}

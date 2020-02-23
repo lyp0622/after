@@ -1,19 +1,24 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Input, Button, Form, Icon  } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import './index.scss'
 import { connect } from '@tarojs/redux'
-import {getSignListAction} from '../../../actions/sign'
+import { getSignListAction } from '../../../actions/sign'
 
 
 
 type PageStateProps = {
   list: Array<{
-    [key:string]: any
+    [key: string]: any
   }>
+  tabList: Array<{
+    [key: string]: any
+  }>
+  curIndex: number
 }
 type PageDispatchProps = {
   getSignList: (params) => void
+  setCurindex: (params) => void
 }
 type PageOwnProps = {}
 
@@ -29,61 +34,81 @@ interface SignList {
   props: IProps;
 }
 
-@connect(state=>{
+
+@connect(state => {
   return {
-    list: state.sign.list
+    list: state.sign.list,
+    tabList: state.sign.tabList,
+    curIndex: state.sign.curIndex
   }
-}, dispatch=>{
+
+}, dispatch => {
   return {
-    getSignList: (params)=>{
+    getSignList: (params) => {
       dispatch(getSignListAction(params))
+      console.log(params, "列表数剧")
+    },
+    setCurindex: (params) => {
+      dispatch({
+        type: 'SIGN_INDEX',
+        payload: params
+      })
     }
   }
+  
 })
 class SignList extends Component<{}, PageState> {
   config: Config = {
     navigationBarTitleText: '面试列表'
   }
 
-  state={
+  state = {
     status: 2,
     page: 1,
     pageSize: 10,
-    tabList: [
-        {
-            title:"未开始",
-            id:1
-        },{
-            title:"已打卡",
-            id:2
-        },{
-            title:"已放弃",
-            id:3
-        },{
-            title:"全部",
-            id:4
-        }
-    ]
-  }
 
-  componentDidShow () {
-    let params = {...this.state};
-    if (params.status === 2){
+  }
+  componentDidShow() {
+    let params = { ...this.state };
+    if (params.status === 2) {
       delete params.status;
     }
     this.props.getSignList(params);
   }
 
-  componentDidHide () { }
+  componentDidHide() { }
+  Curindex(index) {
+    this.props.setCurindex(index)
+    // console.log(index)
+  }
 
-
-  render () {
+  render() {
+    let { tabList } = this.props
+    // console.log(this.props,"props")
+    console.log(tabList,"liebiao")
+    let { list } = this.props
+    // console.log(list, "list"
+    // let { curIndex } = this.props
     return (
       <View className='wrap'>
-            <View>
 
-                
-            </View>
+        <View className="title_head">
+           {
+            this.props.tabList.map((ite,ind)=>{
+                  return <Text key={ind} onClick={this.Curindex.bind(this,ind)} className={this.props.curIndex == ind ? 'active' : ''}>{ite}</Text>
+            })
+          }
+        </View>
+        <View>
+        {
+            list.map((item, index) => {
+              return <View key={index}>
+                        <Text>公司{item.company}</Text>
+                        <Text>公司地址{item.address}</Text>
+                     </View>
+            })
+          }
+        </View>
       </View>
     )
   }
