@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   list: [],
   flag:-1,
   current:0,
-  navList: ['未开始', '已开始', '已放弃', '全部']
+  arr:[],
+  navList: [ '全部','未开始', '已开始', '已放弃']
 }
 
 export default function sign (state = INITIAL_STATE, action) {

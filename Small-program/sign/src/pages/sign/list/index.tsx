@@ -4,6 +4,7 @@ import { View, Text } from '@tarojs/components'
 import './index.scss'
 import { connect } from '@tarojs/redux'
 import { getSignListAction } from '../../../actions/sign'
+import { ITouchEvent } from '@tarojs/components/types/common'
 
 
 
@@ -15,6 +16,9 @@ type PageStateProps = {
         [key:string]:any
     }>
     current:number
+     arr:{
+        [key: string]: any;
+    }[]
 }
 type PageDispatchProps = {
     getSignList: (params) => void
@@ -69,13 +73,29 @@ class SignList extends Component<{}, PageState> {
       
      }
     
-    itemNav(index){
-        // this.setState({
-        //     current:index
-        // })
-        // console.log(index)
-    }
-
+    // itemNav(index){
+    //  console.log(index)
+    //  console.log(this.state.status)
+    //  if(index===0){
+    //     let arr = this.props.list.filter(item=>{
+    //         item.status=1
+    //     })
+    //    console.log(this.props.list)
+    //  console.log('4512', arr)
+      
+    //  }
+    //  this.setState({
+    //      current:index
+    //  })
+    // }
+      changeStatus = (e:ITouchEvent)=>{
+    this.setState({
+      status: e.target.dataset.status
+    })
+  }
+    goDetail = (e: ITouchEvent)=>{
+        wx.navigateTo({url:'/pages/sign/detail/index?id='+e.currentTarget.dataset.id});
+      }
     render() {
         return (
             <View className='wrap'>
@@ -83,7 +103,7 @@ class SignList extends Component<{}, PageState> {
                     {
                         this.props.navList.map((ite, index) => {
                             return (
-                                <Text key={index} className={ index===this.props.current?'active':''} onClick={this.itemNav.bind(index)}>{ite}</Text>
+                                <Text key={index}  className={index===this.props.current?'active':''} onClick={this.changeStatus}>{ite}</Text>
                             )
                         })
                     }
@@ -91,12 +111,12 @@ class SignList extends Component<{}, PageState> {
                     {
                         this.props.list.map((item, index) => {
                             return (
-                                <View key={index} className='box'>
+                                <View key={index} onClick={this.goDetail} data-id={item.id} className='box' >
                                     <Text>
-                                        {item["company"]}
+                                        {item.company}
                                     </Text>
                                     <Text>
-                                        {item["phone"]}
+                                        {item.address}
                                     </Text>
                                 </View>
                             )

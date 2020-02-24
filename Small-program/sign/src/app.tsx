@@ -6,7 +6,7 @@ import Index from './pages/index'
 import configStore from './store'
 import './app.scss'
 // 引入登陆的action
-import {login} from './services/index'
+import { login } from './services/index'
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -31,21 +31,33 @@ class App extends Component {
       'pages/map/index',
       'pages/sign/add/index',
       'pages/sign/list/index',
-      'pages/sign/location/index'
+      'pages/sign/location/index',
+      'pages/sign/detail/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    permission: {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序定位"
+      }
+    },
+    plugins: {
+      "routePlan": {
+        "version": "1.0.5",
+        "provider": "wx50b5593e81dd937a"
+      }
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // 发起请求
     console.log('小程序挂载的生命周期')
     wx.login({
-      async success (res) {
+      async success(res) {
         if (res.code) {
           //发起网络请求
           let response = await login(res.code);
@@ -58,15 +70,15 @@ class App extends Component {
     })
   }
 
-  componentDidShow () {}
+  componentDidShow() { }
 
-  componentDidHide () {}
+  componentDidHide() { }
 
-  componentDidCatchError () {}
+  componentDidCatchError() { }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <Index />
@@ -75,4 +87,4 @@ class App extends Component {
   }
 }
 
-Taro.render(<App/>, document.getElementById('app'))
+Taro.render(<App />, document.getElementById('app'))
