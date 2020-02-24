@@ -1,17 +1,24 @@
-.top {
+.header view{
   display: flex;
-  border-top: 1rpx solid #aaaa;
-  padding: 10rpx;
-  font-size: 30rpx;
+  align-items: center;
 }
-
-.top Text {
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1rpx solid #aaaa;
+}
+.header text{
   flex: 1;
   text-align: center;
   line-height: 60rpx;
 }
+.header text.active{
+  color: rgb(57, 177, 224);
+  border-bottom: 1rpx solid rgb(57, 177, 224);
+}
 
-.middle {
+.list{
   display: flex;
   flex-direction: column;
   background: #eeeeee;
@@ -47,7 +54,9 @@
   text-overflow: ellipsis;
   white-space: nowrap
 }
-
+.itmeCon Text:nth-child(4){
+  font-size: 30rpx;
+}
 .itmeCon Text:last-child {
   position: absolute;
   left: 610rpx;

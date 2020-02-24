@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: space-between;
   height: 100rpx;
-  // padding: 10rpx;
 }
 
 text:first-child {
@@ -15,6 +14,13 @@ text:last-child {
   height: 100%;
 }
 
-.page-section view{
+.page-section view {
   margin-right: 35rpx;
+}
+
+.address {
+  line-height: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
 }

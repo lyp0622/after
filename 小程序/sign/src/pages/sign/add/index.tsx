@@ -68,8 +68,7 @@ class AddSign extends Component<PageState> {
     address: '',
     info: '',
     timeSel: '12:01',
-    dateSel: '2018-04-22',
-    dateTime: new Date().toLocaleString()
+    dateSel: '2018-04-22'
   }
 
   componentDidShow() {
@@ -80,7 +79,6 @@ class AddSign extends Component<PageState> {
 
   formSubmit(e) {
     console.log('e...', this.state);
-    console.log('当前时间', this.state.dateTime)
     this.props.submit({
       company: this.state.company,
       phone: this.state.phone,
@@ -88,7 +86,8 @@ class AddSign extends Component<PageState> {
       address: this.props.address.addr,
       latitude: this.props.address.latitude,
       longitude: this.props.address.longitude,
-      start_time: +new Date(),
+      // start_time: +new Date(),
+      start_time: this.state.dateSel + this.state.timeSel,
       description: this.state.info
     })
   }
@@ -108,7 +107,6 @@ class AddSign extends Component<PageState> {
       url: '/pages/sign/location/index'
     })
   }
-
   onTimeChange = e => {
     this.setState({
       timeSel: e.detail.value
@@ -119,7 +117,6 @@ class AddSign extends Component<PageState> {
       dateSel: e.detail.value
     })
   }
-
   render() {
     if (this.props.flag === 0) {
       wx.showToast({
@@ -169,10 +166,10 @@ class AddSign extends Component<PageState> {
           </View>
           <View>
             <Text>面试地址</Text>
-            <Text onClick={this.goLocation}>{addr}</Text>
+            <Text onClick={this.goLocation} className='address'>{addr}</Text>
           </View>
           <View>
-            <Text>备注信息</Text>
+            <Text>备注</Text>
             <Input placeholder="备注信息" value={this.state.info} onInput={e => this.setState({ info: e.detail.value })}></Input>
           </View>
           <Button form-type="submit">确认</Button>
