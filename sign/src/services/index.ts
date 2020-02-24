@@ -5,13 +5,12 @@ export function login(code): Promise<any>{
   return flyio.post('/user/code2session', {code});
 }
 
-//这个是添加面试的接口
+// 添加面试
 export function addSign(params){
-  // console.log(params,"传的参数")
-  return flyio.post('/sign',params)
+  return flyio.post('/sign', params);
 }
-//获取面试列表
+
+// 获取面试列表
 export function getSignList(params){
-  console.log(params,"params")
-  return flyio.get('/sign',params)
+  return flyio.get('/sign', params);
 }
